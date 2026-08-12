@@ -27,16 +27,32 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
-      - file: "src/activities.md"
-        label: "Activities"
-        name: "activities"
-        fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/contact.md"
         label: "Contact"
         name: "contact"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/activities.md"
+        label: "Activities"
+        name: "activities"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - name: "settings"
+        label: "Settings"
+        delete: false
+        editor:
+          preview: false
+        files:
+        - name: "general"
+          label: "Social"
+          file: "src/_data/site.json" # Adaptez le chemin si votre JSON est ailleurs (ex: _data/site.json)
+          fields:
+            - { label: "Nom d'utilisateur Email", name: "email_user", widget: "string" }
+            - { label: "Domaine Email", name: "email_domain", widget: "string" }
+            - { label: "ORCID ID", name: "orcid", widget: "string", required: false }
+            - { label: "Lien arXiv", name: "arxiv", widget: "string", required: false }
+            - { label: "Lien ResearchGate", name: "researchgate", widget: "string", required: false }
+            - { label: "Lien LinkedIn", name: "linkedin", widget: "string", required: false }
     

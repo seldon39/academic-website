@@ -39,4 +39,18 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
+      - name: "settings"
+        label: "Paramètres"
+        delete: false
+        editor:
+        preview: false
+        files:
+        - name: "general"
+          label: "Infos & Réseaux Sociaux"
+          file: "src/_data/site.json" # Fichier où seront sauvegardées les données
+          fields:
+            - { label: "Adresse E-mail", name: "email", widget: "string" }
+            - { label: "Lien GitHub", name: "github", widget: "string", required: false }
+            - { label: "Lien LinkedIn", name: "linkedin", widget: "string", required: false }
+            - { label: "Lien Twitter / X", name: "twitter", widget: "string", required: false }
     
