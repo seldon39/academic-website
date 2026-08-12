@@ -7,7 +7,7 @@ title: Home
 
 Welcome to my homepage. 
 
-I will be a research assistant at the University of Cologne starting September 2026. I will work under the supervision of [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and [Prof. Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/) in the framework of the DFG funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
+I am a research assistant at the University of Cologne since September 2026. I work under the supervision of [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and [Prof. Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/) in the framework of the DFG funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
 
 I received my [PhD](/assets/these.pdf) from Université Paris Cité in 2026 under the supervision of [Prof. Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm).
 
