@@ -2,12 +2,16 @@
 layout: base.njk
 title: Activities
 ---
-## Talks
+<details class="section-deroulante">
+   <summary><h2>Talks </h2></summary> 
 
 * Short talk at the **Journée de rentrée** **of the Laboratoire AGM** at Cergy Paris Université, October 13, 2025.
 * Conference **Complex Geometry, Complex Analysis and Dynamics** at CIRM (Marseille). Short Talk : *Asymptotics for Toeplitz operators with symbol an indicator function*, July 10, 2025.
 
-## Participation to conferences and workshops
+</details>
+
+<details class="section-deroulante">
+   <summary><h2>Participation to conferences and workshops </h2></summary>
 
 ### Conferences
 
@@ -28,3 +32,5 @@ title: Activities
 
 * Summer School **Invitation to Complex Geometry**, Erdös Center, Alfréd Rényi Institute of Mathematics, Budapest, August 3-9, 2025.
 * Summer School **Advances in Special Kähler metrics**, Le Croisic, June 12-16, 2023.
+
+</details>
