@@ -22,7 +22,7 @@ title: Teaching
 <hr>
 
 #### 2023-2024
-* **TP Informatique**, L1 Mathématiques à l'Université Paris Cité.
+* **TP Informatique**, L1 Mathématiques à l'Université Paris Cité (Python, LaTeX).
 * **TD Équations différentielles ordinaires**, L2 Biologie à l'Université Paris Cité.
 * **TD Analyse**, L1 MIASHS à l'Université Paris Cité.
 
