@@ -384,6 +384,8 @@ details.section-deroulante summary h2 {
   font-size: 1.25rem;
   color: #0056b3;
   display: inline-block;
+  text-decoration: none; /* Empêche le soulignement */
+  border-bottom: none;   /* Enlève toute bordure ou ligne sous le titre */
 }
 
 /* Ajout d'une flèche personnalisée à droite */
@@ -402,6 +404,7 @@ details.section-deroulante[open] summary::after {
 /* Changement de couleur au survol */
 details.section-deroulante summary:hover h2 {
   color: #003d82;
+  text-decoration: none; /* Pas de soulignement au survol */
 }
 
 /* Style uniforme pour tous les titres ## (h2) */
