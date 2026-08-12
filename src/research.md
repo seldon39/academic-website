@@ -2,7 +2,7 @@
 layout: base.njk
 title: Research
 ---
-My research lies at the intersection of complex and symplectic geometry and functional analysis. I am mainly interested in the topics of Bergman kernel asymptotics and Berezin–Toeplitz quantization. 
+My research lies at the intersection of complex geometry, symplectic geometry and functional analysis. I am mainly interested in the topics of Bergman kernel asymptotics and Berezin–Toeplitz quantization. 
 
 ## Publications
 
