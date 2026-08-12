@@ -312,3 +312,36 @@ main {
   opacity: 0;
   transform: scale(0.98); /* Légère réduction très subtile pour un effet premium */
 }
+
+/* Style du bloc global <details> */
+details {
+  background-color: #f4f7f9; /* Fond très léger pour faire ressortir le bloc */
+  border-left: 4px solid #0056b3; /* Bordure latérale bleue */
+  padding: 0.8rem 1.2rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+}
+
+/* Style et COULEUR de la mention "Display Abstract" */
+details summary b {
+  color: #0056b3; /* Couleur bleue pour l'intitulé */
+  font-size: 0.9rem; /* Légèrement plus petit pour la discrétion */
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+/* Changement de couleur au survol de la souris */
+details summary:hover b {
+  color: #003d82; /* Bleu plus foncé au survol */
+  text-decoration: underline;
+}
+
+/* Style et COULEUR du texte du résumé (balise <i>) */
+details i {
+  display: block; /* S'affiche sous le bouton */
+  margin-top: 0.8rem;
+  color: #2c3e50; /* Couleur de texte sombre, très lisible */
+  font-style: italic;
+  line-height: 1.6;
+}
