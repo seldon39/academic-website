@@ -4,8 +4,8 @@ title: Activities
 ---
 ## Talks
 
-* Short talk at the **Journée de rentrée** **of the Laboratoire AGM** at Cergy Paris Université, October 2025.
-* Conference **Complex Geometry, Complex Analysis and Dynamics** at CIRM (Marseille). Short Talk : *Asymptotics for Toeplitz operators with symbol an indicator function*, July 2025.
+* Short talk at the **Journée de rentrée** **of the Laboratoire AGM** at Cergy Paris Université, October 13, 2025.
+* Conference **Complex Geometry, Complex Analysis and Dynamics** at CIRM (Marseille). Short Talk : *Asymptotics for Toeplitz operators with symbol an indicator function*, July 10, 2025.
 
 ## Participation to conferences and workshops
 
@@ -22,7 +22,7 @@ title: Activities
 
 ### Workshops
 
-* **Asymptotic Problems in Geometry**, Centre de Mathématiques Laurent Schwartz (CMLS), École Polytechnique, Palaiseau, June 17, 2026.
+* Workshop **Asymptotic Problems in Geometry**, Centre de Mathématiques Laurent Schwartz (CMLS), École Polytechnique, Palaiseau, June 17, 2026.
 
 ### Summer Schools
 
