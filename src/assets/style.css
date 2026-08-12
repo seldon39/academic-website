@@ -372,3 +372,68 @@ footer .container p {
 @view-transition {
   navigation: auto;
 }
+
+/* --- 9. MODE SOMBRE AUTOMATIQUE --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #e2e8f0;
+    --text-color: #cbd5e1;
+    --bg-color: #0f172a;       /* Fond sombre bleuté moderne (Slate 900) */
+    --link-color: #38bdf8;     /* Bleu clair lumineux */
+    --link-hover-color: #7dd3fc;
+    --border-color: #334155;
+  }
+
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  /* En-tête */
+  header {
+    background-color: #1e293b;
+    border-bottom-color: var(--border-color);
+  }
+
+  a.site-title {
+    color: #f8fafc; /* Nom du site en blanc cassé */
+  }
+
+  nav a {
+    color: #94a3b8;
+  }
+
+  /* Blocs accordéons / Details */
+  details {
+    background-color: #1e293b;
+    border-left-color: var(--link-color);
+  }
+
+  details i {
+    color: #cbd5e1;
+  }
+
+  details.section-deroulante {
+    background-color: #1e293b;
+    border-color: var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  details.section-deroulante[open] {
+    border-color: #475569;
+  }
+
+  /* Liens réseaux sociaux et footer */
+  footer {
+    border-top-color: var(--border-color);
+  }
+
+  .social-links a,
+  .social-links a i {
+    color: #94a3b8;
+  }
+
+  footer .container p {
+    color: #64748b;
+  }
+}
