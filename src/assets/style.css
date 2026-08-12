@@ -345,3 +345,61 @@ details i {
   font-style: italic;
   line-height: 1.6;
 }
+
+/* Style des menus déroulants de section */
+details.section-deroulante {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: all 0.2s ease-in-out;
+}
+
+details.section-deroulante[open] {
+  border-color: #cbd5e1;
+  padding-bottom: 1rem;
+}
+
+/* En-tête cliquable du menu déroulant */
+details.section-deroulante summary {
+  cursor: pointer;
+  list-style: none; /* Cache la flèche par défaut du navigateur */
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+/* Suppression du marqueur Safari */
+details.section-deroulante summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Style des titres <h2> à l'intérieur du summary */
+details.section-deroulante summary h2 {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
+  color: #0056b3;
+  display: inline-block;
+}
+
+/* Ajout d'une flèche personnalisée à droite */
+details.section-deroulante summary::after {
+  content: "❯";
+  font-size: 0.9rem;
+  color: #0056b3;
+  transition: transform 0.2s ease;
+}
+
+/* Rotation de la flèche lorsque la section est ouverte */
+details.section-deroulante[open] summary::after {
+  transform: rotate(90deg);
+}
+
+/* Changement de couleur au survol */
+details.section-deroulante summary:hover h2 {
+  color: #003d82;
+}
