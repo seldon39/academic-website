@@ -417,3 +417,24 @@ h2 {
   padding-bottom: 0.3rem;
   border-bottom: 1px solid #e2e8f0; /* Une fine ligne de séparation élégante */
 }
+
+/* Désactive la ligne bleue et les marges par défaut pour le nom dans le header */
+.site-header-title {
+  margin: 0;
+  padding: 0;
+  border-bottom: none !important; 
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+/* Style sobre et élégant pour le nom */
+a.site-title {
+  color: #1e293b;                   /* Gris anthracite sobre */
+  text-decoration: none !important; /* Aucun soulignement */
+  transition: color 0.2s ease;
+}
+
+/* Changement de couleur au survol de la souris */
+a.site-title:hover {
+  color: #0056b3;                   /* Devient bleu au survol */
+}
