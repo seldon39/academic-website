@@ -404,8 +404,8 @@ details.section-deroulante summary:hover h2 {
   color: #003d82;
 }
 
-/* Style uniforme pour tous les titres #### (h4) */
-h4 {
+/* Style uniforme pour tous les titres ## (h2) */
+h2 {
   color: #0056b3; /* Le même bleu professionnel */
   font-size: 1.15rem; /* Ajustement proportionnel de la taille */
   font-weight: bold;
