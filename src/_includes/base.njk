@@ -3,11 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>{{ title }} | Razvan Apredoaei </title>
+
+  <!-- Titre dynamique & Description SEO -->
+  <title>{% if title %}{{ title }} | {% endif %}Razvan Apredoaei</title>
+  <meta name="description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei, chercheur en mathématiques.' }}">
+  <meta name="author" content="Razvan Apredoaei">
+  <meta name="robots" content="index, follow">
+
+  <!-- URL canonique -->
+  {% if site.url %}
+    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+  {% endif %}
+
+  <!-- Open Graph (Aperçus sur LinkedIn, WhatsApp, iMessage...) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
+  <meta property="og:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
+  {% if site.url %}
+    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
+  {% endif %}
+  <meta property="og:site_name" content="Razvan Apredoaei">
+
+  <!-- Twitter / X Cards -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
+  <meta name="twitter:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
+
   <!-- Chargement de Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
   <!-- Lien vers votre fichier CSS -->
-    <link rel="stylesheet" href="/assets/style.css">
+  <link rel="stylesheet" href="/assets/style.css">
+  
   <!-- Netlify identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 </head>
