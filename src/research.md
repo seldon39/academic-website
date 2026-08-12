@@ -11,5 +11,5 @@ My research lies at the intersection of complex and symplectic geometry and func
 
 ## Preprints
 
-2. **Asymptotics for Toeplitz operators with symbol an indicator function**, *[available at arXiv:2606.24503](https://arxiv.org/abs/2606.24503)* (2026). 
+1. **Asymptotics for Toeplitz operators with symbol an indicator function**, *[available at arXiv:2606.24503](https://arxiv.org/abs/2606.24503)* (2026). 
   <details> <summary> <b> Display Abstract </b> </summary> <i> We prove an off-diagonal expansion of the kernel of the Toeplitz operator whose symbol is the indicator function of a compact domain with smooth boundary in a complete symplectic manifold of bounded geometry. Using our approach, we extend two results to the non-compact setting: the first concerns the asymptotics of the trace of polynomials in this operator, and the second establishes a Weyl law for this Toeplitz operator. </i> </details>
