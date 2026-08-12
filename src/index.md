@@ -11,7 +11,7 @@ I am a research assistant at the University of Cologne since September 2026. I w
 
 I received my [PhD](/assets/these.pdf) from Université Paris Cité in 2026 under the supervision of [Prof. Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm).
 
-Here is a link to my [CV](/assets/cv.pdf).
+Here is a link to my [CV](/assets/CV_Apredoaei.pdf).
 
 </div>
 
