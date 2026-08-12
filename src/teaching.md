@@ -22,4 +22,21 @@ title: Teaching
 <hr>
 
 #### 2023-2024
+* **TP Informatique**, L1 Mathématiques à l'Université Paris Cité.
+* **TD Équations différentielles ordinaires**, L2 Biologie à l'Université Paris Cité.
+* **TD Analyse**, L1 MIASHS à l'Université Paris Cité.
+
+<hr>
+
+#### 2022-2023
+
+* **TD Équations différentielles ordinaires**, L2 Biologie à l'Université Paris Cité.
+* **TD Analyse**, L1 MIASHS à l'Université Paris Cité.
+
+<hr>
+
+#### 2021-2022
+
+* **Algèbre et Analyse**, Colles, L1 Mathématiques à l'Université Paris Cité.
+* **TD Analyse**, L1 MIASHS à l'Université Paris Cité.
 
