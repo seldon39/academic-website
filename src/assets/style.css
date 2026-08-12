@@ -403,3 +403,14 @@ details.section-deroulante[open] summary::after {
 details.section-deroulante summary:hover h2 {
   color: #003d82;
 }
+
+/* Style uniforme pour tous les titres #### (h4) */
+h4 {
+  color: #0056b3; /* Le même bleu professionnel */
+  font-size: 1.15rem; /* Ajustement proportionnel de la taille */
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid #e2e8f0; /* Une fine ligne de séparation élégante */
+}
