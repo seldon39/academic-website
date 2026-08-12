@@ -27,6 +27,12 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/activities.md"
+        label: "Activities"
+        name: "activities"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/contact.md"
         label: "Contact"
         name: "contact"
