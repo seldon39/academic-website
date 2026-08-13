@@ -451,16 +451,16 @@ footer .container p {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  transition: filter 0.3s ease; /* Pour une transition douce */
+
+  /* Empêche Chrome Android de forcer un fond blanc ou de modifier l'image */
+  color-scheme: only light;
+  forced-color-adjust: none;
+  background-color: transparent !important;
 }
 
-/* Mode Sombre : Inversion forcée pour Chrome & Safari */
+/* Inversion propre pour le mode sombre */
 @media (prefers-color-scheme: dark) {
   .site-logo {
-    /* 1. Rend le logo noir invisible -> blanc pur */
     filter: brightness(0) invert(1) !important;
-    
-    /* 2. Empêche Chrome de rajouter un fond ou des styles parasites */
-    background-color: transparent !important;
   }
 }
