@@ -1,20 +1,23 @@
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
-
 :root {
   --primary-color: #2c3e50;
   --text-color: #333333;
   --bg-color: #fcfcfc;
   --link-color: #0066cc;
+  --link-hover-color: #003d82;
+  --border-color: #e2e8f0;
   --max-width: 800px;
+}
+
+*, *::before, *::after {
+  box-sizing: border-box;
 }
 
 html {
   -webkit-text-size-adjust: 100%;
-  -moz-text-size-adjust: 100%;
   text-size-adjust: 100%;
   width: 100%;
-  max-width: 100%;
-  overflow-x: hidden; /* Empêche le site de glisser de droite à gauche */
+  overflow-x: hidden;
 }
 
 body {
@@ -25,39 +28,63 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  max-width: 100vw;
   overflow-x: hidden;
 }
 
-/* Conteneur principal */
+/* Conteneurs */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 0 20px;
 }
 
 main {
   padding: 2.5rem 0;
+  opacity: 1;
+  transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
+  will-change: opacity, transform;
 }
 
-main::after {
-  content: "";
-  display: table;
-  clear: both;
+main.fade-out {
+  opacity: 0;
+  transform: scale(0.98);
 }
 
 a {
   color: var(--link-color);
 }
 
-h1, h2 {
-  clear: none;
+/* --- 2. TYPOGRAPHIE & TITRES --- */
+h2 {
+  color: var(--link-color);
+  font-size: 1.15rem;
+  font-weight: bold;
+  margin-top: 1.5rem;
+  margin-bottom: 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
+/* Header site title override */
+.site-header-title {
+  margin: 0;
+  padding: 0;
+  border-bottom: none !important;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 
-/* --- 2. EN-TÊTE ET NAVIGATION (DESKTOP) --- */
+a.site-title {
+  color: #1e293b;
+  text-decoration: none !important;
+  transition: color 0.2s ease;
+}
 
+a.site-title:hover {
+  color: var(--link-color);
+}
+
+/* --- 3. EN-TÊTE ET NAVIGATION --- */
 header {
   border-bottom: 1px solid #eaeaea;
   background-color: #ffffff;
@@ -73,19 +100,8 @@ header {
   gap: 1rem;
 }
 
-.site-title a {
-  font-size: 1.25rem;
-  font-weight: 700;
-  color: var(--primary-color);
-  text-decoration: none;
-  letter-spacing: -0.02em;
-}
-
-.site-title a:hover {
-  color: var(--link-color);
-}
-
-nav ul {
+nav ul,
+nav .nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -104,7 +120,6 @@ nav a {
   transition: color 0.2s ease, text-shadow 0.2s ease;
 }
 
-/* Survol et Onglet Actif */
 nav a:hover,
 nav a.active {
   color: var(--link-color);
@@ -131,9 +146,93 @@ nav a.active::after {
   transform: scaleX(1);
 }
 
+/* --- 4. SECTIONS & BLOCS ACCORDÉON (DETAILS) --- */
 
-/* --- 3. CONTENU ACCUEIL (DESKTOP) --- */
+/* Bloc simple (Abstracts) */
+details {
+  background-color: #f4f7f9;
+  border-left: 4px solid var(--link-color);
+  padding: 0.8rem 1.2rem;
+  margin: 1rem 0 1.5rem 0;
+  border-radius: 6px;
+}
 
+details summary b {
+  color: var(--link-color);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+details summary:hover b {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+details i {
+  display: block;
+  margin-top: 0.8rem;
+  color: var(--primary-color);
+  font-style: italic;
+  line-height: 1.6;
+}
+
+/* Menus déroulants de section complets */
+details.section-deroulante {
+  background-color: #ffffff;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  margin-bottom: 1.2rem;
+  padding: 0.5rem 1rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: border-color 0.2s ease, padding 0.2s ease;
+}
+
+details.section-deroulante[open] {
+  border-color: #cbd5e1;
+  padding-bottom: 1rem;
+}
+
+details.section-deroulante summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+details.section-deroulante summary::-webkit-details-marker {
+  display: none;
+}
+
+details.section-deroulante summary h2 {
+  margin: 0;
+  padding: 0.5rem 0;
+  font-size: 1.25rem;
+  color: var(--link-color);
+  display: inline-block;
+  text-decoration: none;
+  border-bottom: none;
+}
+
+details.section-deroulante summary::after {
+  content: "❯";
+  font-size: 0.9rem;
+  color: var(--link-color);
+  transition: transform 0.2s ease;
+}
+
+details.section-deroulante[open] summary::after {
+  transform: rotate(90deg);
+}
+
+details.section-deroulante summary:hover h2 {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
+/* --- 5. CONTENU INTRO & PROFIL --- */
 .intro-container {
   display: flex;
   align-items: flex-start;
@@ -170,13 +269,9 @@ nav a.active::after {
   width: 100%;
 }
 
-
-/* --- 4. PIED DE PAGE (FOOTER & SOCIAUX) --- */
-
+/* --- 6. PIED DE PAGE --- */
 footer {
   width: 100%;
-  max-width: 100%;
-  box-sizing: border-box;
   padding: 40px 15px 20px 15px;
   margin-top: 60px;
   text-align: center;
@@ -192,7 +287,6 @@ footer {
   gap: 25px;
   margin-bottom: 40px;
   width: 100%;
-  box-sizing: border-box;
 }
 
 .social-links a,
@@ -205,21 +299,13 @@ footer {
   text-decoration: none;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  backface-visibility: hidden;
   will-change: transform;
 }
 
 .social-links a:hover,
 .social-links a:hover i {
   color: var(--link-color) !important;
-  transform: translateY(-3px) translateZ(0);
-}
-
-footer .container {
-  width: 100%;
-  padding: 0;
-  margin: 0 auto;
+  transform: translateY(-3px);
 }
 
 footer .container p {
@@ -231,18 +317,13 @@ footer .container p {
   text-align: center;
 }
 
-
-/* --- 5. ADAPTATION RESPONSIVE (MOBILES - max-width: 650px) --- */
-
+/* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
 @media (max-width: 650px) {
-  /* Ajustements conteneur */
   .container {
     padding-left: 15px;
     padding-right: 15px;
-    box-sizing: border-box;
   }
 
-  /* Navigation : Retour à la ligne pour l'onglet Contact */
   .header-content {
     flex-direction: column;
     align-items: flex-start;
@@ -250,18 +331,16 @@ footer .container p {
     gap: 0.8rem;
   }
 
-  nav {
+  nav,
+  nav ul,
+  nav .nav-links {
     width: 100%;
   }
 
   nav ul,
   nav .nav-links {
-    display: flex;
-    flex-wrap: wrap; /* Permet à 'Contact' de passer à la ligne */
+    flex-wrap: wrap;
     gap: 0.8rem 1.2rem;
-    padding: 0;
-    margin: 0;
-    width: 100%;
   }
 
   nav li,
@@ -269,14 +348,12 @@ footer .container p {
     white-space: nowrap;
   }
 
-  /* Presentation Intro : Photo au-dessus du texte */
   .intro-container {
-    flex-direction: column-reverse; 
-    align-items: center; 
+    flex-direction: column-reverse;
+    align-items: center;
     justify-content: center;
     width: 100%;
     gap: 1.5rem;
-    box-sizing: border-box;
   }
 
   .profile-container {
@@ -291,24 +368,86 @@ footer .container p {
   }
 }
 
-
-/* --- 6. VIEW TRANSITIONS (Navigateurs modernes) --- */
-
+/* --- 8. VIEW TRANSITIONS --- */
 @view-transition {
   navigation: auto;
 }
 
-/* --- TRANSITION EN FONDU (SWIPE) --- */
+/* --- 9. MODE SOMBRE AUTOMATIQUE --- */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --primary-color: #e2e8f0;
+    --text-color: #cbd5e1;
+    --bg-color: #0f172a;       /* Fond sombre bleuté moderne (Slate 900) */
+    --link-color: #38bdf8;     /* Bleu clair lumineux */
+    --link-hover-color: #7dd3fc;
+    --border-color: #334155;
+  }
 
-/* État normal de la zone principale */
-main {
-  opacity: 1;
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
-  will-change: opacity, transform;
+  body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  /* En-tête */
+  header {
+    background-color: #1e293b;
+    border-bottom-color: var(--border-color);
+  }
+
+  a.site-title {
+    color: #f8fafc; /* Nom du site en blanc cassé */
+  }
+
+  nav a {
+    color: #94a3b8;
+  }
+
+  /* Blocs accordéons / Details */
+  details {
+    background-color: #1e293b;
+    border-left-color: var(--link-color);
+  }
+
+  details i {
+    color: #cbd5e1;
+  }
+
+  details.section-deroulante {
+    background-color: #1e293b;
+    border-color: var(--border-color);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  }
+
+  details.section-deroulante[open] {
+    border-color: #475569;
+  }
+
+  /* Liens réseaux sociaux et footer */
+  footer {
+    border-top-color: var(--border-color);
+  }
+
+  .social-links a,
+  .social-links a i {
+    color: #94a3b8;
+  }
+
+  footer .container p {
+    color: #64748b;
+  }
 }
 
-/* Effet de fondu sortant lors du swipe */
-.fade-out {
-  opacity: 0;
-  transform: scale(0.98); /* Légère réduction très subtile pour un effet premium */
+/* Alignement du logo et du nom dans l'en-tête */
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Espace entre le logo et votre nom */
+  text-decoration: none;
+}
+
+.site-logo {
+  width: 28px;  /* Ajustez la taille selon vos préférences (ex: 24px à 32px) */
+  height: 28px;
+  object-fit: contain;
 }

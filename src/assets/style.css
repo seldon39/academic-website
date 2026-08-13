@@ -437,3 +437,17 @@ footer .container p {
     color: #64748b;
   }
 }
+
+/* Alignement du logo et du nom dans l'en-tête */
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px; /* Espace entre le logo et votre nom */
+  text-decoration: none;
+}
+
+.site-logo {
+  width: 28px;  /* Ajustez la taille selon vos préférences (ex: 24px à 32px) */
+  height: 28px;
+  object-fit: contain;
+}
