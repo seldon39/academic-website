@@ -11,7 +11,7 @@ title: Activities
 </details>
 
 <details class="section-deroulante">
-   <summary><h2>Participation to conferences and workshops </h2></summary>
+   <summary><h2>Events (participant) </h2></summary>
 
 ### Conferences
 
