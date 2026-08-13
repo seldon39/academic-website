@@ -451,3 +451,10 @@ footer .container p {
   height: 28px;
   object-fit: contain;
 }
+
+/* Quand le téléphone ou le Mac de l'utilisateur est en mode sombre */
+@media (prefers-color-scheme: dark) {
+  .site-logo {
+    filter: brightness(0) invert(1); /* Rend le logo 100% blanc */
+  }
+}
