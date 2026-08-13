@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -55,3 +57,201 @@
   <meta name="apple-mobile-web-app-title" content="Razvan Apredoaei" />
   <link rel="manifest" href="/assets/site.webmanifest" />
 </head>
+
+<body>
+  <header>
+    <div class="container header-content">
+      <h2 class="site-header-title">
+        <a href="/" class="site-title">Razvan Apredoaei</a>
+      </h2>
+      <nav>
+        <ul>
+          <li>
+            <a href="/" {% if page.url == "/" %}class="active"{% endif %}>Home</a>
+          </li>
+          <li>
+            <a href="/research/" {% if page.url == "/research/" %}class="active"{% endif %}>Research</a>
+          </li>
+          <li>
+            <a href="/teaching/" {% if page.url == "/teaching/" %}class="active"{% endif %}>Teaching</a>
+          </li>
+          <li>
+            <a href="/activities/" {% if page.url == "/activities/" %}class="active"{% endif %}>Activities</a>
+          </li>
+          <li>
+            <a href="/contact/" {% if page.url == "/contact/" %}class="active"{% endif %}>Contact</a>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class = "container">
+    {{ content | safe }}
+  </main>
+
+<footer>
+  <!-- Liens vers les profils et contact -->
+<!-- REMPLACEZ LA SECTION <div class="social-links"> DANS VOTRE FOOTER PAR CECI : -->
+
+<div class="social-links">
+  <!-- E-mail obscurci dynamique -->
+  <p><a href="#" 
+        id="email-link" 
+        data-user="{{ site.email_user }}" 
+        data-domain="{{ site.email_domain }}" 
+        title="E-mail" 
+        aria-label="E-mail">
+    <i class="fa-regular fa-envelope"></i>
+  </a></p>
+
+  <!-- ORCID -->
+  {% if site.orcid %}
+  <a href="https://orcid.org/{{ site.orcid }}" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
+    <i class="fa-brands fa-orcid"></i>
+  </a>
+  {% endif %}
+
+  <!-- arXiv -->
+  {% if site.arxiv %}
+  <a href="{{ site.arxiv }}" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
+    <i class="fa-solid fa-graduation-cap"></i>
+  </a>
+  {% endif %}
+
+  <!-- ResearchGate -->
+  {% if site.researchgate %}
+  <a href="{{ site.researchgate }}" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
+    <i class="fa-brands fa-researchgate"></i>
+  </a>
+  {% endif %}
+
+  <!-- LinkedIn -->
+  {% if site.linkedin %}
+  <a href="{{ site.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+    <i class="fa-brands fa-linkedin"></i>
+  </a>
+  {% endif %}
+</div>
+
+  <div class="container">
+    <p>&copy; 2026 Razvan Apredoaei — Built with the assistance of Google Gemini.</p>
+  </div>
+</footer>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const emailLink = document.getElementById("email-link");
+    if (emailLink) {
+      const user = emailLink.getAttribute("data-user");
+      const domain = emailLink.getAttribute("data-domain");
+      const fullEmail = user + "@" + domain;
+
+      // Recompose le mailto au survol ou au clic
+      emailLink.addEventListener("mouseenter", function() {
+        this.href = "mailto:" + fullEmail;
+      });
+      emailLink.addEventListener("click", function() {
+        this.href = "mailto:" + fullEmail;
+      });
+    }
+  });
+</script>
+
+<script>
+  // Fait apparaître le contenu en douceur dès que la page est chargée
+  document.addEventListener('DOMContentLoaded', () => {
+    document.querySelector('main')?.classList.remove('fade-out');
+  });
+</script>
+
+<script>
+  (function() {
+    const menuPages = ['/', '/research/', '/teaching/', '/activities/', '/contact/'];
+
+    let currentPath = window.location.pathname;
+    if (!currentPath.endsWith('/')) currentPath += '/';
+    
+    let currentIndex = menuPages.findIndex(page => {
+      let p = page.endsWith('/') ? page : page + '/';
+      return p === currentPath;
+    });
+
+    if (currentIndex === -1) return;
+
+    // Préchargement des pages
+    function prefetchPage(url) {
+      if (!document.querySelector(`link[href="${url}"]`)) {
+        const link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+    }
+    if (currentIndex > 0) prefetchPage(menuPages[currentIndex - 1]);
+    if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
+
+    // Gestion tactile
+    let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
+    const minSwipeDistance = 60; 
+    const mainContent = document.querySelector('main') || document.body;
+    
+    // Récupération correcte des liens du menu (nav ul li a)
+    const navLinks = document.querySelectorAll('nav ul a');
+
+    document.addEventListener('touchstart', e => {
+      touchstartX = e.changedTouches[0].screenX;
+      touchstartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    document.addEventListener('touchend', e => {
+      touchendX = e.changedTouches[0].screenX;
+      touchendY = e.changedTouches[0].screenY;
+      handleSwipe();
+    }, { passive: true });
+
+    function handleSwipe() {
+      const deltaX = touchendX - touchstartX;
+      const deltaY = touchendY - touchstartY;
+
+      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        let targetIndex = -1;
+
+        if (deltaX < 0 && currentIndex < menuPages.length - 1) {
+          targetIndex = currentIndex + 1;
+        } else if (deltaX > 0 && currentIndex > 0) {
+          targetIndex = currentIndex - 1;
+        }
+
+        // Si un swipe valide a lieu :
+        if (targetIndex !== -1) {
+          // 1. Déclenche le fondu en douceur sur le contenu
+          mainContent.classList.add('fade-out');
+
+          // 2. Déplace instantanément le surlignage "active" dans le menu
+          if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
+          if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
+
+          // 3. Redirige après 200 ms (durée du fondu)
+          setTimeout(() => {
+            window.location.href = menuPages[targetIndex];
+          }, 200);
+        }
+      }
+    }
+  })();
+</script>
+
+<script>
+  if (window.netlifyIdentity) {
+    window.netlifyIdentity.on("init", user => {
+      if (!user) {
+        window.netlifyIdentity.on("login", () => {
+          document.location.href = "/admin/";
+        });
+      }
+    });
+  }
+</script>
+</body>
+</html>
