@@ -446,15 +446,21 @@ footer .container p {
   text-decoration: none;
 }
 
+/* Style de base du logo dans l'en-tête */
 .site-logo {
-  width: 28px;  /* Ajustez la taille selon vos préférences (ex: 24px à 32px) */
+  width: 28px;
   height: 28px;
   object-fit: contain;
+  transition: filter 0.3s ease; /* Pour une transition douce */
 }
 
-/* Quand le téléphone ou le Mac de l'utilisateur est en mode sombre */
+/* Mode Sombre : Inversion forcée pour Chrome & Safari */
 @media (prefers-color-scheme: dark) {
   .site-logo {
-    filter: brightness(0) invert(1); /* Rend le logo 100% blanc */
+    /* 1. Rend le logo noir invisible -> blanc pur */
+    filter: brightness(0) invert(1) !important;
+    
+    /* 2. Empêche Chrome de rajouter un fond ou des styles parasites */
+    background-color: transparent !important;
   }
 }
