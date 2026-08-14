@@ -1,6 +1,8 @@
 ---
 layout: base.njk
 title: Activities
+lang: en
+permalink: /activities/
 ---
 <details class="section-deroulante">
    <summary><h2>Talks </h2></summary> 

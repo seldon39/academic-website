@@ -1,21 +1,21 @@
 ---
 layout: base.njk
-title: Teaching
-lang: en
-permalink: /teaching/
+title: Enseignement
+lang: fr
+permalink: /fr/enseignement/
 ---
 
 <details class="section-deroulante">
-   <summary><h2>Current </h2></summary>
+   <summary><h2>En cours </h2></summary>
 
 </details>
 
 <details class="section-deroulante">
-   <summary><h2>Past </h2></summary>
+   <summary><h2>Passé </h2></summary>
 
 ### 2025-2026
 * **Algèbre linéaire appliquée** — CM/TD ING1 à CY Tech. [Lien vers le polycopié](/assets/Support_cours.pdf).
-* **Data Exploration** - CM/TP ING1 à CY Tech.
+* **Exploration de données** - CM/TP ING1 à CY Tech.
 * **Analyse** - TD Préing1 à CY Tech.
 
 <hr>

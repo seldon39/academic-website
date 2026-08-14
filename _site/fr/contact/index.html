@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="{{ lang or 'en' }}">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,29 +9,29 @@
   <meta name="theme-color" content="#ffffff" />
 
   <!-- Titre dynamique & Description SEO -->
-  <title>{% if title %}{{ title }} | {% endif %}Razvan Apredoaei</title>
-  <meta name="description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei, chercheur en mathématiques.' }}">
+  <title>Contact | Razvan Apredoaei</title>
+  <meta name="description" content="Page personnelle et travaux de recherche de Razvan Apredoaei">
   <meta name="author" content="Razvan Apredoaei">
   <meta name="robots" content="index, follow">
 
   <!-- URL canonique -->
-  {% if site.url %}
-    <link rel="canonical" href="{{ site.url }}{{ page.url }}">
-  {% endif %}
+  
+    <link rel="canonical" href="https://votre-site.netlify.app/fr/contact/">
+  
 
   <!-- Open Graph -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
-  <meta property="og:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
-  {% if site.url %}
-    <meta property="og:url" content="{{ site.url }}{{ page.url }}">
-  {% endif %}
+  <meta property="og:title" content="Contact | Razvan Apredoaei">
+  <meta property="og:description" content="Page personnelle et travaux de recherche de Razvan Apredoaei">
+  
+    <meta property="og:url" content="https://votre-site.netlify.app/fr/contact/">
+  
   <meta property="og:site_name" content="Razvan Apredoaei">
 
   <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
-  <meta name="twitter:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
+  <meta name="twitter:title" content="Contact | Razvan Apredoaei">
+  <meta name="twitter:description" content="Page personnelle et travaux de recherche de Razvan Apredoaei">
 
   <!-- Feuilles de style & Icônes Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -57,7 +57,7 @@
       <!-- Ligne supérieure sur mobile : Titre + Sélecteur de langue -->
       <div class="header-top">
         <h2 class="site-header-title">
-          <a href="{% if lang == 'fr' %}/fr/{% else %}/{% endif %}" class="site-title">
+          <a href="/fr/" class="site-title">
             <img src="/assets/favicon.svg" alt="" class="site-logo" />
             <span>Razvan Apredoaei</span>
           </a>
@@ -65,30 +65,33 @@
 
         <!-- Sélecteur de langue (à droite sur mobile) -->
         <div class="lang-switch">
-          <a href="/" class="{% if lang != 'fr' %}active{% endif %}" title="English">EN</a>
+          <a href="/" class="" title="English">EN</a>
           <span class="separator">|</span>
-          <a href="/fr/" class="{% if lang == 'fr' %}active{% endif %}" title="Français">FR</a>
+          <a href="/fr/" class="active" title="Français">FR</a>
         </div>
       </div>
 
       <!-- Navigation sous le titre/sélecteur -->
       <nav>
         <ul class="nav-links">
-          {% set t = i18n[lang or "en"] %}
-          {% set isFr = (lang == "fr") %}
           
-          <li><a href="{% if isFr %}/fr/{% else %}/{% endif %}" class="{% if page.url == '/' or page.url == '/fr/' %}active{% endif %}">{{ t.home }}</a></li>
-          <li><a href="{% if isFr %}/fr/recherche/{% else %}/research/{% endif %}" class="{% if 'research' in page.url or 'recherche' in page.url %}active{% endif %}">{{ t.research }}</a></li>
-          <li><a href="{% if isFr %}/fr/enseignement/{% else %}/teaching/{% endif %}" class="{% if 'teaching' in page.url or 'enseignement' in page.url %}active{% endif %}">{{ t.teaching }}</a></li>
-          <li><a href="{% if isFr %}/fr/activites/{% else %}/activities/{% endif %}" class="{% if 'activities' in page.url or 'activites' in page.url %}active{% endif %}">{{ t.activities }}</a></li>
-          <li><a href="{% if isFr %}/fr/contact/{% else %}/contact/{% endif %}" class="{% if 'contact' in page.url %}active{% endif %}">{{ t.contact }}</a></li>
+          
+          
+          <li><a href="/fr/" class="">Accueil</a></li>
+          <li><a href="/fr/recherche/" class="">Recherche</a></li>
+          <li><a href="/fr/enseignement/" class="">Enseignement</a></li>
+          <li><a href="/fr/activites/" class="">Activités</a></li>
+          <li><a href="/fr/contact/" class="active">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
   <main class="container">
-    {{ content | safe }}
+    <h3>Courriel</h3>
+<p>razvan [dot] apredoaei [at] imj-prg [dot] fr</p>
+<h3>Bureau</h3>
+
   </main>
 
   <footer>
@@ -96,40 +99,40 @@
       <!-- E-mail obscurci dynamique -->
       <p><a href="#" 
             id="email-link" 
-            data-user="{{ site.email_user }}" 
-            data-domain="{{ site.email_domain }}" 
+            data-user="razvan.apredoaei" 
+            data-domain="imj-prg.fr" 
             title="E-mail" 
             aria-label="E-mail">
         <i class="fa-regular fa-envelope"></i>
       </a></p>
 
       <!-- ORCID -->
-      {% if site.orcid %}
-      <a href="https://orcid.org/{{ site.orcid }}" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
+      
+      <a href="https://orcid.org/0009-0001-3537-821X" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
         <i class="fa-brands fa-orcid"></i>
       </a>
-      {% endif %}
+      
 
       <!-- arXiv -->
-      {% if site.arxiv %}
-      <a href="{{ site.arxiv }}" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
+      
+      <a href="https://arxiv.org/search/math?searchtype=author&amp;query=Apredoaei,+R" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
         <i class="fa-solid fa-graduation-cap"></i>
       </a>
-      {% endif %}
+      
 
       <!-- ResearchGate -->
-      {% if site.researchgate %}
-      <a href="{{ site.researchgate }}" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
+      
+      <a href="https://www.researchgate.net/profile/Razvan-Apredoaei" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
         <i class="fa-brands fa-researchgate"></i>
       </a>
-      {% endif %}
+      
 
       <!-- LinkedIn -->
-      {% if site.linkedin %}
-      <a href="{{ site.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+      
+      <a href="https://www.linkedin.com/in/razvan-a-755402256/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
         <i class="fa-brands fa-linkedin"></i>
       </a>
-      {% endif %}
+      
     </div>
 
     <div class="container">

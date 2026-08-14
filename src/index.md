@@ -1,7 +1,10 @@
 ---
 layout: base.njk
 title: Home
+lang: en
+permalink: /
 ---
+
 <div class = "intro-container"> 
 <div class = "intro-text">
 

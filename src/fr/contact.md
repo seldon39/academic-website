@@ -1,11 +1,12 @@
 ---
 layout: base.njk
 title: Contact
-lang: en
-permalink: /contact/
+lang: fr
+permalink: /fr/contact/
 ---
-### Email
+
+### Courriel
 
 razvan \[dot] apredoaei \[at] imj-prg \[dot] fr
 
-### Office 
+### Bureau 

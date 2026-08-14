@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -40,20 +40,13 @@
   <!-- Netlify identity -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
 
-  <!-- ── FAVICONS ET SAFARI (ORDRE STRUCTURÉ NON-CONFLIT) ── -->
-  <!-- 1. Apple Touch Icon universel pour Safari Favoris & iOS -->
+  <!-- ── FAVICONS ET SAFARI ── -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-
-  <!-- 2. Favicon .ico classique pour Safari Desktop -->
   <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
-
-  <!-- 3. PNGs & SVGs pour Chrome, Firefox, Edge -->
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
-
-  <!-- 4. Manifeste PWA & Configuration Mobile -->
   <meta name="apple-mobile-web-app-title" content="Razvan Apredoaei" />
   <link rel="manifest" href="/assets/site.webmanifest" />
 </head>
@@ -61,35 +54,40 @@
 <body>
   <header>
     <div class="container header-content">
-      <h2 class="site-header-title">
-        <a href="/" class="site-title">
-          <img src="/assets/favicon.svg" alt="" class="site-logo" />
-          <span>Razvan Apredoaei</span>
-        </a>
-      </h2>
+      <!-- Ligne supérieure sur mobile : Titre + Sélecteur de langue -->
+      <div class="header-top">
+        <h2 class="site-header-title">
+          <a href="/" class="site-title">
+            <img src="/assets/favicon.svg" alt="" class="site-logo" />
+            <span>Razvan Apredoaei</span>
+          </a>
+        </h2>
+
+        <!-- Sélecteur de langue (à droite sur mobile) -->
+        <div class="lang-switch">
+          <a href="/" class="active" title="English">EN</a>
+          <span class="separator">|</span>
+          <a href="/fr/" class="" title="Français">FR</a>
+        </div>
+      </div>
+
+      <!-- Navigation sous le titre/sélecteur -->
       <nav>
-        <ul>
-          <li>
-            <a href="/" >Home</a>
-          </li>
-          <li>
-            <a href="/research/" class="active">Research</a>
-          </li>
-          <li>
-            <a href="/teaching/" >Teaching</a>
-          </li>
-          <li>
-            <a href="/activities/" >Activities</a>
-          </li>
-          <li>
-            <a href="/contact/" >Contact</a>
-          </li>
+        <ul class="nav-links">
+          
+          
+          
+          <li><a href="/" class="">Home</a></li>
+          <li><a href="/research/" class="active">Research</a></li>
+          <li><a href="/teaching/" class="">Teaching</a></li>
+          <li><a href="/activities/" class="">Activities</a></li>
+          <li><a href="/contact/" class="">Contact</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main class = "container">
+  <main class="container">
     <p>My research lies at the intersection of complex geometry, symplectic geometry and functional analysis. I am mainly interested in the topics of Bergman kernel asymptotics and Berezin–Toeplitz quantization.</p>
 <h2>Publications</h2>
 <ol>
@@ -110,168 +108,158 @@
 
   </main>
 
-<footer>
-  <!-- Liens vers les profils et contact -->
-<!-- REMPLACEZ LA SECTION <div class="social-links"> DANS VOTRE FOOTER PAR CECI : -->
+  <footer>
+    <div class="social-links">
+      <!-- E-mail obscurci dynamique -->
+      <p><a href="#" 
+            id="email-link" 
+            data-user="razvan.apredoaei" 
+            data-domain="imj-prg.fr" 
+            title="E-mail" 
+            aria-label="E-mail">
+        <i class="fa-regular fa-envelope"></i>
+      </a></p>
 
-<div class="social-links">
-  <!-- E-mail obscurci dynamique -->
-  <p><a href="#" 
-        id="email-link" 
-        data-user="razvan.apredoaei" 
-        data-domain="imj-prg.fr" 
-        title="E-mail" 
-        aria-label="E-mail">
-    <i class="fa-regular fa-envelope"></i>
-  </a></p>
+      <!-- ORCID -->
+      
+      <a href="https://orcid.org/0009-0001-3537-821X" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
+        <i class="fa-brands fa-orcid"></i>
+      </a>
+      
 
-  <!-- ORCID -->
-  
-  <a href="https://orcid.org/0009-0001-3537-821X" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
-    <i class="fa-brands fa-orcid"></i>
-  </a>
-  
+      <!-- arXiv -->
+      
+      <a href="https://arxiv.org/search/math?searchtype=author&amp;query=Apredoaei,+R" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
+        <i class="fa-solid fa-graduation-cap"></i>
+      </a>
+      
 
-  <!-- arXiv -->
-  
-  <a href="https://arxiv.org/search/math?searchtype=author&amp;query=Apredoaei,+R" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
-    <i class="fa-solid fa-graduation-cap"></i>
-  </a>
-  
+      <!-- ResearchGate -->
+      
+      <a href="https://www.researchgate.net/profile/Razvan-Apredoaei" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
+        <i class="fa-brands fa-researchgate"></i>
+      </a>
+      
 
-  <!-- ResearchGate -->
-  
-  <a href="https://www.researchgate.net/profile/Razvan-Apredoaei" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
-    <i class="fa-brands fa-researchgate"></i>
-  </a>
-  
+      <!-- LinkedIn -->
+      
+      <a href="https://www.linkedin.com/in/razvan-a-755402256/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
+        <i class="fa-brands fa-linkedin"></i>
+      </a>
+      
+    </div>
 
-  <!-- LinkedIn -->
-  
-  <a href="https://www.linkedin.com/in/razvan-a-755402256/" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
-    <i class="fa-brands fa-linkedin"></i>
-  </a>
-  
-</div>
+    <div class="container">
+      <p>&copy; 2026 Razvan Apredoaei — Site built with 11ty and the assistance of Google Gemini. Hosted on Netlify.</p>
+    </div>
+  </footer>
 
-  <div class="container">
-    <p>&copy; 2026 Razvan Apredoaei — Site built with 11ty and the assistance of Google Gemini. Hosted on Netlify. </p>
-  </div>
-</footer>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const emailLink = document.getElementById("email-link");
+      if (emailLink) {
+        const user = emailLink.getAttribute("data-user");
+        const domain = emailLink.getAttribute("data-domain");
+        const fullEmail = user + "@" + domain;
 
-<script>
-  document.addEventListener("DOMContentLoaded", function() {
-    const emailLink = document.getElementById("email-link");
-    if (emailLink) {
-      const user = emailLink.getAttribute("data-user");
-      const domain = emailLink.getAttribute("data-domain");
-      const fullEmail = user + "@" + domain;
-
-      // Recompose le mailto au survol ou au clic
-      emailLink.addEventListener("mouseenter", function() {
-        this.href = "mailto:" + fullEmail;
-      });
-      emailLink.addEventListener("click", function() {
-        this.href = "mailto:" + fullEmail;
-      });
-    }
-  });
-</script>
-
-<script>
-  // Fait apparaître le contenu en douceur dès que la page est chargée
-  document.addEventListener('DOMContentLoaded', () => {
-    document.querySelector('main')?.classList.remove('fade-out');
-  });
-</script>
-
-<script>
-  (function() {
-    const menuPages = ['/', '/research/', '/teaching/', '/activities/', '/contact/'];
-
-    let currentPath = window.location.pathname;
-    if (!currentPath.endsWith('/')) currentPath += '/';
-    
-    let currentIndex = menuPages.findIndex(page => {
-      let p = page.endsWith('/') ? page : page + '/';
-      return p === currentPath;
-    });
-
-    if (currentIndex === -1) return;
-
-    // Préchargement des pages
-    function prefetchPage(url) {
-      if (!document.querySelector(`link[href="${url}"]`)) {
-        const link = document.createElement('link');
-        link.rel = 'prefetch';
-        link.href = url;
-        document.head.appendChild(link);
-      }
-    }
-    if (currentIndex > 0) prefetchPage(menuPages[currentIndex - 1]);
-    if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
-
-    // Gestion tactile
-    let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
-    const minSwipeDistance = 60; 
-    const mainContent = document.querySelector('main') || document.body;
-    
-    // Récupération correcte des liens du menu (nav ul li a)
-    const navLinks = document.querySelectorAll('nav ul a');
-
-    document.addEventListener('touchstart', e => {
-      touchstartX = e.changedTouches[0].screenX;
-      touchstartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    document.addEventListener('touchend', e => {
-      touchendX = e.changedTouches[0].screenX;
-      touchendY = e.changedTouches[0].screenY;
-      handleSwipe();
-    }, { passive: true });
-
-    function handleSwipe() {
-      const deltaX = touchendX - touchstartX;
-      const deltaY = touchendY - touchstartY;
-
-      if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
-        let targetIndex = -1;
-
-        if (deltaX < 0 && currentIndex < menuPages.length - 1) {
-          targetIndex = currentIndex + 1;
-        } else if (deltaX > 0 && currentIndex > 0) {
-          targetIndex = currentIndex - 1;
-        }
-
-        // Si un swipe valide a lieu :
-        if (targetIndex !== -1) {
-          // 1. Déclenche le fondu en douceur sur le contenu
-          mainContent.classList.add('fade-out');
-
-          // 2. Déplace instantanément le surlignage "active" dans le menu
-          if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
-          if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
-
-          // 3. Redirige après 200 ms (durée du fondu)
-          setTimeout(() => {
-            window.location.href = menuPages[targetIndex];
-          }, 200);
-        }
-      }
-    }
-  })();
-</script>
-
-<script>
-  if (window.netlifyIdentity) {
-    window.netlifyIdentity.on("init", user => {
-      if (!user) {
-        window.netlifyIdentity.on("login", () => {
-          document.location.href = "/admin/";
+        emailLink.addEventListener("mouseenter", function() {
+          this.href = "mailto:" + fullEmail;
+        });
+        emailLink.addEventListener("click", function() {
+          this.href = "mailto:" + fullEmail;
         });
       }
     });
-  }
-</script>
+  </script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelector('main')?.classList.remove('fade-out');
+    });
+  </script>
+
+  <script>
+    (function() {
+      const isFr = document.documentElement.lang === 'fr';
+      const menuPages = isFr 
+        ? ['/fr/', '/fr/recherche/', '/fr/enseignement/', '/fr/activites/', '/fr/contact/']
+        : ['/', '/research/', '/teaching/', '/activities/', '/contact/'];
+
+      let currentPath = window.location.pathname;
+      if (!currentPath.endsWith('/')) currentPath += '/';
+      
+      let currentIndex = menuPages.findIndex(page => {
+        let p = page.endsWith('/') ? page : page + '/';
+        return p === currentPath;
+      });
+
+      if (currentIndex === -1) return;
+
+      function prefetchPage(url) {
+        if (!document.querySelector(`link[href="${url}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = url;
+          document.head.appendChild(link);
+        }
+      }
+      if (currentIndex > 0) prefetchPage(menuPages[currentIndex - 1]);
+      if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
+
+      let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
+      const minSwipeDistance = 60; 
+      const mainContent = document.querySelector('main') || document.body;
+      const navLinks = document.querySelectorAll('nav ul a:not(.lang-switch a)');
+
+      document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+        touchstartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        touchendY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const deltaX = touchendX - touchstartX;
+        const deltaY = touchendY - touchstartY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+          let targetIndex = -1;
+
+          if (deltaX < 0 && currentIndex < menuPages.length - 1) {
+            targetIndex = currentIndex + 1;
+          } else if (deltaX > 0 && currentIndex > 0) {
+            targetIndex = currentIndex - 1;
+          }
+
+          if (targetIndex !== -1) {
+            mainContent.classList.add('fade-out');
+
+            if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
+            if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
+
+            setTimeout(() => {
+              window.location.href = menuPages[targetIndex];
+            }, 200);
+          }
+        }
+      }
+    })();
+  </script>
+
+  <script>
+    if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+        if (!user) {
+          window.netlifyIdentity.on("login", () => {
+            document.location.href = "/admin/";
+          });
+        }
+      });
+    }
+  </script>
 </body>
 </html>

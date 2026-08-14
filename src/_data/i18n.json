@@ -1,0 +1,18 @@
+{
+  "en": {
+    "home": "Home",
+    "research": "Research",
+    "teaching": "Teaching",
+    "activities": "Activities",
+    "contact": "Contact",
+    "download_cv": "Download my CV"
+  },
+  "fr": {
+    "home": "Accueil",
+    "research": "Recherche",
+    "teaching": "Enseignement",
+    "activities": "Activités",
+    "contact": "Contact",
+    "download_cv": "Télécharger mon CV"
+  }
+}

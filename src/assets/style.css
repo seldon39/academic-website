@@ -103,12 +103,26 @@ header {
   margin-bottom: 2rem;
 }
 
+/* Alignement vertical sur PC : Ligne 1 = Titre + Langue / Ligne 2 = Navigation */
 .header-content {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
+  flex-direction: column; /* Force le menu à passer sous le titre sur PC */
+  align-items: flex-start;
+  width: 100%;
   gap: 1rem;
+}
+
+.header-top {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+}
+
+nav,
+nav ul,
+nav .nav-links {
+  width: 100%;
 }
 
 nav ul,
@@ -117,12 +131,12 @@ nav .nav-links {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.2rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 nav a {
-  text-decoration: none !important; /* Empêche le soulignement global */
+  text-decoration: none !important;
   color: #555555;
   font-weight: 500;
   font-size: 0.95rem;
@@ -159,18 +173,35 @@ nav a.active::after {
   transform: scaleX(1);
 }
 
-/* 📱 Ajustements fins spécifiques au Mobile */
-@media (max-width: 600px) {
-  nav ul,
-  nav .nav-links {
-    gap: 0.75rem;
-  }
-
-  nav a {
-    font-size: 0.88rem;
-  }
+/* Sélecteur de langue EN | FR */
+.lang-switch {
+  font-size: 0.85rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  padding-left: 0.8rem;
+  border-left: 1px solid var(--border-color);
 }
 
+.lang-switch a {
+  text-decoration: none !important;
+  color: #777777;
+  transition: color 0.2s ease;
+  padding: 2px 4px;
+}
+
+.lang-switch a.active,
+.lang-switch a:hover {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+.lang-switch .separator {
+  color: #ccc;
+  font-size: 0.8rem;
+  user-select: none;
+}
 /* --- 4. SECTIONS & BLOCS ACCORDÉON (DETAILS) --- */
 
 /* Bloc simple (Abstracts) */
@@ -405,6 +436,16 @@ footer .container p {
     gap: 0.8rem;
   }
 
+  .header-top {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .lang-switch {
+    padding-left: 0;
+    border-left: none; /* Retire le trait de séparation sur mobile */
+  }
+
   nav,
   nav ul,
   nav .nav-links {
@@ -414,12 +455,14 @@ footer .container p {
   nav ul,
   nav .nav-links {
     flex-wrap: wrap;
-    gap: 0.8rem 1.2rem;
+    justify-content: space-between;
+    gap: 0.5rem;
   }
 
   nav li,
   nav a {
     white-space: nowrap;
+    font-size: 0.88rem;
   }
 
   .intro-container {
@@ -474,6 +517,14 @@ footer .container p {
 
   nav a {
     color: #94a3b8;
+  }
+
+  .lang-switch a {
+    color: #94a3b8;
+  }
+
+  .lang-switch .separator {
+    color: #475569;
   }
 
   details {
