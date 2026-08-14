@@ -33,9 +33,16 @@
   <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
   <meta name="twitter:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
 
-  <!-- Feuilles de style & Icônes Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
+  <!-- Preconnect pour accélérer la connexion au serveur CDN FontAwesome -->
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+
+  <!-- Preload du CSS principal pour qu'il se charge en priorité -->
+  <link rel="preload" href="/assets/style.css" as="style">
   <link rel="stylesheet" href="/assets/style.css">
+
+  <!-- FontAwesome chargé de manière asynchrone pour ne plus bloquer le rendu mobile -->
+  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
   <!-- Netlify identity (Chargement différé pour maximiser la vitesse) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
