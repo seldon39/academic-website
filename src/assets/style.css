@@ -83,7 +83,7 @@ a {
 
 /* Règle d'accessibilité WCAG : Les liens dans le contenu textuel principal doivent être soulignés par défaut */
 main a {
-  text-decoration: underline;
+  text-decoration: underline !important; /* L'ajout de !important empêche les extensions de masquer le soulignement */
   text-underline-offset: 3px;
 }
 
