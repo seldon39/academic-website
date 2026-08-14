@@ -106,7 +106,7 @@ nav .nav-links {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.8rem;
+  gap: 1.2rem; /* Réduit légèrement le gap global (était à 1.8rem) */
   align-items: center;
 }
 
@@ -118,6 +118,7 @@ nav a {
   padding: 4px 0;
   position: relative;
   transition: color 0.2s ease, text-shadow 0.2s ease;
+  white-space: nowrap; /* Empêche les mots de se casser */
 }
 
 nav a:hover,
@@ -144,6 +145,18 @@ nav a:hover::after,
 nav a.active::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+/* 📱 Ajustements fins spécifiques au Mobile */
+@media (max-width: 600px) {
+  nav ul,
+  nav .nav-links {
+    gap: 0.75rem; /* Gap très resserré sur smartphone pour tout faire tenir */
+  }
+
+  nav a {
+    font-size: 0.88rem; /* Taille de police imperceptiblement réduite */
+  }
 }
 
 /* --- 4. SECTIONS & BLOCS ACCORDÉON (DETAILS) --- */
