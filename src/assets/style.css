@@ -4,7 +4,21 @@
   font-style: normal;
   font-weight: 400 700;
   font-display: swap; /* Garantit un texte visible immédiatement */
-  src: local('System Font'), local('Segoe UI'), local('Roboto');
+  src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
+}
+
+/* Force l'affichage immédiat (swap) pour les icônes FontAwesome */
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'Font Awesome 6 Brands';
+  font-display: swap;
+}
+@font-face {
+  font-family: 'FontAwesome';
+  font-display: swap;
 }
 
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
@@ -217,7 +231,7 @@ nav a.active::after {
 
 .lang-switch a {
   text-decoration: none !important;
-  color: #4a4a4a; /* Obscurci de #777777 vers #4a4a4a pour l'accessibilité */
+  color: #4a4a4a; /* Obscurci pour l'accessibilité */
   transition: color 0.2s ease;
   padding: 2px 4px;
 }
@@ -229,7 +243,7 @@ nav a.active::after {
 }
 
 .lang-switch .separator {
-  color: #666666; /* Obscurci de #ccc à #666666 */
+  color: #666666;
   font-size: 0.8rem;
   user-select: none;
 }
@@ -350,8 +364,8 @@ details.section-deroulante summary:hover h2 {
 }
 
 .photo-credit {
-  font-size: 0.7rem; /* Augmenté de 0.5rem pour la lisibilité */
-  color: #595959;    /* Obscurci de #777777 pour le contraste */
+  font-size: 0.7rem;
+  color: #595959;
   margin-top: 6px;
   text-align: center;
   line-height: 1.2;
@@ -415,7 +429,7 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 2.1rem;
-  color: #4a4a4a; /* Obscurci de #555555 pour le contraste */
+  color: #4a4a4a;
   text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
@@ -430,7 +444,7 @@ footer {
 
 footer .container p {
   font-size: 0.85rem;
-  color: #595959; /* Obscurci de #777777 à #595959 (Ratio de contraste 4.8:1) */
+  color: #595959;
   margin: 0;
   padding: 0 10px;
   word-break: break-word;
@@ -509,7 +523,7 @@ footer .container p {
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #f1f5f9;
-    --text-color: #e2e8f0;       /* Obscurci légèrement pour limiter la fatigue visuelle */
+    --text-color: #e2e8f0;
     --bg-color: #0f172a;
     --link-color: #38bdf8;
     --link-hover-color: #7dd3fc;
@@ -532,7 +546,7 @@ footer .container p {
 
   nav a,
   .lang-switch a {
-    color: #cbd5e1; /* Éclairci pour un contraste parfait sur fond sombre */
+    color: #cbd5e1;
   }
 
   .lang-switch .separator {
@@ -568,7 +582,7 @@ footer .container p {
   }
 
   footer .container p {
-    color: #94a3b8; /* Éclairci de #64748b à #94a3b8 pour le contraste nocturne */
+    color: #94a3b8;
   }
 
   .photo-credit {
