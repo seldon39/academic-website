@@ -1,24 +1,37 @@
 /* --- 0. OPTIMISATION POLICES (font-display: swap) --- */
+
+/* Police système / Inter */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400 700;
-  font-display: swap; /* Garantit un texte visible immédiatement */
+  font-display: swap;
   src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
 }
 
-/* Force l'affichage immédiat (swap) pour les icônes FontAwesome */
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-display: swap;
-}
+/* Correctif font-display: swap pour les 3 fichiers d'icônes FontAwesome */
 @font-face {
   font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: 'FontAwesome';
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-400.woff2') format('woff2');
 }
 
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
