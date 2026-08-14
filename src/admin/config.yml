@@ -6,53 +6,87 @@ media_folder: "src/assets"
 public_folder: "/assets"
 
 collections:
-  - name: "pages"
-    label: "Pages"
+  - name: "pages_en"
+    label: "Pages (Anglais)"
     files:
       - file: "src/index.md"
-        label: "Home"
-        name: "index"
+        label: "Accueil (EN)"
+        name: "index_en"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/research.md"
-        label: "Research"
-        name: "research"
+        label: "Recherche (EN)"
+        name: "research_en"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/teaching.md"
-        label: "Teaching"
-        name: "teaching"
-        fields:
-          - { label: "Titre", name: "title", widget: "string" }
-          - { label: "Contenu", name: "body", widget: "markdown" }
-      - file: "src/contact.md"
-        label: "Contact"
-        name: "contact"
+        label: "Enseignement (EN)"
+        name: "teaching_en"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/activities.md"
-        label: "Activities"
-        name: "activities"
+        label: "Activités (EN)"
+        name: "activities_en"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/contact.md"
+        label: "Contact (EN)"
+        name: "contact_en"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+
+  - name: "pages_fr"
+    label: "Pages (Français)"
+    files:
+      - file: "src/fr/index.md"
+        label: "Accueil (FR)"
+        name: "index_fr"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/fr/research.md"
+        label: "Recherche (FR)"
+        name: "research_fr"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/fr/teaching.md"
+        label: "Enseignement (FR)"
+        name: "teaching_fr"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/fr/activities.md"
+        label: "Activités (FR)"
+        name: "activities_fr"
+        fields:
+          - { label: "Titre", name: "title", widget: "string" }
+          - { label: "Contenu", name: "body", widget: "markdown" }
+      - file: "src/fr/contact.md"
+        label: "Contact (FR)"
+        name: "contact_fr"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
   - name: "settings"
-    label: "Settings"
+    label: "Paramètres"
     delete: false
     editor:
       preview: false
     files:
       - name: "general"
-        label: "Social"
+        label: "Réseaux sociaux & Liens"
         file: "src/_data/site.json"
         fields:
           - { label: "Nom d'utilisateur Email", name: "email_user", widget: "string" }
           - { label: "Domaine Email", name: "email_domain", widget: "string" }
-          - { label: "ORCID ID", name: "orcid", widget: "string", required: false }
+          - { label: "Identifiant ORCID", name: "orcid", widget: "string", required: false }
           - { label: "Lien arXiv", name: "arxiv", widget: "string", required: false }
           - { label: "Lien ResearchGate", name: "researchgate", widget: "string", required: false }
           - { label: "Lien LinkedIn", name: "linkedin", widget: "string", required: false }
