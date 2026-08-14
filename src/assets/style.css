@@ -50,8 +50,15 @@ main.fade-out {
   transform: scale(0.98);
 }
 
+/* 🌐 Style des liens globaux (façon Wikipedia) */
 a {
   color: var(--link-color);
+  text-decoration: none; /* Pas de soulignement par défaut */
+  transition: color 0.15s ease, text-decoration 0.15s ease;
+}
+
+a:hover {
+  text-decoration: underline; /* Souligné uniquement au survol */
 }
 
 /* --- 2. TYPOGRAPHIE & TITRES --- */
@@ -82,6 +89,7 @@ a.site-title {
 
 a.site-title:hover {
   color: var(--link-color);
+  text-decoration: none !important;
 }
 
 /* --- 3. EN-TÊTE ET NAVIGATION --- */
@@ -106,25 +114,26 @@ nav .nav-links {
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.2rem; /* Réduit légèrement le gap global (était à 1.8rem) */
+  gap: 1.2rem;
   align-items: center;
 }
 
 nav a {
-  text-decoration: none;
+  text-decoration: none !important; /* Empêche le soulignement global */
   color: #555555;
   font-weight: 500;
   font-size: 0.95rem;
   padding: 4px 0;
   position: relative;
   transition: color 0.2s ease, text-shadow 0.2s ease;
-  white-space: nowrap; /* Empêche les mots de se casser */
+  white-space: nowrap;
 }
 
 nav a:hover,
 nav a.active {
   color: var(--link-color);
   text-shadow: 0.2px 0 0 var(--link-color), -0.2px 0 0 var(--link-color);
+  text-decoration: none !important;
 }
 
 nav a::after {
@@ -151,11 +160,11 @@ nav a.active::after {
 @media (max-width: 600px) {
   nav ul,
   nav .nav-links {
-    gap: 0.75rem; /* Gap très resserré sur smartphone pour tout faire tenir */
+    gap: 0.75rem;
   }
 
   nav a {
-    font-size: 0.88rem; /* Taille de police imperceptiblement réduite */
+    font-size: 0.88rem;
   }
 }
 
@@ -282,6 +291,37 @@ details.section-deroulante summary:hover h2 {
   width: 100%;
 }
 
+/* 📄 BOUTON TÉLÉCHARGEMENT CV */
+.btn-cv {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--link-color, #0066cc);
+  border-radius: 4px;
+  color: var(--link-color, #0066cc);
+  text-decoration: none !important; /* Pas de soulignement */
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cv::before {
+  content: "";
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: currentColor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
+  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
+}
+
+.btn-cv:hover {
+  background-color: var(--link-color, #0066cc);
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
 /* --- 6. PIED DE PAGE --- */
 footer {
   width: 100%;
@@ -309,7 +349,7 @@ footer {
   justify-content: center;
   font-size: 2.1rem;
   color: #555555;
-  text-decoration: none;
+  text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
   will-change: transform;
@@ -319,6 +359,7 @@ footer {
 .social-links a:hover i {
   color: var(--link-color) !important;
   transform: translateY(-3px);
+  text-decoration: none !important;
 }
 
 footer .container p {
@@ -328,6 +369,23 @@ footer .container p {
   padding: 0 10px;
   word-break: break-word;
   text-align: center;
+}
+
+/* Alignement du logo et du nom dans l'en-tête */
+.site-title {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none !important;
+}
+
+.site-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  color-scheme: only light;
+  forced-color-adjust: none;
+  background-color: transparent !important;
 }
 
 /* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
@@ -391,8 +449,8 @@ footer .container p {
   :root {
     --primary-color: #e2e8f0;
     --text-color: #cbd5e1;
-    --bg-color: #0f172a;       /* Fond sombre bleuté moderne (Slate 900) */
-    --link-color: #38bdf8;     /* Bleu clair lumineux */
+    --bg-color: #0f172a;
+    --link-color: #38bdf8;
     --link-hover-color: #7dd3fc;
     --border-color: #334155;
   }
@@ -402,21 +460,19 @@ footer .container p {
     color: var(--text-color);
   }
 
-  /* En-tête */
   header {
     background-color: #1e293b;
     border-bottom-color: var(--border-color);
   }
 
   a.site-title {
-    color: #f8fafc; /* Nom du site en blanc cassé */
+    color: #f8fafc;
   }
 
   nav a {
     color: #94a3b8;
   }
 
-  /* Blocs accordéons / Details */
   details {
     background-color: #1e293b;
     border-left-color: var(--link-color);
@@ -436,7 +492,6 @@ footer .container p {
     border-color: #475569;
   }
 
-  /* Liens réseaux sociaux et footer */
   footer {
     border-top-color: var(--border-color);
   }
@@ -449,61 +504,8 @@ footer .container p {
   footer .container p {
     color: #64748b;
   }
-}
 
-/* Alignement du logo et du nom dans l'en-tête */
-.site-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px; /* Espace entre le logo et votre nom */
-  text-decoration: none;
-}
-
-/* Style de base du logo dans l'en-tête */
-.site-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-
-  /* Empêche Chrome Android de forcer un fond blanc ou de modifier l'image */
-  color-scheme: only light;
-  forced-color-adjust: none;
-  background-color: transparent !important;
-}
-
-/* Inversion propre pour le mode sombre */
-@media (prefers-color-scheme: dark) {
   .site-logo {
     filter: brightness(0) invert(1) !important;
   }
-}
-
-.btn-cv {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
-  padding: 0.4rem 0.8rem;
-  border: 1px solid var(--link-color, #0066cc);
-  border-radius: 4px;
-  color: var(--link-color, #0066cc);
-  text-decoration: none;
-  font-weight: 500;
-  transition: all 0.2s ease;
-}
-
-/* 🎨 Icône vectorielle élégante (Download Arrow) */
-.btn-cv::before {
-  content: "";
-  display: inline-block;
-  width: 15px;
-  height: 15px;
-  background-color: currentColor;
-  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
-  -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
-}
-
-.btn-cv:hover {
-  background-color: var(--link-color, #0066cc);
-  color: #ffffff;
 }
