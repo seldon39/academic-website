@@ -477,3 +477,20 @@ footer .container p {
     filter: brightness(0) invert(1) !important;
   }
 }
+
+.btn-cv {
+  display: inline-block;
+  margin-top: 1rem;
+  padding: 0.4rem 0.8rem;
+  border: 1px solid var(--link-color, #0066cc);
+  border-radius: 4px;
+  color: var(--link-color, #0066cc);
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.btn-cv:hover {
+  background-color: var(--link-color, #0066cc);
+  color: #ffffff;
+}
