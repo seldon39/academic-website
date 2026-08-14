@@ -433,22 +433,21 @@ footer {
   text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 💡 CORRECTIF ALIASING : Force le rendu GPU propre et fluide dès le départ */
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform: translateZ(0);
+  will-change: transform;
 }
 
 .social-links a:hover,
 .social-links a:hover i {
   color: var(--link-color) !important;
-  transform: translateY(-3px);
+  /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
+  transform: translate3d(0, -3px, 0);
   text-decoration: none !important;
-}
-
-footer .container p {
-  font-size: 0.85rem;
-  color: #595959;
-  margin: 0;
-  padding: 0 10px;
-  word-break: break-word;
-  text-align: center;
 }
 
 /* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
