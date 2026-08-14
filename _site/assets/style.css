@@ -1,3 +1,12 @@
+/* --- 0. OPTIMISATION POLICES (font-display: swap) --- */
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: swap; /* Garantit un texte visible immédiatement (sans FOUT/FOIT) */
+  src: local('System Font'), local('Segoe UI'), local('Roboto');
+}
+
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
 :root {
   --primary-color: #2c3e50;
@@ -45,7 +54,6 @@ main {
   padding: 2.5rem 0;
   opacity: 1;
   transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
-  will-change: opacity, transform;
 }
 
 main.fade-out {
@@ -88,11 +96,23 @@ a.site-title {
   color: #1e293b;
   text-decoration: none !important;
   transition: color 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
 }
 
 a.site-title:hover {
   color: var(--link-color);
   text-decoration: none !important;
+}
+
+.site-logo {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  color-scheme: only light;
+  forced-color-adjust: none;
+  background-color: transparent !important;
 }
 
 /* --- 3. EN-TÊTE ET NAVIGATION --- */
@@ -103,10 +123,10 @@ header {
   margin-bottom: 2rem;
 }
 
-/* Alignement vertical sur PC : Ligne 1 = Titre + Langue / Ligne 2 = Navigation */
+/* Alignement vertical fixe sur PC : Ligne 1 = Titre + Langue / Ligne 2 = Navigation */
 .header-content {
   display: flex;
-  flex-direction: column; /* Force le menu à passer sous le titre sur PC */
+  flex-direction: column; /* Force le menu sous le titre sur PC */
   align-items: flex-start;
   width: 100%;
   gap: 1rem;
@@ -202,6 +222,7 @@ nav a.active::after {
   font-size: 0.8rem;
   user-select: none;
 }
+
 /* --- 4. SECTIONS & BLOCS ACCORDÉON (DETAILS) --- */
 
 /* Bloc simple (Abstracts) */
@@ -314,6 +335,8 @@ details.section-deroulante summary:hover h2 {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
+  /* Optimisation du rendu visuel et anti-CLS */
+  content-visibility: auto;
 }
 
 .photo-credit {
@@ -332,12 +355,12 @@ details.section-deroulante summary:hover h2 {
   gap: 0.5rem;
   margin-top: 1rem;
   padding: 0.4rem 0.8rem;
-  border: 1px solid var(--link-color, #0066cc);
+  border: 1px solid var(--link-color);
   border-radius: 4px;
-  color: var(--link-color, #0066cc);
-  text-decoration: none !important; /* Pas de soulignement */
+  color: var(--link-color);
+  text-decoration: none !important;
   font-weight: 500;
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-cv::before {
@@ -351,7 +374,7 @@ details.section-deroulante summary:hover h2 {
 }
 
 .btn-cv:hover {
-  background-color: var(--link-color, #0066cc);
+  background-color: var(--link-color);
   color: #ffffff;
   text-decoration: none !important;
 }
@@ -386,7 +409,6 @@ footer {
   text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
-  will-change: transform;
 }
 
 .social-links a:hover,
@@ -403,23 +425,6 @@ footer .container p {
   padding: 0 10px;
   word-break: break-word;
   text-align: center;
-}
-
-/* Alignement du logo et du nom dans l'en-tête */
-.site-title {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  text-decoration: none !important;
-}
-
-.site-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  color-scheme: only light;
-  forced-color-adjust: none;
-  background-color: transparent !important;
 }
 
 /* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
@@ -515,10 +520,7 @@ footer .container p {
     color: #f8fafc;
   }
 
-  nav a {
-    color: #94a3b8;
-  }
-
+  nav a,
   .lang-switch a {
     color: #94a3b8;
   }

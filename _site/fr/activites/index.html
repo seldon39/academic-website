@@ -34,15 +34,14 @@
   <meta name="twitter:description" content="Page personnelle et travaux de recherche de Razvan Apredoaei">
 
   <!-- Feuilles de style & Icônes Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous">
   <link rel="stylesheet" href="/assets/style.css">
   
-  <!-- Netlify identity -->
-  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
+  <!-- Netlify identity (Chargement différé pour maximiser la vitesse) -->
+  <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 
   <!-- ── FAVICONS ET SAFARI ── -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
   <link rel="icon" type="image/png" sizes="96x96" href="/assets/favicon-96x96.png" />
@@ -58,7 +57,7 @@
       <div class="header-top">
         <h2 class="site-header-title">
           <a href="/fr/" class="site-title">
-            <img src="/assets/favicon.svg" alt="" class="site-logo" />
+            <img src="/assets/favicon.svg" alt="" class="site-logo" width="28" height="28" />
             <span>Razvan Apredoaei</span>
           </a>
         </h2>
@@ -123,14 +122,14 @@
   <footer>
     <div class="social-links">
       <!-- E-mail obscurci dynamique -->
-      <p><a href="#" 
-            id="email-link" 
-            data-user="razvan.apredoaei" 
-            data-domain="imj-prg.fr" 
-            title="E-mail" 
-            aria-label="E-mail">
+      <a href="#" 
+         id="email-link" 
+         data-user="razvan.apredoaei" 
+         data-domain="imj-prg.fr" 
+         title="E-mail" 
+         aria-label="E-mail">
         <i class="fa-regular fa-envelope"></i>
-      </a></p>
+      </a>
 
       <!-- ORCID -->
       
@@ -166,30 +165,29 @@
     </div>
   </footer>
 
+  <!-- Script d'obscurcissement d'e-mail compatible mobile -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const emailLink = document.getElementById("email-link");
       if (emailLink) {
         const user = emailLink.getAttribute("data-user");
         const domain = emailLink.getAttribute("data-domain");
-        const fullEmail = user + "@" + domain;
+        if (user && domain) {
+          const fullEmail = user + "@" + domain;
+          const setEmailHref = () => { emailLink.href = "mailto:" + fullEmail; };
 
-        emailLink.addEventListener("mouseenter", function() {
-          this.href = "mailto:" + fullEmail;
-        });
-        emailLink.addEventListener("click", function() {
-          this.href = "mailto:" + fullEmail;
-        });
+          emailLink.addEventListener("mouseenter", setEmailHref);
+          emailLink.addEventListener("touchstart", setEmailHref, { passive: true });
+          emailLink.addEventListener("click", setEmailHref);
+        }
       }
-    });
-  </script>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
+      // Retrait fluide du fade-out
       document.querySelector('main')?.classList.remove('fade-out');
     });
   </script>
 
+  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching -->
   <script>
     (function() {
       const isFr = document.documentElement.lang === 'fr';
@@ -221,7 +219,7 @@
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
       const minSwipeDistance = 60; 
       const mainContent = document.querySelector('main') || document.body;
-      const navLinks = document.querySelectorAll('nav ul a:not(.lang-switch a)');
+      const navLinks = document.querySelectorAll('nav ul a');
 
       document.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].screenX;
@@ -262,6 +260,7 @@
     })();
   </script>
 
+  <!-- Script Netlify Identity -->
   <script>
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
