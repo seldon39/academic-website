@@ -3,11 +3,11 @@
   --primary-color: #2c3e50;
   --text-color: #333333;
   --bg-color: #fcfcfc;
-  
-  /* 🔵 Bleu style Wikipédia */
-  --link-color: #002bb8;        /* Légèrement plus foncé et intense */
-  --link-hover-color: #001a6e;  /* Nuance encore plus sombre au survol */
-  
+
+  /* 🔵 Bleu style Google */
+  --link-color: #0b57d0;        /* Bleu Google moderne, riche et lisible */
+  --link-hover-color: #0842a0;  /* Version un ton plus sombre au survol */
+
   --border-color: #e2e8f0;
   --max-width: 800px;
 }
