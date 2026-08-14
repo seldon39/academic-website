@@ -11,7 +11,7 @@ I am a research assistant at the [Mathematics Institute](https://math.uni-koeln.
 
 I received my PhD from [Université Paris Cité](https://u-paris.fr) in May 2026, where I conducted my research at [IMJ-PRG](https://www.imj-prg.fr). [My dissertation](/assets/these.pdf) was supervised by [Prof. Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
 
-[📄 Download my CV](/assets/CV_Apredoaei.pdf){.btn-cv}.
+<a href="/assets/CV_Apredoaei.pdf" class="btn-cv" target="_blank">📄 Download my CV</a>
 
 </div>
 
