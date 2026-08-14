@@ -3,19 +3,19 @@
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400 700;
-  font-display: swap; /* Garantit un texte visible immédiatement (sans FOUT/FOIT) */
+  font-display: swap; /* Garantit un texte visible immédiatement */
   src: local('System Font'), local('Segoe UI'), local('Roboto');
 }
 
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
 :root {
   --primary-color: #2c3e50;
-  --text-color: #333333;
+  --text-color: #222222;       /* Contraste renforcé sur fond clair */
   --bg-color: #fcfcfc;
 
   /* 🔵 Bleu style Google */
-  --link-color: #0b57d0;        /* Bleu Google moderne, riche et lisible */
-  --link-hover-color: #0842a0;  /* Version un ton plus sombre au survol */
+  --link-color: #0b57d0;        /* Bleu Google moderne et accessible */
+  --link-hover-color: #0842a0;  /* Version plus sombre au survol */
 
   --border-color: #e2e8f0;
   --max-width: 800px;
@@ -61,15 +61,27 @@ main.fade-out {
   transform: scale(0.98);
 }
 
-/* 🌐 Style des liens globaux (façon Wikipedia) */
+/* 🌐 Style des liens globaux */
 a {
   color: var(--link-color);
-  text-decoration: none; /* Pas de soulignement par défaut */
   transition: color 0.15s ease, text-decoration 0.15s ease;
 }
 
-a:hover {
-  text-decoration: underline; /* Souligné uniquement au survol */
+/* Règle d'accessibilité WCAG : Les liens dans le contenu textuel principal doivent être soulignés par défaut */
+main a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+main a:hover {
+  color: var(--link-hover-color);
+}
+
+/* Exclusions du soulignement par défaut pour les boutons et éléments UI */
+main a.btn-cv,
+main details summary a,
+a.site-title {
+  text-decoration: none !important;
 }
 
 /* --- 2. TYPOGRAPHIE & TITRES --- */
@@ -123,10 +135,9 @@ header {
   margin-bottom: 2rem;
 }
 
-/* Alignement vertical fixe sur PC : Ligne 1 = Titre + Langue / Ligne 2 = Navigation */
 .header-content {
   display: flex;
-  flex-direction: column; /* Force le menu sous le titre sur PC */
+  flex-direction: column;
   align-items: flex-start;
   width: 100%;
   gap: 1rem;
@@ -157,7 +168,7 @@ nav .nav-links {
 
 nav a {
   text-decoration: none !important;
-  color: #555555;
+  color: #333333; /* Obscurci pour respecter le contraste de 4.5:1 */
   font-weight: 500;
   font-size: 0.95rem;
   padding: 4px 0;
@@ -206,7 +217,7 @@ nav a.active::after {
 
 .lang-switch a {
   text-decoration: none !important;
-  color: #777777;
+  color: #4a4a4a; /* Obscurci de #777777 vers #4a4a4a pour l'accessibilité */
   transition: color 0.2s ease;
   padding: 2px 4px;
 }
@@ -218,7 +229,7 @@ nav a.active::after {
 }
 
 .lang-switch .separator {
-  color: #ccc;
+  color: #666666; /* Obscurci de #ccc à #666666 */
   font-size: 0.8rem;
   user-select: none;
 }
@@ -335,13 +346,12 @@ details.section-deroulante summary:hover h2 {
   height: auto;
   border-radius: 12px;
   object-fit: cover;
-  /* Optimisation du rendu visuel et anti-CLS */
   content-visibility: auto;
 }
 
 .photo-credit {
-  font-size: 0.5rem;
-  color: #777777;
+  font-size: 0.7rem; /* Augmenté de 0.5rem pour la lisibilité */
+  color: #595959;    /* Obscurci de #777777 pour le contraste */
   margin-top: 6px;
   text-align: center;
   line-height: 1.2;
@@ -405,7 +415,7 @@ footer {
   align-items: center;
   justify-content: center;
   font-size: 2.1rem;
-  color: #555555;
+  color: #4a4a4a; /* Obscurci de #555555 pour le contraste */
   text-decoration: none !important;
   transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
@@ -420,7 +430,7 @@ footer {
 
 footer .container p {
   font-size: 0.85rem;
-  color: #777777;
+  color: #595959; /* Obscurci de #777777 à #595959 (Ratio de contraste 4.8:1) */
   margin: 0;
   padding: 0 10px;
   word-break: break-word;
@@ -448,7 +458,7 @@ footer .container p {
 
   .lang-switch {
     padding-left: 0;
-    border-left: none; /* Retire le trait de séparation sur mobile */
+    border-left: none;
   }
 
   nav,
@@ -498,8 +508,8 @@ footer .container p {
 /* --- 9. MODE SOMBRE AUTOMATIQUE --- */
 @media (prefers-color-scheme: dark) {
   :root {
-    --primary-color: #e2e8f0;
-    --text-color: #cbd5e1;
+    --primary-color: #f1f5f9;
+    --text-color: #e2e8f0;       /* Obscurci légèrement pour limiter la fatigue visuelle */
     --bg-color: #0f172a;
     --link-color: #38bdf8;
     --link-hover-color: #7dd3fc;
@@ -522,11 +532,11 @@ footer .container p {
 
   nav a,
   .lang-switch a {
-    color: #94a3b8;
+    color: #cbd5e1; /* Éclairci pour un contraste parfait sur fond sombre */
   }
 
   .lang-switch .separator {
-    color: #475569;
+    color: #64748b;
   }
 
   details {
@@ -554,11 +564,15 @@ footer .container p {
 
   .social-links a,
   .social-links a i {
-    color: #94a3b8;
+    color: #cbd5e1;
   }
 
   footer .container p {
-    color: #64748b;
+    color: #94a3b8; /* Éclairci de #64748b à #94a3b8 pour le contraste nocturne */
+  }
+
+  .photo-credit {
+    color: #94a3b8;
   }
 
   .site-logo {
