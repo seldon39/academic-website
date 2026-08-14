@@ -1,24 +1,37 @@
 /* --- 0. OPTIMISATION POLICES (font-display: swap) --- */
+
+/* Police système / Inter */
 @font-face {
   font-family: 'Inter';
   font-style: normal;
   font-weight: 400 700;
-  font-display: swap; /* Garantit un texte visible immédiatement */
+  font-display: swap;
   src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
 }
 
-/* Force l'affichage immédiat (swap) pour les icônes FontAwesome */
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-display: swap;
-}
+/* Correctif font-display: swap pour les 3 fichiers d'icônes FontAwesome */
 @font-face {
   font-family: 'Font Awesome 6 Brands';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
 }
+
 @font-face {
-  font-family: 'FontAwesome';
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 400;
   font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-400.woff2') format('woff2');
 }
 
 /* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
@@ -76,25 +89,34 @@ main.fade-out {
 }
 
 /* 🌐 Style des liens globaux */
-a {
+a,
+a:visited {
   color: var(--link-color);
-  transition: color 0.15s ease, text-decoration 0.15s ease;
+  transition: color 0.15s ease, text-decoration-color 0.15s ease;
 }
 
-/* Règle d'accessibilité WCAG : Les liens dans le contenu textuel principal doivent être soulignés par défaut */
-main a {
-  text-decoration: underline !important; /* L'ajout de !important empêche les extensions de masquer le soulignement */
+/* Pas de soulignement par défaut pour un texte plus lisible */
+main a,
+main a:visited {
+  text-decoration: none !important;
+}
+
+/* Soulignement dynamique au survol et au focus pour l'accessibilité */
+main a:hover,
+main a:visited:hover,
+main a:focus {
+  color: var(--link-hover-color);
+  text-decoration: underline !important;
   text-underline-offset: 3px;
 }
 
-main a:hover {
-  color: var(--link-hover-color);
-}
-
-/* Exclusions du soulignement par défaut pour les boutons et éléments UI */
+/* Exclusions du soulignement pour les boutons et éléments UI */
 main a.btn-cv,
+main a.btn-cv:visited,
 main details summary a,
-a.site-title {
+main details summary a:visited,
+a.site-title,
+a.site-title:visited {
   text-decoration: none !important;
 }
 
@@ -448,6 +470,15 @@ footer {
   /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
   transform: translate3d(0, -3px, 0);
   text-decoration: none !important;
+}
+
+footer .container p {
+  font-size: 0.85rem;
+  color: #595959;
+  margin: 0;
+  padding: 0 10px;
+  word-break: break-word;
+  text-align: center;
 }
 
 /* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
