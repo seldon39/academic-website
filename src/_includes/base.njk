@@ -193,9 +193,10 @@
       if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
-      const minSwipeDistance = 60;
+      const minSwipeDistance = 80;
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
+      const scrollContainer = document.getElementById('scroll-container');
 
       document.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].screenX;
@@ -212,7 +213,8 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
+        // Très restrictif : swipe horizontal > 3x le vertical ET > 80px
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 3 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {

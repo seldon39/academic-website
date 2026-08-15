@@ -94,6 +94,12 @@ body {
   touch-action: manipulation;
   user-select: none;
   -webkit-user-select: none;
+  /* Force un calque de composition séparé pour éviter les reflows */
+  will-change: auto;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  /* Empêche le contenu de se décaler quand la barre d'adresse Safari change */
+  contain: strict;
 }
 
 /* Conteneurs */
