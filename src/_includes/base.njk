@@ -244,6 +244,47 @@
     })();
   </script>
 
+  <!-- Script anti rebond / anti pull-to-refresh (corrige le glitch en haut/bas de page) -->
+  <script>
+    (function() {
+      let lastTouchY = 0;
+
+      document.addEventListener('touchstart', e => {
+        if (e.touches.length !== 1) return;
+        lastTouchY = e.touches[0].clientY;
+      }, { passive: true });
+
+      document.addEventListener('touchmove', e => {
+        if (e.touches.length !== 1) return;
+
+        const touchY = e.touches[0].clientY;
+        const touchYDelta = touchY - lastTouchY;
+        lastTouchY = touchY;
+
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+
+        // Page plus courte que l'écran (rien à faire défiler) : on bloque tout rebond vertical.
+        // C'est typiquement le cas de la page "Home" en anglais, plus courte que sa version FR.
+        if (maxScroll <= 0) {
+          e.preventDefault();
+          return;
+        }
+
+        // Doigt qui descend en haut de page → tentative de pull-to-refresh / rebond haut
+        if (scrollTop <= 0 && touchYDelta > 0) {
+          e.preventDefault();
+          return;
+        }
+
+        // Doigt qui remonte en bas de page → tentative de rebond bas
+        if (scrollTop >= maxScroll - 1 && touchYDelta < 0) {
+          e.preventDefault();
+        }
+      }, { passive: false });
+    })();
+  </script>
+
   <!-- Script Netlify Identity -->
   <script>
     if (window.netlifyIdentity) {
