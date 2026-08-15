@@ -252,51 +252,6 @@
     })();
   </script>
 
-  <!-- Script anti rebond / anti pull-to-refresh (défense supplémentaire
-       à l'intérieur du conteneur de scroll ; le document racine, lui,
-       ne peut de toute façon plus défiler du tout — voir CSS) -->
-  <script>
-    (function() {
-      const scrollEl = document.getElementById('scroll-container');
-      if (!scrollEl) return;
-
-      let lastTouchY = 0;
-
-      scrollEl.addEventListener('touchstart', e => {
-        if (e.touches.length !== 1) return;
-        lastTouchY = e.touches[0].clientY;
-      }, { passive: true });
-
-      scrollEl.addEventListener('touchmove', e => {
-        if (e.touches.length !== 1) return;
-
-        const touchY = e.touches[0].clientY;
-        const touchYDelta = touchY - lastTouchY;
-        lastTouchY = touchY;
-
-        const scrollTop = scrollEl.scrollTop;
-        const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
-
-        // Conteneur plus court que l'écran (rien à faire défiler) : on bloque tout rebond vertical.
-        // C'est typiquement le cas de la page "Home" en anglais, plus courte que sa version FR.
-        if (maxScroll <= 0) {
-          e.preventDefault();
-          return;
-        }
-
-        // Doigt qui descend en haut → tentative de pull-to-refresh / rebond haut
-        if (scrollTop <= 0 && touchYDelta > 0) {
-          e.preventDefault();
-          return;
-        }
-
-        // Doigt qui remonte en bas → tentative de rebond bas
-        if (scrollTop >= maxScroll - 1 && touchYDelta < 0) {
-          e.preventDefault();
-        }
-      }, { passive: false });
-    })();
-  </script>
 
   <!-- Filet de sécurité : force Safari iOS à resynchroniser son rendu
        quand l'onglet redevient actif après avoir été mis en arrière-plan
