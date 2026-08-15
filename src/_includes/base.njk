@@ -199,6 +199,13 @@
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
+      // ⚡ FIX MOBILE 1 : Réinitialise l'état de la page si restaurée depuis le cache (bfcache)
+      window.addEventListener('pageshow', function() {
+        if (mainContent) {
+          mainContent.classList.remove('fade-out');
+        }
+      });
+
       document.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].screenX;
         touchstartY = e.changedTouches[0].screenY;
@@ -214,7 +221,9 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > minSwipeDistance) {
+        // ⚡ FIX MOBILE 2 : Exige un balayage NETTEMENT horizontal (deltaX > 2 * deltaY)
+        // Évite tout déclenchement parasite lors des défilements verticaux rapides
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {
