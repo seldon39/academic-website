@@ -107,9 +107,11 @@ a.site-title:visited {
   color: var(--title-color);
   text-decoration: none;
   transition: color 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  /* inline (et non inline-flex) : la ligne de base d'un conteneur inline-flex
+     est celle de son premier element, ici le SVG, dont la ligne de base
+     synthetique est son bord inferieur. Le titre heritait donc d'une fausse
+     ligne de base. En inline, c'est bien celle du texte. */
+  display: inline;
   white-space: nowrap;
 }
 
@@ -118,8 +120,9 @@ a.site-title:visited {
    regles ne font que l'aligner dans le flex du titre. Si cette feuille n'est
    pas chargee, le logo reste visible et correctement colore. */
 .site-mark {
-  display: block;
-  flex: 0 0 auto;
+  display: inline-block;
+  vertical-align: -0.24em; /* cale le logo sur la ligne de base du titre */
+  margin-right: 10px;
   /* Taille en em : le logo suit automatiquement celle du titre.
      Ajuster ici uniquement -> 0.95em plus discret, 1.15em plus affirme. */
   height: 1.05em;
@@ -142,9 +145,13 @@ header {
   gap: 1rem;
 }
 
+/* align-items: baseline (et non center) : le titre et le selecteur EN | FR
+   ont des tailles de police differentes, donc centrer leurs boites laisse
+   leurs lignes de base decalees. L'alignement typographique correct est la
+   ligne de base. */
 .header-top {
   display: flex;
-  align-items: center;
+  align-items: baseline;
   gap: 1rem;
   width: 100%;
 }
