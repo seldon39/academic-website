@@ -113,18 +113,24 @@ a.site-title:visited {
   white-space: nowrap;
 }
 
-/* Logo : masque CSS teinte par currentColor.
-   Le SVG ne sert que de canal alpha, il n'est jamais peint tel quel.
-   -> aucun `filter`, aucun `color-scheme`, donc aucun carre blanc possible,
-      et la couleur suit automatiquement le mode clair / sombre. */
+/* Logo : deux fichiers distincts, choisis par <picture> selon le mode.
+   Traits fonces + remplissages blancs en clair ; traits clairs + remplissages
+   #1e293b (= fond du header) en sombre, ce qui preserve les occultations du
+   dessin. Fond exterieur transparent dans les deux cas.
+   Aucun filter, aucun mask, aucune course de rendu -> pas de carre blanc. */
 .site-logo {
   display: block;
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
-  background-color: currentColor;
-  -webkit-mask: url("/assets/favicon.svg") no-repeat center / contain;
-  mask: url("/assets/favicon.svg") no-repeat center / contain;
+  line-height: 0;
+}
+
+.site-logo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
 
 /* --- 4. EN-TETE ET NAVIGATION --------------------------------------------- */
