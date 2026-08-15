@@ -413,10 +413,6 @@ details.section-deroulante[open] summary::after {
   color: var(--link-color);
   text-decoration: none !important;
   font-weight: 500;
-  will-change: auto;
-  transform: translateZ(0);
-  -webkit-backface-visibility: hidden;
-  contain: layout paint;
 }
 
 .btn-cv::before {
@@ -437,6 +433,7 @@ footer {
   text-align: center;
   overflow: visible;
   border-top: 1px solid #eaeaea;
+  /* Suppression de contain / will-change parasites qui déclenchent le clignotement */
 }
 
 .social-links {
@@ -445,7 +442,7 @@ footer {
   align-items: center;
   flex-wrap: wrap;
   gap: 25px;
-  padding-top: 8px; /* Marge supérieure pour accueillir la translation sans rognage */
+  padding-top: 8px;
   margin-bottom: 40px;
   width: 100%;
 }
@@ -461,10 +458,7 @@ footer {
   text-decoration: none !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Maintien de la couche GPU au repos pour éviter tout flou au survol */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
+  /* Suppression de will-change/backface-visibility au repos pour stabiliser l'affichage mobile */
 }
 
 footer .container p {
@@ -535,8 +529,12 @@ footer .container p {
   .social-links a:visited:hover,
   .social-links a:hover i {
     color: var(--link-color) !important;
-    transform: translateY(-4px); /* Translation nette sur pixel entier */
+    transform: translateY(-4px);
     text-decoration: none !important;
+    /* Activer l'accélération matérielle UNIQUEMENT pendant l'interaction de survol */
+    will-change: transform;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
   }
 }
 
