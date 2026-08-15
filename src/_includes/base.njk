@@ -39,9 +39,8 @@
   <!-- CSS principal : chargé directement pour éliminer le flash HTML (FOUC) -->
   <link rel="stylesheet" href="/assets/style.css">
 
-  <!-- FontAwesome : reste chargé en asynchrone pour ne pas bloquer sur un CDN externe -->
-  <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
+  <!-- FontAwesome : chargé synchrone pour éviter un FOUT lors du scroll -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   
   <!-- Netlify identity (Chargement différé) -->
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>

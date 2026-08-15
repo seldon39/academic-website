@@ -87,7 +87,6 @@ body {
 #scroll-container {
   width: 100%;
   height: 100vh;
-  height: 100dvh;
   overflow-y: auto;
   overflow-x: hidden;
   -webkit-overflow-scrolling: touch;
@@ -514,6 +513,9 @@ footer {
   text-align: center;
   overflow: hidden;
   border-top: 1px solid #eaeaea;
+  /* Isoler le footer pour empêcher les reflows */
+  contain: layout paint;
+  will-change: auto;
 }
 
 .social-links {
@@ -524,6 +526,9 @@ footer {
   gap: 25px;
   margin-bottom: 40px;
   width: 100%;
+  /* Isoler pour éviter les reflows lors du chargement des icônes */
+  contain: paint;
+  will-change: auto;
 }
 
 .social-links a,
@@ -535,7 +540,6 @@ footer {
   font-size: 2.1rem;
   color: #4a4a4a;
   text-decoration: none !important;
-  transition: color 0.2s ease, transform 0.2s ease;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
@@ -548,16 +552,24 @@ footer {
      jamais "au repos" quand l'onglet redevient actif. */
 }
 
-.social-links a:hover,
-.social-links a:visited:hover,
-.social-links a:hover i {
-  color: var(--link-color) !important;
-  /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
-  transform: translate3d(0, -3px, 0);
-  text-decoration: none !important;
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  will-change: transform;
+/* Hover et transitions uniquement sur écrans non-tactiles */
+@media (hover: hover) {
+  .social-links a,
+  .social-links a:visited,
+  .social-links a i {
+    transition: color 0.2s ease, transform 0.2s ease;
+  }
+
+  .social-links a:hover,
+  .social-links a:visited:hover,
+  .social-links a:hover i {
+    color: var(--link-color) !important;
+    transform: translate3d(0, -3px, 0);
+    text-decoration: none !important;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+    will-change: transform;
+  }
 }
 
 footer .container p {
