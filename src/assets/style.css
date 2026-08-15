@@ -446,6 +446,7 @@ details.section-deroulante summary:hover h2 {
 }
 
 /* 📄 BOUTON TÉLÉCHARGEMENT CV */
+/* Isoler le bouton dans son propre calque de composition */
 .btn-cv,
 .btn-cv:visited {
   display: inline-flex;
@@ -458,6 +459,11 @@ details.section-deroulante summary:hover h2 {
   color: var(--link-color);
   text-decoration: none !important;
   font-weight: 500;
+  /* Isolation : force un calque GPU séparé pour éviter les reflows */
+  will-change: auto;
+  transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+  contain: layout paint;
 }
 
 .btn-cv::before {
