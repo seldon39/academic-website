@@ -56,10 +56,11 @@ html {
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
   width: 100%;
+  height: 100%;
   overflow-x: hidden;
   background-color: var(--bg-color);
   overflow-anchor: none;
-  overscroll-behavior-y: none; /* Désactive le pull-to-refresh et le rebond haut/bas */
+  overscroll-behavior-y: none;
 }
 
 body {
@@ -70,7 +71,7 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100dvh; /* Stabilise la hauteur du document face au redimensionnement de la barre mobile */
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   overscroll-behavior-y: none;
@@ -85,11 +86,11 @@ body {
 }
 
 main {
-  padding: 2.5rem 0;
+  padding: 2.5rem 0 1rem 0;
   opacity: 1;
   transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
   width: 100%;
-  flex: 1 0 auto; /* Pousse le footer en bas sans créer de saut de layout */
+  flex: 1 0 auto;
 }
 
 main.fade-out {
@@ -433,13 +434,13 @@ details.section-deroulante[open] summary::after {
 /* --- 6. PIED DE PAGE --- */
 footer {
   width: 100%;
-  padding: 40px 15px calc(20px + env(safe-area-inset-bottom, 0px)) 15px;
-  margin-top: 40px;
+  padding: 30px 15px calc(25px + env(safe-area-inset-bottom, 0px)) 15px;
+  margin-top: 0; /* Suppression de la marge haute qui déclenchait la rupture d'affichage iOS */
   text-align: center;
   overflow: visible;
   border-top: 1px solid #eaeaea;
   flex-shrink: 0;
-  overscroll-behavior: none;
+  background-color: var(--bg-color);
 }
 
 .social-links {
@@ -449,7 +450,7 @@ footer {
   flex-wrap: wrap;
   gap: 25px;
   padding-top: 8px;
-  margin-bottom: 40px;
+  margin-bottom: 30px;
   width: 100%;
 }
 
@@ -670,6 +671,7 @@ footer .container p {
 
   footer {
     border-top-color: var(--border-color);
+    background-color: var(--bg-color);
   }
 
   .social-links a,

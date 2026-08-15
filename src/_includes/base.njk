@@ -5,8 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="zynSqpGiXhh0hxyMgPxqkuckaRrMupw3AnHVsFhe1oA" />
   
-  <!-- Couleur de thème pour la barre d'onglets Safari / iOS -->
-  <meta name="theme-color" content="#ffffff" />
+  <!-- Couleur de thème dynamique pour la barre d'onglets Safari / iOS (mode clair & sombre) -->
+  <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)" />
+  <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
   <!-- Titre dynamique & Description SEO -->
   <title>{% if title %}{{ title }} | {% endif %}Razvan Apredoaei</title>
@@ -68,15 +69,15 @@
         </h2>
 
         <!-- Sélecteur de langue (à droite sur mobile) -->
-        <div class="lang-switch">
-          <a href="/" class="{% if lang != 'fr' %}active{% endif %}" title="English">EN</a>
-          <span class="separator">|</span>
-          <a href="/fr/" class="{% if lang == 'fr' %}active{% endif %}" title="Français">FR</a>
-        </div>
+        <nav class="lang-switch" aria-label="Language selection">
+          <a href="/" class="{% if lang != 'fr' %}active{% endif %}" title="English" lang="en">EN</a>
+          <span class="separator" aria-hidden="true">|</span>
+          <a href="/fr/" class="{% if lang == 'fr' %}active{% endif %}" title="Français" lang="fr">FR</a>
+        </nav>
       </div>
 
       <!-- Navigation sous le titre/sélecteur -->
-      <nav>
+      <nav aria-label="Main navigation">
         <ul class="nav-links">
           {% set t = i18n[lang or "en"] %}
           {% set isFr = (lang == "fr") %}
@@ -191,7 +192,7 @@
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
       const minSwipeDistance = 80;
-      const maxAngle = 30; // Seuil d'angle en degrés (±30° = ±45° de diagonale)
+      const maxAngle = 30;
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
@@ -211,14 +212,11 @@
         const deltaY = touchendY - touchstartY;
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-        // Ignorer les gestes trop petits
         if (distance < minSwipeDistance) return;
 
-        // Calculer l'angle en degrés (0° = horizontal droite, 90° = vertical bas, -90° = vertical haut)
         const angleRadians = Math.atan2(deltaY, deltaX);
         const angleDegrees = Math.abs(angleRadians * 180 / Math.PI);
 
-        // Swipe horizontal seulement si l'angle est proche de l'horizontale (0-30° ou 150-180°)
         const isHorizontalSwipe = angleDegrees < maxAngle || angleDegrees > (180 - maxAngle);
 
         if (isHorizontalSwipe) {
@@ -245,9 +243,7 @@
     })();
   </script>
 
-  <!-- Filet de sécurité : force Safari iOS à resynchroniser son rendu
-       quand l'onglet redevient actif après avoir été mis en arrière-plan
-       (bug WebKit de recomposition de calques GPU au retour d'onglet). -->
+  <!-- Filet de sécurité rendu iOS Safari -->
   <script>
     document.addEventListener('visibilitychange', function() {
       if (document.visibilityState === 'visible') {
