@@ -140,7 +140,8 @@ h2 {
   font-weight: 600;
 }
 
-a.site-title {
+a.site-title,
+a.site-title:visited {
   color: #1e293b;
   text-decoration: none !important;
   transition: color 0.2s ease;
@@ -202,7 +203,9 @@ nav .nav-links {
   align-items: center;
 }
 
-nav a {
+/* Fix liens du menu : restent gris au repos, même après visite */
+nav a,
+nav a:visited {
   text-decoration: none !important;
   color: #333333; /* Obscurci pour respecter le contraste de 4.5:1 */
   font-weight: 500;
@@ -214,7 +217,9 @@ nav a {
 }
 
 nav a:hover,
-nav a.active {
+nav a:visited:hover,
+nav a.active,
+nav a.active:visited {
   color: var(--link-color);
   text-shadow: 0.2px 0 0 var(--link-color), -0.2px 0 0 var(--link-color);
   text-decoration: none !important;
@@ -235,7 +240,8 @@ nav a::after {
 }
 
 nav a:hover::after,
-nav a.active::after {
+nav a.active::after,
+nav a.active:visited::after {
   opacity: 1;
   transform: scaleX(1);
 }
@@ -251,7 +257,8 @@ nav a.active::after {
   border-left: 1px solid var(--border-color);
 }
 
-.lang-switch a {
+.lang-switch a,
+.lang-switch a:visited {
   text-decoration: none !important;
   color: #4a4a4a; /* Obscurci pour l'accessibilité */
   transition: color 0.2s ease;
@@ -259,7 +266,9 @@ nav a.active::after {
 }
 
 .lang-switch a.active,
-.lang-switch a:hover {
+.lang-switch a.active:visited,
+.lang-switch a:hover,
+.lang-switch a:visited:hover {
   color: var(--link-color);
   font-weight: 700;
 }
@@ -395,7 +404,8 @@ details.section-deroulante summary:hover h2 {
 }
 
 /* 📄 BOUTON TÉLÉCHARGEMENT CV */
-.btn-cv {
+.btn-cv,
+.btn-cv:visited {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
@@ -419,7 +429,8 @@ details.section-deroulante summary:hover h2 {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-.btn-cv:hover {
+.btn-cv:hover,
+.btn-cv:visited:hover {
   background-color: var(--link-color);
   color: #ffffff;
   text-decoration: none !important;
@@ -446,6 +457,7 @@ footer {
 }
 
 .social-links a,
+.social-links a:visited,
 .social-links a i {
   display: inline-flex;
   align-items: center;
@@ -465,6 +477,7 @@ footer {
 }
 
 .social-links a:hover,
+.social-links a:visited:hover,
 .social-links a:hover i {
   color: var(--link-color) !important;
   /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
@@ -570,12 +583,15 @@ footer .container p {
     border-bottom-color: var(--border-color);
   }
 
-  a.site-title {
+  a.site-title,
+  a.site-title:visited {
     color: #f8fafc;
   }
 
   nav a,
-  .lang-switch a {
+  nav a:visited,
+  .lang-switch a,
+  .lang-switch a:visited {
     color: #cbd5e1;
   }
 
@@ -607,6 +623,7 @@ footer .container p {
   }
 
   .social-links a,
+  .social-links a:visited,
   .social-links a i {
     color: #cbd5e1;
   }
