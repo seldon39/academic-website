@@ -285,6 +285,20 @@
     })();
   </script>
 
+  <!-- Filet de sécurité : force Safari iOS à resynchroniser son rendu
+       quand l'onglet redevient actif après avoir été mis en arrière-plan
+       (bug WebKit de recomposition de calques GPU au retour d'onglet). -->
+  <script>
+    document.addEventListener('visibilitychange', function() {
+      if (document.visibilityState === 'visible') {
+        document.body.style.webkitTransform = 'translateZ(0)';
+        requestAnimationFrame(function() {
+          document.body.style.webkitTransform = '';
+        });
+      }
+    });
+  </script>
+
   <!-- Script Netlify Identity -->
   <script>
     if (window.netlifyIdentity) {

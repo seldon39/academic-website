@@ -499,13 +499,13 @@ footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* 💡 CORRECTIF ALIASING : Force le rendu GPU propre et fluide dès le départ.
-     will-change n'est plus permanent : un calque composité en continu au
-     ras du bas de page contribuait au clignotement pendant le rubber-band
-     de scroll sur mobile. On ne le pose que pendant l'interaction. */
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  transform: translateZ(0);
+  /* 💡 Ex-correctif aliasing retiré : forcer un calque GPU en continu
+     (translateZ(0) + backface-visibility + will-change) sur des icônes
+     tout en bas de page est justement ce qui provoque le clignotement
+     Safari iOS quand l'onglet revient au premier plan après avoir été
+     mis en arrière-plan (bug connu de recomposition WebKit). Le calque
+     n'est désormais créé que pendant l'interaction (cf. :hover), donc
+     jamais "au repos" quand l'onglet redevient actif. */
 }
 
 .social-links a:hover,
@@ -515,6 +515,8 @@ footer {
   /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
   transform: translate3d(0, -3px, 0);
   text-decoration: none !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
   will-change: transform;
 }
 
