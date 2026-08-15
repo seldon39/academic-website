@@ -14,7 +14,7 @@ I am a research assistant at the [Mathematics Institute](https://math.uni-koeln.
 
 I received my PhD from [Université Paris Cité](https://u-paris.fr) in May 2026, where I conducted my research at [IMJ-PRG](https://www.imj-prg.fr). [My thesis](/assets/these.pdf) was about Berezin–Toeplitz quantization, and was supervised by [Prof. Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
 
-<a href="/assets/cv-apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Download my CV</a>
+<a href="/assets/cv_apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Download my CV</a>
 
 </div>
 
