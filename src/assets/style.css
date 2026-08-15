@@ -100,6 +100,10 @@ body {
   -webkit-backface-visibility: hidden;
   /* Empêche le contenu de se décaler quand la barre d'adresse Safari change */
   contain: strict;
+  /* Padding en bas pour amortir le rebond élastique à la fin */
+  padding-bottom: 40px;
+  /* Scrollbar fin pour éviter les reflows */
+  scrollbar-width: thin;
 }
 
 /* Conteneurs */
