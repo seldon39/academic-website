@@ -164,7 +164,7 @@
     });
   </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching -->
+  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching CORRIGÉ -->
   <script>
     (function() {
       const isFr = document.documentElement.lang === 'fr';
@@ -194,7 +194,11 @@
       if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
-      const minSwipeDistance = 60; 
+      
+      // Configuration stricte pour éviter les conflits avec le scroll
+      const minSwipeDistance = 80; 
+      const maxVerticalTolerance = 60; 
+
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
@@ -219,14 +223,21 @@
       function handleSwipe() {
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
+        
+        const absX = Math.abs(deltaX);
+        const absY = Math.abs(deltaY);
 
-        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
+        // Conditions :
+        // 1. Déplacement horizontal supérieur à minSwipeDistance (80px)
+        // 2. Mouvement majoritairement horizontal (X est 3 fois plus grand que Y)
+        // 3. Déplacement vertical inférieur à maxVerticalTolerance (60px) pour ne pas bloquer un "vrai" scroll
+        if (absX > minSwipeDistance && absX > absY * 3 && absY < maxVerticalTolerance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {
-            targetIndex = currentIndex + 1;
+            targetIndex = currentIndex + 1; // Swipe gauche = page suivante
           } else if (deltaX > 0 && currentIndex > 0) {
-            targetIndex = currentIndex - 1;
+            targetIndex = currentIndex - 1; // Swipe droite = page précédente
           }
 
           if (targetIndex !== -1) {
