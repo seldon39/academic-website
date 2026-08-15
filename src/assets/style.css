@@ -122,11 +122,11 @@ a.site-title:visited {
 .site-mark {
   display: inline-block;
   vertical-align: -0.24em; /* cale le logo sur la ligne de base du titre */
-  margin-right: 10px;
-  /* Taille en em : le logo suit automatiquement celle du titre.
-     Ajuster ici uniquement -> 0.95em plus discret, 1.15em plus affirme. */
-  height: 1.05em;
-  width: 1.09em; /* = hauteur x 1.0377, ratio du trace */
+  margin-right: 0.42em;    /* ecart avec le R = 10px pour un titre de 24px */
+  /* Valeurs calees sur l'ancienne apparence : logo 27,5px et ecart 12px pour
+     un titre de 24px. En em, ces proportions suivent la taille du titre. */
+  height: 1.15em;
+  width: 1.19em; /* = hauteur x 1.0377, ratio du trace */
 }
 
 /* --- 4. EN-TETE ET NAVIGATION --------------------------------------------- */
@@ -333,13 +333,17 @@ details.section-deroulante[open] summary::after { transform: rotate(90deg); }
    donc la proximite au viewport -> boucle d'oscillation. C'est exactement le
    clignotement observe : il apparait a une position de scroll precise, persiste
    si l'on s'arrete la, et disparait des que l'on s'en eloigne. */
+/* Pas d'aspect-ratio impose ici : il forcerait le cadre a 220/280 et, combine
+   a object-fit: cover, recadrerait et agrandirait toute photo dont le ratio
+   reel differe. `height: auto` laisse le navigateur utiliser les proportions
+   natives du fichier. La reservation de hauteur avant chargement vient des
+   attributs width/height de la balise <img> (voir index.md), qui doivent
+   correspondre aux dimensions reelles de l'image. */
 .profile-photo {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 220 / 280;   /* hauteur reservee des le 1er rendu : zero CLS */
   border-radius: 12px;
-  object-fit: cover;
   user-select: none;
   pointer-events: none;
 }
