@@ -1,16 +1,24 @@
-# Cache à long terme (1 an) pour les assets statiques
+# A placer a la racine du dossier publie (a cote de _redirects).
+#
+# Note : ceci n'influence pas la note de performance PageSpeed, qui ne mesure
+# que la premiere visite. Cela ameliore les visites suivantes et fait taire
+# le diagnostic « Serve static assets with an efficient cache policy ».
+
 /assets/*
+  Cache-Control: public, max-age=86400
+
+# Les images et le PDF ne changent quasiment jamais : cache long.
+/assets/photo.webp
   Cache-Control: public, max-age=31536000, immutable
 
-# Cache pour les favicons et manifests à la racine
-/favicon.ico
-  Cache-Control: public, max-age=2592000, immutable
-/site.webmanifest
-  Cache-Control: public, max-age=604800, immutable
+/assets/favicon.svg
+  Cache-Control: public, max-age=31536000, immutable
 
-# Sécurité & Politiques réseau
+/assets/cv_apredoaei.pdf
+  Cache-Control: public, max-age=604800
+
+# Securite : n'affecte pas la note de performance, mais compte dans
+# « Bonnes pratiques » de PageSpeed.
 /*
-  X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()

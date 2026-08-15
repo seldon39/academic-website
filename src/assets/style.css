@@ -416,18 +416,19 @@ footer {
   width: var(--icon-box);
   height: var(--icon-box);
   flex: 0 0 auto;
-  overflow: hidden;
   font-size: 2.1rem;
   line-height: 1;
   color: #4a4a4a;
   text-decoration: none;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-.social-links a i {
-  font-size: inherit;
-  line-height: 1;
+/* Icones SVG inline : la hauteur est fixe, donc aucun reflow possible et
+   aucune police a attendre. La largeur suit le ratio propre a chaque tracé. */
+.social-links svg {
+  display: block;
+  height: 0.86em;
+  width: auto;
+  fill: currentColor;
 }
 
 footer .container p {
