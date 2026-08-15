@@ -54,6 +54,13 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <meta name="apple-mobile-web-app-title" content="Razvan Apredoaei" />
   <link rel="manifest" href="/assets/site.webmanifest" />
+
+  <!-- Empêche le conflit avec les gestes horizontaux natifs du navigateur -->
+  <style>
+    html, body {
+      overscroll-behavior-x: none;
+    }
+  </style>
 </head>
 
 <body>
@@ -164,7 +171,7 @@
     });
   </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) avec sécurité anti-glitch / overscroll -->
+  <!-- Script de navigation tactile par balayage (Swipe) filtré -->
   <script>
     (function() {
       const isFr = document.documentElement.lang === 'fr';
@@ -183,7 +190,7 @@
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
-      // Réinitialisation stricte au retour arrière (Cache navigateur / bfcache)
+      // Réinitialisation au retour arrière (Cache navigateur / bfcache)
       window.addEventListener('pageshow', function() {
         if (mainContent) {
           mainContent.classList.remove('fade-out');
@@ -205,11 +212,22 @@
       if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
+      let isEdgeSwipe = false;
       let isPDFOrExternalClick = false;
-      const minSwipeDistance = 75; 
+      const minSwipeDistance = 80; 
 
       document.addEventListener('touchstart', e => {
-        // Désactive le swipe si le toucher démarre sur un lien PDF ou externe
+        const x = e.changedTouches[0].clientX;
+        const screenWidth = window.innerWidth;
+
+        // Ignores les balayages trop proches du bord (30px) pour éviter le conflit avec la navigation système (ex: iOS back gesture)
+        if (x < 30 || x > screenWidth - 30) {
+          isEdgeSwipe = true;
+          return;
+        }
+        isEdgeSwipe = false;
+
+        // Désactive le swipe si le toucher démarre sur un fichier PDF ou lien externe
         const targetLink = e.target.closest('a');
         if (targetLink) {
           const href = targetLink.getAttribute('href') || '';
@@ -219,12 +237,13 @@
           }
         }
         isPDFOrExternalClick = false;
-        touchstartX = e.changedTouches[0].clientX;
+
+        touchstartX = x;
         touchstartY = e.changedTouches[0].clientY;
       }, { passive: true });
 
       document.addEventListener('touchend', e => {
-        if (isPDFOrExternalClick) return;
+        if (isEdgeSwipe || isPDFOrExternalClick) return;
         touchendX = e.changedTouches[0].clientX;
         touchendY = e.changedTouches[0].clientY;
         handleSwipe();
@@ -234,11 +253,11 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        // Protection Overscroll : si le doigt a bougé verticalement de plus de 25px, c'est un scroll, pas un swipe
-        if (Math.abs(deltaY) > 25) return;
+        // Ignore si le mouvement vertical dépasse 20px (défilement)
+        if (Math.abs(deltaY) > 20) return;
 
-        // Exige un balayage très net à l'horizontale
-        if (Math.abs(deltaX) > Math.abs(deltaY) * 3 && Math.abs(deltaX) > minSwipeDistance) {
+        // Exige un balayage très horizontal et franc
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 3.5 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {
@@ -255,7 +274,7 @@
 
             setTimeout(() => {
               window.location.href = menuPages[targetIndex];
-            }, 200);
+            }, 180);
           }
         }
       }
