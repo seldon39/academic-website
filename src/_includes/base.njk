@@ -57,6 +57,13 @@
 </head>
 
 <body>
+  <!-- Conteneur unique qui gère le scroll réel : le document racine
+       (html/body) est verrouillé en CSS pour ne jamais défiler ni
+       "rebondir" lui-même. C'est ce rebond du document racine (déclenché
+       soit par le doigt, soit par le repli/dépli automatique de la barre
+       d'adresse Safari au retour d'onglet) qui provoquait le clignotement,
+       de façon persistante malgré les correctifs précédents. -->
+  <div id="scroll-container">
   <header>
     <div class="container header-content">
       <!-- Ligne supérieure sur mobile : Titre + Sélecteur de langue -->
@@ -141,6 +148,7 @@
       <p>&copy; 2026 Razvan Apredoaei — Site built with 11ty and the assistance of Google Gemini. Hosted on Netlify.</p>
     </div>
   </footer>
+  </div>
 
   <!-- Script d'obscurcissement d'e-mail compatible mobile -->
   <script>
@@ -244,40 +252,45 @@
     })();
   </script>
 
-  <!-- Script anti rebond / anti pull-to-refresh (corrige le glitch en haut/bas de page) -->
+  <!-- Script anti rebond / anti pull-to-refresh (défense supplémentaire
+       à l'intérieur du conteneur de scroll ; le document racine, lui,
+       ne peut de toute façon plus défiler du tout — voir CSS) -->
   <script>
     (function() {
+      const scrollEl = document.getElementById('scroll-container');
+      if (!scrollEl) return;
+
       let lastTouchY = 0;
 
-      document.addEventListener('touchstart', e => {
+      scrollEl.addEventListener('touchstart', e => {
         if (e.touches.length !== 1) return;
         lastTouchY = e.touches[0].clientY;
       }, { passive: true });
 
-      document.addEventListener('touchmove', e => {
+      scrollEl.addEventListener('touchmove', e => {
         if (e.touches.length !== 1) return;
 
         const touchY = e.touches[0].clientY;
         const touchYDelta = touchY - lastTouchY;
         lastTouchY = touchY;
 
-        const scrollTop = window.scrollY || document.documentElement.scrollTop;
-        const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        const scrollTop = scrollEl.scrollTop;
+        const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
 
-        // Page plus courte que l'écran (rien à faire défiler) : on bloque tout rebond vertical.
+        // Conteneur plus court que l'écran (rien à faire défiler) : on bloque tout rebond vertical.
         // C'est typiquement le cas de la page "Home" en anglais, plus courte que sa version FR.
         if (maxScroll <= 0) {
           e.preventDefault();
           return;
         }
 
-        // Doigt qui descend en haut de page → tentative de pull-to-refresh / rebond haut
+        // Doigt qui descend en haut → tentative de pull-to-refresh / rebond haut
         if (scrollTop <= 0 && touchYDelta > 0) {
           e.preventDefault();
           return;
         }
 
-        // Doigt qui remonte en bas de page → tentative de rebond bas
+        // Doigt qui remonte en bas → tentative de rebond bas
         if (scrollTop >= maxScroll - 1 && touchYDelta < 0) {
           e.preventDefault();
         }
