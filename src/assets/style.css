@@ -50,12 +50,12 @@ header {
   width: 100%;
 }
 
-/* Correctif du retour à la ligne */
+/* Fix retour à la ligne du titre */
 .site-header-title {
   margin: 0;
   font-size: 1.4rem;
   font-weight: 700;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 a.site-title {
@@ -124,7 +124,7 @@ a:hover {
   color: var(--link-hover);
 }
 
-/* Grille de présentation (Texte + Photo) */
+/* Layout 2 colonnes (Texte / Image) */
 .profile-grid, 
 main .container > div:first-child {
   display: flex;
