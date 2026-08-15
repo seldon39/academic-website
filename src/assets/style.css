@@ -1,42 +1,26 @@
-/* --- 0. OPTIMISATION POLICES --- */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
-}
-
-/* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
+/* --- 1. VARIABLES & REINITIALISATION --- */
 :root {
-  --primary-color: #2c3e50;
-  --text-color: #222222;
-  --bg-color: #fcfcfc;
-  --link-color: #0b57d0;
-  --link-hover-color: #0842a0;
-  --border-color: #e2e8f0;
-  --max-width: 800px;
+  --bg-color: #0f172a;
+  --header-bg: #1e293b;
+  --text-color: #e2e8f0;
+  --text-muted: #94a3b8;
+  --link-color: #38bdf8;
+  --link-hover: #7dd3fc;
+  --border-color: #334155;
+  --max-width: 900px;
 }
 
 *, *::before, *::after {
   box-sizing: border-box;
 }
 
-/* Restauration du comportement natif complet du navigateur */
-html {
-  -webkit-text-size-adjust: 100%;
-  text-size-adjust: 100%;
-  background-color: var(--bg-color);
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  line-height: 1.6;
-  color: var(--text-color);
-  background-color: var(--bg-color);
+html, body {
   margin: 0;
   padding: 0;
-  width: 100%;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  line-height: 1.6;
 }
 
 .container {
@@ -46,25 +30,17 @@ body {
   width: 100%;
 }
 
-main {
-  padding: 2.5rem 0 1rem 0;
-  width: 100%;
-}
-
-/* --- 2. EN-TÊTE ET NAVIGATION (Fix du titre) --- */
+/* --- 2. HEADER & NAVIGATION --- */
 header {
-  border-bottom: 1px solid #eaeaea;
-  background-color: #ffffff;
+  background-color: var(--header-bg);
+  border-bottom: 1px solid var(--border-color);
   padding: 1.2rem 0;
-  margin-bottom: 2rem;
 }
 
 .header-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  gap: 1rem;
+  gap: 1.2rem;
 }
 
 .header-top {
@@ -74,17 +50,17 @@ header {
   width: 100%;
 }
 
+/* Correctif du retour à la ligne */
 .site-header-title {
   margin: 0;
-  padding: 0;
-  font-size: 1.5rem;
-  font-weight: 600;
-  white-space: nowrap; /* EMPÊCHE LE RETOUR À LA LIGNE DU TITRE */
+  font-size: 1.4rem;
+  font-weight: 700;
+  white-space: nowrap; 
 }
 
 a.site-title {
-  color: #1e293b;
-  text-decoration: none !important;
+  color: #f8fafc;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   gap: 10px;
@@ -92,48 +68,41 @@ a.site-title {
 }
 
 .site-logo {
-  width: 28px;
-  height: 28px;
-  object-fit: contain;
-  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
 }
 
-nav ul {
+nav ul.nav-links {
   list-style: none;
   padding: 0;
   margin: 0;
   display: flex;
-  gap: 1.5rem;
+  gap: 1.8rem;
   align-items: center;
 }
 
-nav a {
-  text-decoration: none !important;
-  color: #333333;
+nav ul.nav-links a {
+  color: var(--text-muted);
+  text-decoration: none;
   font-weight: 500;
-  font-size: 0.95rem;
-  padding: 4px 0;
-  white-space: nowrap;
+  transition: color 0.2s;
 }
 
-nav a.active {
+nav ul.nav-links a.active,
+nav ul.nav-links a:hover {
   color: var(--link-color);
-  font-weight: 600;
 }
 
 .lang-switch {
-  font-size: 0.85rem;
-  font-weight: 500;
   display: flex;
   align-items: center;
-  gap: 0.3rem;
-  white-space: nowrap;
+  gap: 0.4rem;
+  font-size: 0.9rem;
 }
 
 .lang-switch a {
-  text-decoration: none !important;
-  color: #4a4a4a;
-  padding: 2px 4px;
+  color: var(--text-muted);
+  text-decoration: none;
 }
 
 .lang-switch a.active {
@@ -141,72 +110,108 @@ nav a.active {
   font-weight: 700;
 }
 
-/* --- 3. PIED DE PAGE & ICÔNES (Fix Aliasing) --- */
+/* --- 3. CONTENU PRINCIPAL & DISPOSITION --- */
+main {
+  padding: 3rem 0;
+}
+
+a {
+  color: var(--link-color);
+  text-decoration: underline;
+}
+
+a:hover {
+  color: var(--link-hover);
+}
+
+/* Grille de présentation (Texte + Photo) */
+.profile-grid, 
+main .container > div:first-child {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .profile-grid,
+  main .container > div:first-child {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    align-items: start;
+    gap: 2.5rem;
+  }
+}
+
+/* Style du bouton CV */
+.btn, 
+a[href*="CV"], 
+a[download] {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border: 1px solid var(--link-color);
+  border-radius: 6px;
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 1rem;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.btn:hover, 
+a[href*="CV"]:hover, 
+a[download]:hover {
+  background-color: rgba(56, 189, 248, 0.1);
+  color: var(--link-hover);
+}
+
+/* Photo de profil */
+.profile-img, 
+img[src*="photo"], 
+main img:not(.site-logo) {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* --- 4. FOOTER & ICÔNES NETTES --- */
 footer {
-  width: 100%;
-  padding: 40px 15px calc(30px + env(safe-area-inset-bottom, 0px)) 15px;
+  border-top: 1px solid var(--border-color);
+  padding: 2.5rem 0;
   text-align: center;
-  border-top: 1px solid #eaeaea;
-  background-color: var(--bg-color);
+  color: var(--text-muted);
+  font-size: 0.9rem;
 }
 
 .social-links {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-wrap: wrap;
-  gap: 25px;
-  margin-bottom: 30px;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.social-links a,
-.social-links a i {
+.social-links a {
+  color: var(--text-color);
+  font-size: 1.8rem;
+  text-decoration: none;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  font-size: 2rem;
-  color: #4a4a4a;
-  text-decoration: none !important;
-  /* Correction nette de rendu sous-pixel pour Safari/Retina */
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0); 
+  width: 40px;
+  height: 40px;
+  transition: color 0.2s;
 }
 
-/* --- 4. MODE SOMBRE AUTOMATIQUE --- */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --primary-color: #f1f5f9;
-    --text-color: #e2e8f0;
-    --bg-color: #0f172a;
-    --link-color: #38bdf8;
-    --border-color: #334155;
-  }
+.social-links a:hover {
+  color: var(--link-color);
+}
 
-  body {
-    background-color: var(--bg-color);
-    color: var(--text-color);
-  }
-
-  header {
-    background-color: #1e293b;
-    border-bottom-color: var(--border-color);
-  }
-
-  a.site-title {
-    color: #f8fafc;
-  }
-
-  nav a, .lang-switch a {
-    color: #cbd5e1;
-  }
-
-  footer {
-    border-top-color: var(--border-color);
-    background-color: var(--bg-color);
-  }
-
-  .social-links a, .social-links a i {
-    color: #cbd5e1;
-  }
+/* Rendu net des icônes FontAwesome */
+.social-links i {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1;
 }
