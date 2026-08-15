@@ -420,6 +420,13 @@ footer {
   line-height: 1;
   color: #4a4a4a;
   text-decoration: none;
+  /* Transition declaree ICI, une seule fois. Toute redeclaration plus bas dans
+     le fichier l'ecraserait a specificite egale — c'est ce qui privait
+     `transform` d'animation. Cette duree est celle du RETOUR au repos ;
+     l'aller, plus vif, est defini sur :hover. */
+  transition:
+    color 0.35s ease,
+    transform 0.35s cubic-bezier(0.22, 0.61, 0.36, 1);
 }
 
 /* Icones SVG inline : hauteur fixe, donc aucun reflow et aucune police a
@@ -491,12 +498,11 @@ footer .container p {
     text-decoration: none; /* sinon `main a:hover` souligne le bouton */
   }
 
-  .social-links a { transition: color 0.2s ease, transform 0.2s ease; }
-
   .social-links a:hover,
   .social-links a:visited:hover {
     color: var(--link-color);
     transform: translateY(-4px);
+    transition-duration: 0.25s; /* aller un peu plus vif que le retour */
   }
 }
 
@@ -556,8 +562,6 @@ details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
    qui serait desagreable sous le doigt. */
 .social-links a:active,
 .social-links a:visited:active { color: var(--link-color); }
-
-.social-links a { transition: color 0.2s ease; }
 
 /* --- 10. RESPONSIVE (MOBILE) ---------------------------------------------- */
 @media (max-width: 650px) {
