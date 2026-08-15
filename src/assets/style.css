@@ -459,7 +459,6 @@ details.section-deroulante summary:hover h2 {
   color: var(--link-color);
   text-decoration: none !important;
   font-weight: 500;
-  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
 .btn-cv::before {
