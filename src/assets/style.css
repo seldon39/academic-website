@@ -476,11 +476,21 @@ details.section-deroulante summary:hover h2 {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-.btn-cv:hover,
-.btn-cv:visited:hover {
-  background-color: var(--link-color);
-  color: #ffffff;
-  text-decoration: none !important;
+/* Hover seulement sur écrans non-tactiles */
+@media (hover: hover) {
+  .btn-cv:hover,
+  .btn-cv:visited:hover {
+    background-color: var(--link-color);
+    color: #ffffff;
+    text-decoration: none !important;
+  }
+}
+
+/* Sur tactile : désactiver les hover states */
+@media (hover: none) {
+  .btn-cv {
+    pointer-events: auto;
+  }
 }
 
 /* --- 6. PIED DE PAGE --- */
