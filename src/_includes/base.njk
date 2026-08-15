@@ -36,11 +36,10 @@
   <!-- Preconnect pour accélérer la connexion au serveur CDN FontAwesome -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
 
-  <!-- ⚡ CSS principal chargé de manière asynchrone (élimine le blocage du rendu) -->
-  <link rel="preload" href="/assets/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
-  <noscript><link rel="stylesheet" href="/assets/style.css"></noscript>
+  <!-- CSS principal : chargé directement pour éliminer le flash HTML (FOUC) -->
+  <link rel="stylesheet" href="/assets/style.css">
 
-  <!-- FontAwesome chargé de manière asynchrone -->
+  <!-- FontAwesome : reste chargé en asynchrone pour ne pas bloquer sur un CDN externe -->
   <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"></noscript>
   
@@ -199,7 +198,7 @@
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
-      // ⚡ FIX MOBILE 1 : Réinitialise l'état de la page si restaurée depuis le cache (bfcache)
+      // Réinitialise l'état de la page si restaurée depuis le cache (bfcache)
       window.addEventListener('pageshow', function() {
         if (mainContent) {
           mainContent.classList.remove('fade-out');
@@ -221,8 +220,6 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        // ⚡ FIX MOBILE 2 : Exige un balayage NETTEMENT horizontal (deltaX > 2 * deltaY)
-        // Évite tout déclenchement parasite lors des défilements verticaux rapides
         if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
