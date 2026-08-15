@@ -56,7 +56,6 @@
 </head>
 
 <body>
-  <div id="scroll-container">
   <header>
     <div class="container header-content">
       <!-- Ligne supérieure sur mobile : Titre + Sélecteur de langue -->
@@ -141,7 +140,6 @@
       <p>&copy; 2026 Razvan Apredoaei — Site built with 11ty and the assistance of Google Gemini. Hosted on Netlify.</p>
     </div>
   </footer>
-  </div>
 
   <!-- Script d'obscurcissement d'e-mail compatible mobile -->
   <script>
@@ -162,9 +160,9 @@
     });
   </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching -->
+  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching - DÉSACTIVÉ POUR DIAGNOSTIC -->
   <script>
-    (function() {
+    /* (function() {
       const isFr = document.documentElement.lang === 'fr';
       const menuPages = isFr
         ? ['/fr/', '/fr/recherche/', '/fr/enseignement/', '/fr/activites/', '/fr/contact/']
@@ -235,6 +233,7 @@
         }
       }
     })();
+    */
   </script>
 
   <!-- Filet de sécurité : force Safari iOS à resynchroniser son rendu
