@@ -113,21 +113,16 @@ a.site-title:visited {
   white-space: nowrap;
 }
 
-/* Logo vectoriel inline (voir base.njk). Deux couches :
-   .logo-plate = les creux du dessin, peints avec le fond du header, ce qui
-                 preserve les occultations (la fleche passe devant l'engrenage) ;
-   .logo-ink   = les traits, peints avec la couleur du titre.
-   Les deux suivent les variables CSS : le mode sombre est automatique.
-   Aucun fichier externe -> ni 404, ni filter, ni carre blanc possible. */
-.site-logo {
+/* Logo vectoriel inline (voir base.njk).
+   Le trace porte deja fill="currentColor" et width/height en attributs : ces
+   regles ne font que l'aligner dans le flex du titre. Si cette feuille n'est
+   pas chargee, le logo reste visible et correctement colore. */
+.site-mark {
   display: block;
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
 }
-
-.logo-plate { fill: var(--header-bg); }
-.logo-ink   { fill: currentColor; }
 
 /* --- 4. EN-TETE ET NAVIGATION --------------------------------------------- */
 header {
