@@ -57,6 +57,16 @@ html {
   text-size-adjust: 100%;
   width: 100%;
   overflow-x: hidden;
+
+  /* --- CORRECTIF GLITCH SWIPE / OVERSCROLL MOBILE ---
+     Sans ceci, quand on atteint le haut/bas de la page et qu'on continue
+     de swiper, le "rubber-band" (iOS) ou le pull-to-refresh (Android
+     Chrome) révèle brièvement l'arrière-plan par défaut de <html>
+     (blanc), qui ne suit pas --bg-color en mode sombre : d'où le
+     clignotement, quasi impossible à filmer car ce rendu vient du
+     compositeur du navigateur et non de la page elle-même. */
+  background-color: var(--bg-color);
+  overscroll-behavior-y: contain;
 }
 
 body {
@@ -68,6 +78,7 @@ body {
   padding: 0;
   width: 100%;
   overflow-x: hidden;
+  overscroll-behavior-y: contain;
 }
 
 /* Conteneurs */
@@ -488,11 +499,13 @@ footer {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 
-  /* 💡 CORRECTIF ALIASING : Force le rendu GPU propre et fluide dès le départ */
+  /* 💡 CORRECTIF ALIASING : Force le rendu GPU propre et fluide dès le départ.
+     will-change n'est plus permanent : un calque composité en continu au
+     ras du bas de page contribuait au clignotement pendant le rubber-band
+     de scroll sur mobile. On ne le pose que pendant l'interaction. */
   backface-visibility: hidden;
   -webkit-backface-visibility: hidden;
   transform: translateZ(0);
-  will-change: transform;
 }
 
 .social-links a:hover,
@@ -502,6 +515,7 @@ footer {
   /* Utilisation de translate3d pour forcer l'alignement sur la grille de sous-pixels */
   transform: translate3d(0, -3px, 0);
   text-decoration: none !important;
+  will-change: transform;
 }
 
 footer .container p {
