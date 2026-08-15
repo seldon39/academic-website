@@ -21,7 +21,7 @@ I received my PhD from [Université Paris Cité](https://u-paris.fr) in May 2026
 <!-- Bloc photo + crédit à droite -->
 
   <figure class="profile-container">
-    <img src="/assets/photo.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high">
+    <img src="/assets/photo.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high" decoding = "async"/>
     <figcaption class="photo-credit">
     &copy; Katrin Schmid,  Archives of the Mathematisches Forschungsinstitut Oberwolfach.
     </figcaption>

@@ -8,13 +8,17 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/_headers");
-  // Transform pour minifier automatiquement le HTML lors de la génération (_site)
-  eleventyConfig.addTransform("htmlmin", function(content, outputPath) {
+
+  // Transform pour minifier automatiquement le HTML, JS et CSS inline
+  eleventyConfig.addTransform("htmlmin", async function(content, outputPath) {
     if (outputPath && outputPath.endsWith(".html")) {
-      let minified = htmlmin.minify(content, {
+      let minified = await htmlmin.minify(content, {
         useShortDoctype: true,
         removeComments: true,
-        collapseWhitespace: true
+        collapseWhitespace: true,
+        conservativeCollapse: true, // Préserve un espace entre les mots inline
+        minifyCSS: true,             // Minifie le CSS présent dans les balises <style>
+        minifyJS: true              // Minifie le JS présent dans les balises <script>
       });
       return minified;
     }

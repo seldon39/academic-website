@@ -2,8 +2,15 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# Sécurité de base
+# Cache pour les favicons et manifests à la racine
+/favicon.ico
+  Cache-Control: public, max-age=2592000, immutable
+/site.webmanifest
+  Cache-Control: public, max-age=604800, immutable
+
+# Sécurité & Politiques réseau
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
