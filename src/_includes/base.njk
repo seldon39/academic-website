@@ -4,23 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="google-site-verification" content="zynSqpGiXhh0hxyMgPxqkuckaRrMupw3AnHVsFhe1oA" />
-  
-  <!-- Couleur de thème dynamique pour la barre d'onglets Safari / iOS (mode clair & sombre) -->
   <meta name="theme-color" content="#fcfcfc" media="(prefers-color-scheme: light)" />
   <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)" />
 
-  <!-- Titre dynamique & Description SEO -->
   <title>{% if title %}{{ title }} | {% endif %}Razvan Apredoaei</title>
   <meta name="description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei, chercheur en mathématiques.' }}">
   <meta name="author" content="Razvan Apredoaei">
   <meta name="robots" content="index, follow">
 
-  <!-- URL canonique -->
   {% if site.url %}
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
   {% endif %}
 
-  <!-- Open Graph -->
   <meta property="og:type" content="website">
   <meta property="og:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
   <meta property="og:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
@@ -29,24 +24,16 @@
   {% endif %}
   <meta property="og:site_name" content="Razvan Apredoaei">
 
-  <!-- Twitter / X Cards -->
   <meta name="twitter:card" content="summary">
   <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
   <meta name="twitter:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
 
-  <!-- Preconnect pour accélérer la connexion au serveur CDN FontAwesome -->
   <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
-
-  <!-- CSS principal : chargé directement pour éliminer le flash HTML (FOUC) -->
   <link rel="stylesheet" href="/assets/style.css">
-
-  <!-- FontAwesome : chargé synchrone pour éviter un FOUT lors du scroll -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-  
-  <!-- Netlify identity (Chargement différé) -->
+
   <script src="https://identity.netlify.com/v1/netlify-identity-widget.js" defer></script>
 
-  <!-- ── FAVICONS ET SAFARI ── -->
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/assets/favicon.ico" />
   <link rel="icon" type="image/x-icon" href="/assets/favicon.ico" />
@@ -59,7 +46,6 @@
 <body>
   <header>
     <div class="container header-content">
-      <!-- Ligne supérieure sur mobile : Titre + Sélecteur de langue -->
       <div class="header-top">
         <h2 class="site-header-title">
           <a href="{% if lang == 'fr' %}/fr/{% else %}/{% endif %}" class="site-title">
@@ -68,7 +54,6 @@
           </a>
         </h2>
 
-        <!-- Sélecteur de langue (à droite sur mobile) -->
         <nav class="lang-switch" aria-label="Language selection">
           <a href="/" class="{% if lang != 'fr' %}active{% endif %}" title="English" lang="en">EN</a>
           <span class="separator" aria-hidden="true">|</span>
@@ -76,12 +61,11 @@
         </nav>
       </div>
 
-      <!-- Navigation sous le titre/sélecteur -->
       <nav aria-label="Main navigation">
         <ul class="nav-links">
           {% set t = i18n[lang or "en"] %}
           {% set isFr = (lang == "fr") %}
-          
+
           <li><a href="{% if isFr %}/fr/{% else %}/{% endif %}" class="{% if page.url == '/' or page.url == '/fr/' %}active{% endif %}">{{ t.home }}</a></li>
           <li><a href="{% if isFr %}/fr/recherche/{% else %}/research/{% endif %}" class="{% if 'research' in page.url or 'recherche' in page.url %}active{% endif %}">{{ t.research }}</a></li>
           <li><a href="{% if isFr %}/fr/enseignement/{% else %}/teaching/{% endif %}" class="{% if 'teaching' in page.url or 'enseignement' in page.url %}active{% endif %}">{{ t.teaching }}</a></li>
@@ -98,38 +82,28 @@
 
   <footer>
     <div class="social-links">
-      <!-- E-mail obscurci dynamique -->
-      <a href="#"
-         id="email-link"
-         data-user="{{ site.email_user }}"
-         data-domain="{{ site.email_domain }}"
-         title="E-mail"
-         aria-label="E-mail">
+      <a href="#" id="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}" title="E-mail" aria-label="E-mail">
         <i class="fa-solid fa-envelope"></i>
       </a>
 
-      <!-- ORCID -->
       {% if site.orcid %}
       <a href="https://orcid.org/{{ site.orcid }}" target="_blank" rel="noopener" title="ORCID" aria-label="ORCID">
         <i class="fa-brands fa-orcid"></i>
       </a>
       {% endif %}
 
-      <!-- arXiv -->
       {% if site.arxiv %}
       <a href="{{ site.arxiv }}" target="_blank" rel="noopener" title="arXiv" aria-label="arXiv">
         <i class="fa-solid fa-graduation-cap"></i>
       </a>
       {% endif %}
 
-      <!-- ResearchGate -->
       {% if site.researchgate %}
       <a href="{{ site.researchgate }}" target="_blank" rel="noopener" title="ResearchGate" aria-label="ResearchGate">
         <i class="fa-brands fa-researchgate"></i>
       </a>
       {% endif %}
 
-      <!-- LinkedIn -->
       {% if site.linkedin %}
       <a href="{{ site.linkedin }}" target="_blank" rel="noopener" title="LinkedIn" aria-label="LinkedIn">
         <i class="fa-brands fa-linkedin"></i>
@@ -142,8 +116,8 @@
     </div>
   </footer>
 
-  <!-- Script d'obscurcissement d'e-mail compatible mobile -->
   <script>
+    // Email obfuscation
     document.addEventListener("DOMContentLoaded", function() {
       const emailLink = document.getElementById("email-link");
       if (emailLink) {
@@ -151,18 +125,16 @@
         const domain = emailLink.getAttribute("data-domain");
         if (user && domain) {
           const fullEmail = user + "@" + domain;
-          const setEmailHref = () => { emailLink.href = "mailto:" + fullEmail; };
-
-          emailLink.addEventListener("mouseenter", setEmailHref);
-          emailLink.addEventListener("touchstart", setEmailHref, { passive: true });
-          emailLink.addEventListener("click", setEmailHref);
+          emailLink.addEventListener("click", function(e) {
+            e.preventDefault();
+            window.location.href = "mailto:" + fullEmail;
+          });
+          emailLink.href = "javascript:void(0)";
         }
       }
     });
-  </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) avec détection d'angle strict -->
-  <script>
+    // Swipe navigation with strict angle detection
     (function() {
       const isFr = document.documentElement.lang === 'fr';
       const menuPages = isFr
@@ -172,29 +144,24 @@
       let currentPath = window.location.pathname;
       if (!currentPath.endsWith('/')) currentPath += '/';
 
-      let currentIndex = menuPages.findIndex(page => {
-        let p = page.endsWith('/') ? page : page + '/';
-        return p === currentPath;
-      });
-
+      let currentIndex = menuPages.findIndex(page => page === currentPath);
       if (currentIndex === -1) return;
 
-      function prefetchPage(url) {
+      // Prefetch adjacent pages
+      const prefetch = (url) => {
         if (!document.querySelector(`link[href="${url}"]`)) {
           const link = document.createElement('link');
           link.rel = 'prefetch';
           link.href = url;
           document.head.appendChild(link);
         }
-      }
-      if (currentIndex > 0) prefetchPage(menuPages[currentIndex - 1]);
-      if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
+      };
+      if (currentIndex > 0) prefetch(menuPages[currentIndex - 1]);
+      if (currentIndex < menuPages.length - 1) prefetch(menuPages[currentIndex + 1]);
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
-      const minSwipeDistance = 80;
-      const maxAngle = 30;
-      const mainContent = document.querySelector('main') || document.body;
-      const navLinks = document.querySelectorAll('nav ul a');
+      const MIN_SWIPE_DISTANCE = 80;
+      const MAX_ANGLE = 30; // ±30 degrees for horizontal swipes
 
       document.addEventListener('touchstart', e => {
         touchstartX = e.changedTouches[0].screenX;
@@ -212,51 +179,36 @@
         const deltaY = touchendY - touchstartY;
         const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
 
-        if (distance < minSwipeDistance) return;
+        if (distance < MIN_SWIPE_DISTANCE) return;
 
-        const angleRadians = Math.atan2(deltaY, deltaX);
-        const angleDegrees = Math.abs(angleRadians * 180 / Math.PI);
+        const angle = Math.abs(Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+        const isHorizontal = angle < MAX_ANGLE || angle > (180 - MAX_ANGLE);
 
-        const isHorizontalSwipe = angleDegrees < maxAngle || angleDegrees > (180 - maxAngle);
+        if (!isHorizontal) return;
 
-        if (isHorizontalSwipe) {
-          let targetIndex = -1;
+        let targetIndex = -1;
+        if (deltaX < 0 && currentIndex < menuPages.length - 1) {
+          targetIndex = currentIndex + 1;
+        } else if (deltaX > 0 && currentIndex > 0) {
+          targetIndex = currentIndex - 1;
+        }
 
-          if (deltaX < 0 && currentIndex < menuPages.length - 1) {
-            targetIndex = currentIndex + 1;
-          } else if (deltaX > 0 && currentIndex > 0) {
-            targetIndex = currentIndex - 1;
-          }
+        if (targetIndex !== -1) {
+          const main = document.querySelector('main');
+          const navLinks = document.querySelectorAll('nav ul a');
 
-          if (targetIndex !== -1) {
-            mainContent.classList.add('fade-out');
+          main.classList.add('fade-out');
+          if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
+          if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
 
-            if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
-            if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
-
-            setTimeout(() => {
-              window.location.href = menuPages[targetIndex];
-            }, 200);
-          }
+          setTimeout(() => {
+            window.location.href = menuPages[targetIndex];
+          }, 200);
         }
       }
     })();
-  </script>
 
-  <!-- Filet de sécurité rendu iOS Safari -->
-  <script>
-    document.addEventListener('visibilitychange', function() {
-      if (document.visibilityState === 'visible') {
-        document.body.style.webkitTransform = 'translateZ(0)';
-        requestAnimationFrame(function() {
-          document.body.style.webkitTransform = '';
-        });
-      }
-    });
-  </script>
-
-  <!-- Script Netlify Identity -->
-  <script>
+    // Netlify Identity
     if (window.netlifyIdentity) {
       window.netlifyIdentity.on("init", user => {
         if (!user) {

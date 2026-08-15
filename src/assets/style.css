@@ -1,49 +1,10 @@
-/* --- 0. OPTIMISATION POLICES (font-display: swap) --- */
-
-/* Police système / Inter */
-@font-face {
-  font-family: 'Inter';
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: local('-apple-system'), local('BlinkMacSystemFont'), local('Segoe UI'), local('Roboto');
-}
-
-/* Correctif font-display: swap pour les 3 fichiers d'icônes FontAwesome */
-@font-face {
-  font-family: 'Font Awesome 6 Brands';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-brands-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-400.woff2') format('woff2');
-}
-
-@font-face {
-  font-family: 'Font Awesome 6 Free';
-  font-style: normal;
-  font-weight: 900;
-  font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-400.woff2') format('woff2');
-}
-
-/* --- 1. CONFIGURATION GLOBALE & VARIABLES --- */
+/* --- CONFIGURATION GLOBALE & VARIABLES --- */
 :root {
   --primary-color: #2c3e50;
-  --text-color: #222222;       /* Contraste renforcé sur fond clair */
+  --text-color: #222222;
   --bg-color: #fcfcfc;
-
-  /* 🔵 Bleu style Google */
-  --link-color: #0b57d0;        /* Bleu Google moderne et accessible */
-  --link-hover-color: #0842a0;  /* Version plus sombre au survol */
-
+  --link-color: #0b57d0;
+  --link-hover-color: #0842a0;
   --border-color: #e2e8f0;
   --max-width: 800px;
 }
@@ -58,7 +19,6 @@ html {
   width: 100%;
   overflow-x: hidden;
   background-color: var(--bg-color);
-  overflow-anchor: none; /* Empeche l'ancrage de défilement parasite */
 }
 
 body {
@@ -69,10 +29,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overscroll-behavior-y: contain; /* Bloque le rebond élastique iOS/Android en bas de page */
 }
 
-/* Conteneurs */
 .container {
   max-width: var(--max-width);
   margin: 0 auto;
@@ -83,46 +41,42 @@ body {
 main {
   padding: 2.5rem 0;
   opacity: 1;
-  transition: opacity 0.25s ease-in-out, transform 0.25s ease-out;
+  transition: opacity 0.25s ease-in-out;
   width: 100%;
 }
 
 main.fade-out {
   opacity: 0;
-  transform: scale(0.98);
 }
 
-/* 🌐 Style des liens globaux */
+/* --- LINKS --- */
 a,
 a:visited {
   color: var(--link-color);
-  transition: color 0.15s ease, text-decoration-color 0.15s ease;
+  transition: color 0.15s ease;
 }
 
-/* Pas de soulignement par défaut pour un texte plus lisible */
 main a,
 main a:visited {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
-/* Focus toujours actif pour l'accessibilité clavier */
 main a:focus {
   color: var(--link-hover-color);
-  text-decoration: underline !important;
+  text-decoration: underline;
   text-underline-offset: 3px;
 }
 
-/* Exclusions du soulignement pour les boutons et éléments UI */
 main a.btn-cv,
 main a.btn-cv:visited,
 main details summary a,
 main details summary a:visited,
 a.site-title,
 a.site-title:visited {
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
-/* --- 2. TYPOGRAPHIE & TITRES --- */
+/* --- HEADINGS --- */
 h2 {
   color: var(--link-color);
   font-size: 1.15rem;
@@ -133,11 +87,10 @@ h2 {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Header site title override */
 .site-header-title {
   margin: 0;
   padding: 0;
-  border-bottom: none !important;
+  border-bottom: none;
   font-size: 1.5rem;
   font-weight: 600;
   white-space: nowrap;
@@ -146,7 +99,7 @@ h2 {
 a.site-title,
 a.site-title:visited {
   color: #1e293b;
-  text-decoration: none !important;
+  text-decoration: none;
   transition: color 0.2s ease;
   display: inline-flex;
   align-items: center;
@@ -160,10 +113,10 @@ a.site-title:visited {
   object-fit: contain;
   color-scheme: only light;
   forced-color-adjust: none;
-  background-color: transparent !important;
+  background-color: transparent;
 }
 
-/* --- 3. EN-TÊTE ET NAVIGATION --- */
+/* --- HEADER & NAVIGATION --- */
 header {
   border-bottom: 1px solid #eaeaea;
   background-color: #ffffff;
@@ -202,24 +155,22 @@ nav .nav-links {
   align-items: center;
 }
 
-/* Fix liens du menu : restent gris au repos, même après visite */
 nav a,
 nav a:visited {
-  text-decoration: none !important;
-  color: #333333; /* Obscurci pour respecter le contraste de 4.5:1 */
+  text-decoration: none;
+  color: #333333;
   font-weight: 500;
   font-size: 0.95rem;
   padding: 4px 0;
   position: relative;
-  transition: color 0.2s ease, text-shadow 0.2s ease;
+  transition: color 0.2s ease;
   white-space: nowrap;
 }
 
 nav a.active,
 nav a.active:visited {
   color: var(--link-color);
-  text-shadow: 0.2px 0 0 var(--link-color), -0.2px 0 0 var(--link-color);
-  text-decoration: none !important;
+  text-decoration: none;
 }
 
 nav a::after {
@@ -242,7 +193,6 @@ nav a.active:visited::after {
   transform: scaleX(1);
 }
 
-/* Sélecteur de langue EN | FR */
 .lang-switch {
   font-size: 0.85rem;
   font-weight: 500;
@@ -255,8 +205,8 @@ nav a.active:visited::after {
 
 .lang-switch a,
 .lang-switch a:visited {
-  text-decoration: none !important;
-  color: #4a4a4a; /* Obscurci pour l'accessibilité */
+  text-decoration: none;
+  color: #4a4a4a;
   transition: color 0.2s ease;
   padding: 2px 4px;
 }
@@ -273,9 +223,7 @@ nav a.active:visited::after {
   user-select: none;
 }
 
-/* --- 4. SECTIONS & BLOCS ACCORDÉON (DETAILS) --- */
-
-/* Bloc simple (Abstracts) */
+/* --- DETAILS/ACCORDION --- */
 details {
   background-color: #f4f7f9;
   border-left: 4px solid var(--link-color);
@@ -299,7 +247,6 @@ details i {
   line-height: 1.6;
 }
 
-/* Menus déroulants de section complets */
 details.section-deroulante {
   background-color: #ffffff;
   border: 1px solid var(--border-color);
@@ -349,14 +296,13 @@ details.section-deroulante[open] summary::after {
   transform: rotate(90deg);
 }
 
-/* --- 5. CONTENU INTRO & PROFIL --- */
+/* --- INTRO & PROFILE --- */
 .intro-container {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
-  max-width: 100%;
 }
 
 .intro-text {
@@ -385,10 +331,6 @@ details.section-deroulante[open] summary::after {
   border-radius: 12px;
   object-fit: cover;
   content-visibility: auto;
-  -webkit-user-drag: none;
-  -khtml-user-drag: none;
-  -moz-user-drag: none;
-  -o-user-drag: none;
   user-select: none;
   pointer-events: none;
 }
@@ -402,7 +344,7 @@ details.section-deroulante[open] summary::after {
   width: 100%;
 }
 
-/* 📄 BOUTON TÉLÉCHARGEMENT CV */
+/* --- CV BUTTON --- */
 .btn-cv,
 .btn-cv:visited {
   display: inline-flex;
@@ -413,7 +355,7 @@ details.section-deroulante[open] summary::after {
   border: 1px solid var(--link-color);
   border-radius: 4px;
   color: var(--link-color);
-  text-decoration: none !important;
+  text-decoration: none;
   font-weight: 500;
 }
 
@@ -427,13 +369,12 @@ details.section-deroulante[open] summary::after {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
-/* --- 6. PIED DE PAGE --- */
+/* --- FOOTER --- */
 footer {
   width: 100%;
   padding: 40px 15px 20px 15px;
   margin-top: 60px;
   text-align: center;
-  overflow: visible;
   border-top: 1px solid #eaeaea;
 }
 
@@ -456,7 +397,7 @@ footer {
   justify-content: center;
   font-size: 2.1rem;
   color: #4a4a4a;
-  text-decoration: none !important;
+  text-decoration: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -470,25 +411,22 @@ footer .container p {
   text-align: center;
 }
 
-/* --- 💻 EFFETS HOVER (EXCLUSIVEMENT SUR ÉCRANS NON-TACTILES) --- */
+/* --- HOVER EFFECTS (Non-touch devices only) --- */
 @media (hover: hover) and (pointer: fine) {
   main a:hover,
   main a:visited:hover {
     color: var(--link-hover-color);
-    text-decoration: underline !important;
+    text-decoration: underline;
     text-underline-offset: 3px;
   }
 
   a.site-title:hover {
     color: var(--link-color);
-    text-decoration: none !important;
   }
 
   nav a:hover,
   nav a:visited:hover {
     color: var(--link-color);
-    text-shadow: 0.2px 0 0 var(--link-color), -0.2px 0 0 var(--link-color);
-    text-decoration: none !important;
   }
 
   nav a:hover::after {
@@ -509,14 +447,12 @@ footer .container p {
 
   details.section-deroulante summary:hover h2 {
     color: var(--link-hover-color);
-    text-decoration: none;
   }
 
   .btn-cv:hover,
   .btn-cv:visited:hover {
     background-color: var(--link-color);
     color: #ffffff;
-    text-decoration: none !important;
   }
 
   .social-links a,
@@ -526,18 +462,13 @@ footer .container p {
   }
 
   .social-links a:hover,
-  .social-links a:visited:hover,
-  .social-links a:hover i {
-    color: var(--link-color) !important;
+  .social-links a:visited:hover {
+    color: var(--link-color);
     transform: translateY(-4px);
-    text-decoration: none !important;
-    will-change: transform;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
   }
 }
 
-/* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
+/* --- MOBILE RESPONSIVE --- */
 @media (max-width: 650px) {
   .container {
     padding-left: 15px;
@@ -559,7 +490,7 @@ footer .container p {
 
   .lang-switch {
     padding-left: 0.8rem;
-    border-left: 1px solid var(--border-color); /* Barre verticale maintenue sur mobile */
+    border-left: 1px solid var(--border-color);
   }
 
   nav,
@@ -586,7 +517,6 @@ footer .container p {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 100%;
     gap: 1.5rem;
   }
 
@@ -603,12 +533,7 @@ footer .container p {
   }
 }
 
-/* --- 8. VIEW TRANSITIONS --- */
-@view-transition {
-  navigation: auto;
-}
-
-/* --- 9. MODE SOMBRE AUTOMATIQUE --- */
+/* --- DARK MODE --- */
 @media (prefers-color-scheme: dark) {
   :root {
     --primary-color: #f1f5f9;
@@ -683,6 +608,6 @@ footer .container p {
   }
 
   .site-logo {
-    filter: brightness(0) invert(1) !important;
+    filter: brightness(0) invert(1);
   }
 }
