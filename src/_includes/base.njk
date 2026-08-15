@@ -227,7 +227,14 @@
       });
     }
 
-    function init() { initEmail(); initSwipe(); initNetlify(); }
+    /* --- 4. Retour tactile ---------------------------------------------- */
+    // iOS n'applique :active au toucher que si la page ecoute un evenement
+    // touch. Cet ecouteur vide suffit a debloquer l'etat actif sur les liens.
+    function initActiveState() {
+      document.addEventListener('touchstart', function () {}, { passive: true });
+    }
+
+    function init() { initEmail(); initSwipe(); initNetlify(); initActiveState(); }
 
     if (document.readyState === 'loading') {
       document.addEventListener('DOMContentLoaded', init, { once: true });

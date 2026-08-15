@@ -475,6 +475,7 @@ footer .container p {
   .btn-cv:visited:hover {
     background-color: var(--link-color);
     color: #ffffff;
+    text-decoration: none; /* sinon `main a:hover` souligne le bouton */
   }
 
   .social-links a { transition: color 0.2s ease, transform 0.2s ease; }
@@ -485,6 +486,65 @@ footer .container p {
     transform: translateY(-4px);
   }
 }
+
+/* --- 9 bis. ETAT ACTIF (retour tactile) ----------------------------------- */
+/* Sur ecran tactile il n'y a pas de survol : ces regles rejouent exactement le
+   meme rendu pendant l'appui du doigt. Elles ne sont volontairement PAS dans
+   une media query : sur souris, elles ajoutent le meme retour au clic maintenu.
+   Rappel : iOS n'applique :active au toucher que si la page ecoute un evenement
+   touch — c'est le role du petit ecouteur enregistre dans base.njk. */
+
+a {
+  /* Teinte discrete sous le doigt, en complement des effets ci-dessous.
+     Remplace le rectangle gris par defaut d'iOS. */
+  -webkit-tap-highlight-color: rgba(11, 87, 208, 0.12);
+}
+
+main a:active,
+main a:visited:active {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+a.site-title:active { color: var(--link-color); }
+
+nav a:active,
+nav a:visited:active { color: var(--link-color); }
+
+/* La barre sous le lien : c'est le meme ::after que pour l'etat courant,
+   revele avec sa transition de 0.2s. */
+nav a:active::after {
+  opacity: 1;
+  transform: scaleX(1);
+}
+
+.lang-switch a:active,
+.lang-switch a:visited:active {
+  color: var(--link-color);
+  font-weight: 700;
+}
+
+details summary:active b {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}
+
+details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
+
+.btn-cv:active,
+.btn-cv:visited:active {
+  background-color: var(--link-color);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* Icones du footer : couleur seule, sans le deplacement vertical du survol,
+   qui serait desagreable sous le doigt. */
+.social-links a:active,
+.social-links a:visited:active { color: var(--link-color); }
+
+.social-links a { transition: color 0.2s ease; }
 
 /* --- 10. RESPONSIVE (MOBILE) ---------------------------------------------- */
 @media (max-width: 650px) {
@@ -531,6 +591,8 @@ footer .container p {
 
 /* --- 11. MODE SOMBRE ------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
+  a { -webkit-tap-highlight-color: rgba(56, 189, 248, 0.16); }
+
   :root {
     --primary-color: #f1f5f9;
     --text-color: #e2e8f0;
