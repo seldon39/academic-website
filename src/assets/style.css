@@ -422,14 +422,26 @@ footer {
   text-decoration: none;
 }
 
-/* Icones SVG inline : la hauteur est fixe, donc aucun reflow possible et
-   aucune police a attendre. La largeur suit le ratio propre a chaque tracé. */
+/* Icones SVG inline : hauteur fixe, donc aucun reflow et aucune police a
+   attendre. La largeur suit le ratio propre a chaque tracé.
+
+   Les hauteurs sont reglees UNE PAR UNE, car les tracés de Font Awesome ne
+   remplissent pas leur boite de la meme facon : l'enveloppe n'en occupe que
+   75 % en hauteur, contre 88 % pour la plupart et 97 % pour ORCID. A boite
+   egale, l'enveloppe est donc dessinee 25 % plus petite que ses voisines.
+   Ces valeurs egalisent la hauteur du DESSIN (26px), pas celle de la boite. */
 .social-links svg {
   display: block;
-  height: 0.86em;
   width: auto;
   fill: currentColor;
 }
+
+.social-links .ico-mail  { height: 1.03em; }
+.social-links .ico-cap   { height: 0.88em; }
+.social-links .ico-rg    { height: 0.88em; }
+.social-links .ico-in    { height: 0.88em; }
+/* Un disque parait plus petit qu'un carre de meme hauteur : 4 % de rattrapage. */
+.social-links .ico-orcid { height: 0.83em; }
 
 footer .container p {
   font-size: 0.85rem;
