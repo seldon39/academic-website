@@ -553,7 +553,7 @@ footer .container p {
 
   .header-top {
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-between; /* Pousse le sélecteur de langue à l'extrémité droite */
   }
 
   .lang-switch {
