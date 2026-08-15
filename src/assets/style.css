@@ -67,8 +67,7 @@ html {
      clignotement, y compris sans aucun geste tactile. Le vrai scroll a
      lieu dans #scroll-container ci-dessous, dont le rebond élastique reste
      confiné à sa propre boîte et ne peut plus affecter toute la page. */
-  height: 100%;
-  overflow: hidden;
+  overscroll-behavior-y: contain;
 }
 
 body {
@@ -79,20 +78,8 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  height: 100%;
-  overflow: hidden;
 }
 
-/* Conteneur qui porte réellement le scroll de la page (voir commentaire sur html ci-dessus) */
-#scroll-container {
-  width: 100%;
-  height: 100vh;
-  height: 100dvh; /* tient compte de la barre d'adresse dynamique sur mobile */
-  overflow-y: auto;
-  overflow-x: hidden;
-  -webkit-overflow-scrolling: touch;
-  overscroll-behavior-y: contain;
-}
 
 /* Conteneurs */
 .container {
