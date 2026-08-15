@@ -163,8 +163,78 @@
     });
   </script>
 
+  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching -->
+  <script>
+    (function() {
+      const isFr = document.documentElement.lang === 'fr';
+      const menuPages = isFr
+        ? ['/fr/', '/fr/recherche/', '/fr/enseignement/', '/fr/activites/', '/fr/contact/']
+        : ['/', '/research/', '/teaching/', '/activities/', '/contact/'];
 
+      let currentPath = window.location.pathname;
+      if (!currentPath.endsWith('/')) currentPath += '/';
 
+      let currentIndex = menuPages.findIndex(page => {
+        let p = page.endsWith('/') ? page : page + '/';
+        return p === currentPath;
+      });
+
+      if (currentIndex === -1) return;
+
+      function prefetchPage(url) {
+        if (!document.querySelector(`link[href="${url}"]`)) {
+          const link = document.createElement('link');
+          link.rel = 'prefetch';
+          link.href = url;
+          document.head.appendChild(link);
+        }
+      }
+      if (currentIndex > 0) prefetchPage(menuPages[currentIndex - 1]);
+      if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
+
+      let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
+      const minSwipeDistance = 60;
+      const mainContent = document.querySelector('main') || document.body;
+      const navLinks = document.querySelectorAll('nav ul a');
+
+      document.addEventListener('touchstart', e => {
+        touchstartX = e.changedTouches[0].screenX;
+        touchstartY = e.changedTouches[0].screenY;
+      }, { passive: true });
+
+      document.addEventListener('touchend', e => {
+        touchendX = e.changedTouches[0].screenX;
+        touchendY = e.changedTouches[0].screenY;
+        handleSwipe();
+      }, { passive: true });
+
+      function handleSwipe() {
+        const deltaX = touchendX - touchstartX;
+        const deltaY = touchendY - touchstartY;
+
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
+          let targetIndex = -1;
+
+          if (deltaX < 0 && currentIndex < menuPages.length - 1) {
+            targetIndex = currentIndex + 1;
+          } else if (deltaX > 0 && currentIndex > 0) {
+            targetIndex = currentIndex - 1;
+          }
+
+          if (targetIndex !== -1) {
+            mainContent.classList.add('fade-out');
+
+            if (navLinks[currentIndex]) navLinks[currentIndex].classList.remove('active');
+            if (navLinks[targetIndex]) navLinks[targetIndex].classList.add('active');
+
+            setTimeout(() => {
+              window.location.href = menuPages[targetIndex];
+            }, 200);
+          }
+        }
+      }
+    })();
+  </script>
 
   <!-- Filet de sécurité : force Safari iOS à resynchroniser son rendu
        quand l'onglet redevient actif après avoir été mis en arrière-plan
