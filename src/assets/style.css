@@ -113,25 +113,21 @@ a.site-title:visited {
   white-space: nowrap;
 }
 
-/* Logo : deux fichiers distincts, choisis par <picture> selon le mode.
-   Traits fonces + remplissages blancs en clair ; traits clairs + remplissages
-   #1e293b (= fond du header) en sombre, ce qui preserve les occultations du
-   dessin. Fond exterieur transparent dans les deux cas.
-   Aucun filter, aucun mask, aucune course de rendu -> pas de carre blanc. */
+/* Logo vectoriel inline (voir base.njk). Deux couches :
+   .logo-plate = les creux du dessin, peints avec le fond du header, ce qui
+                 preserve les occultations (la fleche passe devant l'engrenage) ;
+   .logo-ink   = les traits, peints avec la couleur du titre.
+   Les deux suivent les variables CSS : le mode sombre est automatique.
+   Aucun fichier externe -> ni 404, ni filter, ni carre blanc possible. */
 .site-logo {
   display: block;
   flex: 0 0 auto;
   width: 28px;
   height: 28px;
-  line-height: 0;
 }
 
-.site-logo img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-}
+.logo-plate { fill: var(--header-bg); }
+.logo-ink   { fill: currentColor; }
 
 /* --- 4. EN-TETE ET NAVIGATION --------------------------------------------- */
 header {
