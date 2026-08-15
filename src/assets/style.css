@@ -58,7 +58,15 @@ html {
   width: 100%;
   overflow-x: hidden;
   background-color: var(--bg-color);
-  overflow-anchor: none; /* Empeche l'ancrage de défilement parasite */
+
+  /* --- CORRECTIF GLITCH SWIPE / RETOUR D'ONGLET (verrouillage du scroll racine) ---
+     Le document racine (html/body) ne défile plus jamais lui-même : c'est
+     précisément son rebond élastique — déclenché soit par le doigt à un
+     bord de page, soit par le repli/dépli automatique de la barre
+     d'adresse Safari quand l'onglet redevient actif — qui provoquait le
+     clignotement, y compris sans aucun geste tactile. Le vrai scroll a
+     lieu dans #scroll-container ci-dessous, dont le rebond élastique reste
+     confiné à sa propre boîte et ne peut plus affecter toute la page. */
 }
 
 body {
@@ -69,7 +77,6 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
-  overscroll-behavior-y: contain; /* Bloque le rebond élastique iOS/Android en bas de page */
 }
 
 /* Conteneurs */
@@ -105,7 +112,9 @@ main a:visited {
   text-decoration: none !important;
 }
 
-/* Focus toujours actif pour l'accessibilité clavier */
+/* Soulignement dynamique au survol et au focus pour l'accessibilité */
+main a:hover,
+main a:visited:hover,
 main a:focus {
   color: var(--link-hover-color);
   text-decoration: underline !important;
@@ -150,6 +159,11 @@ a.site-title:visited {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+}
+
+a.site-title:hover {
+  color: var(--link-color);
+  text-decoration: none !important;
 }
 
 .site-logo {
@@ -213,6 +227,8 @@ nav a:visited {
   white-space: nowrap;
 }
 
+nav a:hover,
+nav a:visited:hover,
 nav a.active,
 nav a.active:visited {
   color: var(--link-color);
@@ -234,6 +250,7 @@ nav a::after {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
+nav a:hover::after,
 nav a.active::after,
 nav a.active:visited::after {
   opacity: 1;
@@ -260,7 +277,9 @@ nav a.active:visited::after {
 }
 
 .lang-switch a.active,
-.lang-switch a.active:visited {
+.lang-switch a.active:visited,
+.lang-switch a:hover,
+.lang-switch a:visited:hover {
   color: var(--link-color);
   font-weight: 700;
 }
@@ -287,6 +306,11 @@ details summary b {
   font-size: 0.9rem;
   cursor: pointer;
   transition: color 0.2s ease;
+}
+
+details summary:hover b {
+  color: var(--link-hover-color);
+  text-decoration: underline;
 }
 
 details i {
@@ -347,6 +371,11 @@ details.section-deroulante[open] summary::after {
   transform: rotate(90deg);
 }
 
+details.section-deroulante summary:hover h2 {
+  color: var(--link-hover-color);
+  text-decoration: none;
+}
+
 /* --- 5. CONTENU INTRO & PROFIL --- */
 .intro-container {
   display: flex;
@@ -354,7 +383,7 @@ details.section-deroulante[open] summary::after {
   justify-content: space-between;
   gap: 2rem;
   width: 100%;
-  max-width: 100%;
+  max-width: 100%; /* Sécurité */
 }
 
 .intro-text {
@@ -372,23 +401,25 @@ details.section-deroulante[open] summary::after {
   flex-direction: column;
   align-items: center;
   width: 220px;
-  max-width: 100%;
+  max-width: 100%; /* Sécurité */
   flex-shrink: 0;
 }
 
 .profile-photo {
   width: 100%;
-  max-width: 100%;
+  max-width: 100%; /* Sécurité */
   height: auto;
   border-radius: 12px;
   object-fit: cover;
   content-visibility: auto;
+  
+  /* --- CORRECTION BUG SWIPE MOBILE SUR IMAGE --- */
   -webkit-user-drag: none;
   -khtml-user-drag: none;
   -moz-user-drag: none;
   -o-user-drag: none;
   user-select: none;
-  pointer-events: none;
+  pointer-events: none; /* Désactive la capture du toucher par l'image */
 }
 
 .photo-credit {
@@ -401,6 +432,7 @@ details.section-deroulante[open] summary::after {
 }
 
 /* 📄 BOUTON TÉLÉCHARGEMENT CV */
+/* Isoler le bouton dans son propre calque de composition */
 .btn-cv,
 .btn-cv:visited {
   display: inline-flex;
@@ -413,6 +445,7 @@ details.section-deroulante[open] summary::after {
   color: var(--link-color);
   text-decoration: none !important;
   font-weight: 500;
+  /* Isolation : force un calque GPU séparé pour éviter les reflows */
   will-change: auto;
   transform: translateZ(0);
   -webkit-backface-visibility: hidden;
@@ -429,6 +462,23 @@ details.section-deroulante[open] summary::after {
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
 }
 
+/* Hover seulement sur écrans non-tactiles */
+@media (hover: hover) {
+  .btn-cv:hover,
+  .btn-cv:visited:hover {
+    background-color: var(--link-color);
+    color: #ffffff;
+    text-decoration: none !important;
+  }
+}
+
+/* Sur tactile : désactiver les hover states */
+@media (hover: none) {
+  .btn-cv {
+    pointer-events: auto;
+  }
+}
+
 /* --- 6. PIED DE PAGE --- */
 footer {
   width: 100%;
@@ -437,6 +487,7 @@ footer {
   text-align: center;
   overflow: hidden;
   border-top: 1px solid #eaeaea;
+  /* Isoler le footer pour empêcher les reflows */
   contain: layout paint;
   will-change: auto;
 }
@@ -449,6 +500,7 @@ footer {
   gap: 25px;
   margin-bottom: 40px;
   width: 100%;
+  /* Isoler pour éviter les reflows lors du chargement des icônes */
   contain: paint;
   will-change: auto;
 }
@@ -464,66 +516,18 @@ footer {
   text-decoration: none !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  /* 💡 Ex-correctif aliasing retiré : forcer un calque GPU en continu
+     (translateZ(0) + backface-visibility + will-change) sur des icônes
+     tout en bas de page est justement ce qui provoque le clignotement
+     Safari iOS quand l'onglet revient au premier plan après avoir été
+     mis en arrière-plan (bug connu de recomposition WebKit). Le calque
+     n'est désormais créé que pendant l'interaction (cf. :hover), donc
+     jamais "au repos" quand l'onglet redevient actif. */
 }
 
-footer .container p {
-  font-size: 0.85rem;
-  color: #595959;
-  margin: 0;
-  padding: 0 10px;
-  word-break: break-word;
-  text-align: center;
-}
-
-/* --- 💻 EFFETS HOVER (EXCLUSIVEMENT SUR ÉCRANS NON-TACTILES) --- */
-@media (hover: hover) and (pointer: fine) {
-  main a:hover,
-  main a:visited:hover {
-    color: var(--link-hover-color);
-    text-decoration: underline !important;
-    text-underline-offset: 3px;
-  }
-
-  a.site-title:hover {
-    color: var(--link-color);
-    text-decoration: none !important;
-  }
-
-  nav a:hover,
-  nav a:visited:hover {
-    color: var(--link-color);
-    text-shadow: 0.2px 0 0 var(--link-color), -0.2px 0 0 var(--link-color);
-    text-decoration: none !important;
-  }
-
-  nav a:hover::after {
-    opacity: 1;
-    transform: scaleX(1);
-  }
-
-  .lang-switch a:hover,
-  .lang-switch a:visited:hover {
-    color: var(--link-color);
-    font-weight: 700;
-  }
-
-  details summary:hover b {
-    color: var(--link-hover-color);
-    text-decoration: underline;
-  }
-
-  details.section-deroulante summary:hover h2 {
-    color: var(--link-hover-color);
-    text-decoration: none;
-  }
-
-  .btn-cv:hover,
-  .btn-cv:visited:hover {
-    background-color: var(--link-color);
-    color: #ffffff;
-    text-decoration: none !important;
-  }
-
+/* Hover et transitions uniquement sur écrans non-tactiles */
+@media (hover: hover) {
   .social-links a,
   .social-links a:visited,
   .social-links a i {
@@ -540,6 +544,15 @@ footer .container p {
     -webkit-backface-visibility: hidden;
     will-change: transform;
   }
+}
+
+footer .container p {
+  font-size: 0.85rem;
+  color: #595959;
+  margin: 0;
+  padding: 0 10px;
+  word-break: break-word;
+  text-align: center;
 }
 
 /* --- 7. ADAPTATION RESPONSIVE (MOBILES) --- */
@@ -590,19 +603,19 @@ footer .container p {
     align-items: center;
     justify-content: center;
     width: 100%;
-    max-width: 100%;
+    max-width: 100%; /* Sécurité */
     gap: 1.5rem;
   }
 
   .profile-container {
     width: 220px;
-    max-width: 100%;
+    max-width: 100%; /* Sécurité */
     margin: 0 auto 0.5rem auto;
   }
 
   .intro-text {
     width: 100%;
-    max-width: 100%;
+    max-width: 100%; /* Sécurité */
     text-align: left;
   }
 }
