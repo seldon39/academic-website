@@ -67,6 +67,49 @@ main.fade-out { opacity: 0; }
   }
 }
 
+/* Transitions de vue natives : le changement de page au clic devient un fondu,
+   comme au balayage. Sans support (Firefox), la navigation reste normale. */
+@view-transition { navigation: auto; }
+
+/* L'en-tete est identique d'une page a l'autre : on le sort du fondu general
+   pour qu'il paraisse immobile pendant la transition. */
+header { view-transition-name: site-header; }
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) { animation: none !important; }
+}
+
+/* --- 1 bis. ACCESSIBILITE CLAVIER ----------------------------------------- */
+/* Lien d'evitement : hors ecran, il apparait au premier Tab et permet de
+   sauter l'en-tete pour aller droit au contenu. */
+.skip-link {
+  position: absolute;
+  left: 8px;
+  top: -60px;
+  z-index: 10;
+  padding: 10px 16px;
+  background-color: var(--header-bg);
+  color: var(--link-color);
+  border: 1px solid var(--link-color);
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  transition: top 0.15s ease;
+}
+
+.skip-link:focus { top: 8px; }
+
+#contenu:focus { outline: none; } /* cible du lien d'evitement, pas un controle */
+
+/* Anneau de focus homogene et bien contraste sur tout le site. */
+:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
 /* --- 2. LIENS ------------------------------------------------------------- */
 a,
 a:visited {
@@ -197,9 +240,41 @@ nav a::after {
   transition: transform 0.2s ease, opacity 0.2s ease;
 }
 
-nav a.active::after {
+nav a.active::after,
+nav a:focus-visible::after {
   opacity: 1;
   transform: scaleX(1);
+}
+
+/* Zone tactile de 44 px SANS toucher a la mise en page : un pseudo-element
+   transparent elargit la seule surface d'appui. Les decalages verticaux sont
+   volontairement dissymetriques — le menu deborde vers le bas dans la marge
+   interne de l'en-tete, le selecteur de langue vers le haut — pour que les
+   deux zones ne se chevauchent jamais. */
+nav a::before {
+  content: "";
+  position: absolute;
+  left: -3px;
+  right: -3px;
+  top: -5px;
+  height: 44px;
+}
+
+.lang-switch a::before {
+  left: -6px;
+  right: -6px;
+  top: -13px;
+}
+
+a.site-title { position: relative; }
+
+a.site-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -9px;
+  height: 44px;
 }
 
 .lang-switch {

@@ -1,3 +1,15 @@
+{%- set isFr = (lang == "fr") -%}
+{%- set t = i18n[lang or "en"] -%}
+{%- set enUrl = "/" -%}{%- set frUrl = "/fr/" -%}
+{%- if "research" in page.url or "recherche" in page.url -%}
+  {%- set enUrl = "/research/" -%}{%- set frUrl = "/fr/recherche/" -%}
+{%- elif "teaching" in page.url or "enseignement" in page.url -%}
+  {%- set enUrl = "/teaching/" -%}{%- set frUrl = "/fr/enseignement/" -%}
+{%- elif "activities" in page.url or "activites" in page.url -%}
+  {%- set enUrl = "/activities/" -%}{%- set frUrl = "/fr/activites/" -%}
+{%- elif "contact" in page.url -%}
+  {%- set enUrl = "/contact/" -%}{%- set frUrl = "/fr/contact/" -%}
+{%- endif -%}
 <!DOCTYPE html>
 <html lang="{{ lang or 'en' }}">
 <head>
@@ -14,6 +26,9 @@
 
   {% if site.url %}
     <link rel="canonical" href="{{ site.url }}{{ page.url }}">
+    <link rel="alternate" hreflang="en" href="{{ site.url }}{{ enUrl }}">
+    <link rel="alternate" hreflang="fr" href="{{ site.url }}{{ frUrl }}">
+    <link rel="alternate" hreflang="x-default" href="{{ site.url }}{{ enUrl }}">
   {% endif %}
 
   <meta property="og:type" content="website">
@@ -42,6 +57,8 @@
 </head>
 
 <body>
+  <a class="skip-link" href="#contenu">{% if isFr %}Aller au contenu{% else %}Skip to content{% endif %}</a>
+
   <header>
     <div class="container header-content">
       <div class="header-top">
@@ -65,17 +82,14 @@
         </h2>
 
         <nav class="lang-switch" aria-label="Language selection">
-          <a href="/" class="{% if lang != 'fr' %}active{% endif %}" title="English" lang="en">EN</a>
+          <a href="{{ enUrl }}" hreflang="en" class="{% if not isFr %}active{% endif %}" title="English" lang="en">EN</a>
           <span class="separator" aria-hidden="true">|</span>
-          <a href="/fr/" class="{% if lang == 'fr' %}active{% endif %}" title="Français" lang="fr">FR</a>
+          <a href="{{ frUrl }}" hreflang="fr" class="{% if isFr %}active{% endif %}" title="Français" lang="fr">FR</a>
         </nav>
       </div>
 
       <nav aria-label="Main navigation">
         <ul class="nav-links">
-          {% set t = i18n[lang or "en"] %}
-          {% set isFr = (lang == "fr") %}
-
           <li><a href="{% if isFr %}/fr/{% else %}/{% endif %}" class="{% if page.url == '/' or page.url == '/fr/' %}active{% endif %}">{{ t.home }}</a></li>
           <li><a href="{% if isFr %}/fr/recherche/{% else %}/research/{% endif %}" class="{% if 'research' in page.url or 'recherche' in page.url %}active{% endif %}">{{ t.research }}</a></li>
           <li><a href="{% if isFr %}/fr/enseignement/{% else %}/teaching/{% endif %}" class="{% if 'teaching' in page.url or 'enseignement' in page.url %}active{% endif %}">{{ t.teaching }}</a></li>
@@ -86,7 +100,7 @@
     </div>
   </header>
 
-  <main class="container">
+  <main class="container" id="contenu" tabindex="-1">
     {{ content | safe }}
   </main>
 
@@ -139,7 +153,7 @@
       link.addEventListener('click', reveal);
     }
 
-    /* --- 2. Navigation par balayage horizontal --------------------------- */
+    /* --- 2. Navigation entre pages (balayage + clavier) ------------------ */
     function initSwipe() {
       var isFr = document.documentElement.lang === 'fr';
       var pages = isFr
@@ -152,18 +166,40 @@
       var index = pages.indexOf(path);
       if (index === -1) return;
 
-      // Prefetch des pages adjacentes
-      [pages[index - 1], pages[index + 1]].forEach(function (url) {
-        if (!url) return;
+      // Prefetch de TOUTES les autres pages du menu, pas seulement des voisines :
+      // elles pesent quelques Ko chacune, donc n'importe quel item du menu
+      // repond ensuite instantanement.
+      pages.forEach(function (url, i) {
+        if (i === index) return;
         var l = document.createElement('link');
         l.rel = 'prefetch';
         l.href = url;
         document.head.appendChild(l);
       });
 
+      var locked = false;
+
+      function goTo(target) {
+        if (locked || target < 0 || target >= pages.length) return;
+        locked = true;
+
+        var links = document.querySelectorAll('.nav-links a');
+        if (links[index]) links[index].classList.remove('active');
+        if (links[target]) links[target].classList.add('active');
+
+        // On laisse TOUJOURS jouer le retour visuel avant de naviguer : la barre
+        // du menu glisse de l'onglet quitte vers l'onglet vise (0.2s) pendant
+        // que le contenu s'estompe. Naviguer immediatement, meme avec une
+        // transition de vue, coupe cette animation avant qu'elle ne commence.
+        var main = document.querySelector('main');
+        if (main) main.classList.add('fade-out');
+        setTimeout(function () { location.href = pages[target]; }, 220);
+      }
+
+      /* Balayage horizontal */
       var MIN_DISTANCE = 80;   // px
       var MAX_ANGLE = 30;      // degres autour de l'horizontale
-      var startX = 0, startY = 0, locked = false;
+      var startX = 0, startY = 0;
 
       document.addEventListener('touchstart', function (e) {
         var t = e.changedTouches[0];
@@ -172,7 +208,6 @@
       }, { passive: true });
 
       document.addEventListener('touchend', function (e) {
-        if (locked) return;
         var t = e.changedTouches[0];
         var dx = t.screenX - startX;
         var dy = t.screenY - startY;
@@ -182,18 +217,18 @@
         var angle = Math.abs(Math.atan2(dy, dx) * 180 / Math.PI);
         if (angle >= MAX_ANGLE && angle <= 180 - MAX_ANGLE) return; // scroll vertical
 
-        var target = dx < 0 ? index + 1 : index - 1;
-        if (target < 0 || target >= pages.length) return;
-
-        locked = true;
-        var main = document.querySelector('main');
-        var links = document.querySelectorAll('.nav-links a');
-        if (main) main.classList.add('fade-out');
-        if (links[index]) links[index].classList.remove('active');
-        if (links[target]) links[target].classList.add('active');
-
-        setTimeout(function () { location.href = pages[target]; }, 200);
+        goTo(dx < 0 ? index + 1 : index - 1);
       }, { passive: true });
+
+      /* Fleches gauche / droite : equivalent clavier du balayage */
+      document.addEventListener('keydown', function (e) {
+        if (e.altKey || e.ctrlKey || e.metaKey || e.shiftKey) return;
+        var el = e.target;
+        if (el && (el.isContentEditable ||
+            /^(INPUT|TEXTAREA|SELECT|BUTTON)$/.test(el.tagName))) return;
+        if (e.key === 'ArrowRight') goTo(index + 1);
+        else if (e.key === 'ArrowLeft') goTo(index - 1);
+      });
     }
 
     /* --- 3. Netlify Identity -------------------------------------------- */

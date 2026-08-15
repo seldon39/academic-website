@@ -2,6 +2,8 @@
   "name": "Razvan Apredoaei",
   "short_name": "R. Apredoaei",
   "start_url": "/",
+  "scope": "/",
+  "lang": "en",
   "icons": [
     {
       "src": "/assets/web-app-manifest-192x192.png",
@@ -14,9 +16,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
+    },
+    {
+      "src": "/assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
     }
   ],
-  "theme_color": "transparent",
-  "background_color": "transparent",
+  "theme_color": "#ffffff",
+  "background_color": "#fcfcfc",
   "display": "standalone"
 }
