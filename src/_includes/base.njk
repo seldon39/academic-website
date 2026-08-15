@@ -164,7 +164,7 @@
     });
   </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) & Prefetching -->
+  <!-- Script de navigation tactile par balayage (Swipe) avec sécurité anti-glitch / overscroll -->
   <script>
     (function() {
       const isFr = document.documentElement.lang === 'fr';
@@ -180,8 +180,19 @@
         return p === currentPath;
       });
 
+      const mainContent = document.querySelector('main') || document.body;
+      const navLinks = document.querySelectorAll('nav ul a');
+
+      // Réinitialisation stricte au retour arrière (Cache navigateur / bfcache)
+      window.addEventListener('pageshow', function() {
+        if (mainContent) {
+          mainContent.classList.remove('fade-out');
+        }
+      });
+
       if (currentIndex === -1) return;
 
+      // Prefetching des pages adjacentes
       function prefetchPage(url) {
         if (!document.querySelector(`link[href="${url}"]`)) {
           const link = document.createElement('link');
@@ -194,25 +205,28 @@
       if (currentIndex < menuPages.length - 1) prefetchPage(menuPages[currentIndex + 1]);
 
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
-      const minSwipeDistance = 60; 
-      const mainContent = document.querySelector('main') || document.body;
-      const navLinks = document.querySelectorAll('nav ul a');
-
-      // Réinitialise l'état de la page si restaurée depuis le cache (bfcache)
-      window.addEventListener('pageshow', function() {
-        if (mainContent) {
-          mainContent.classList.remove('fade-out');
-        }
-      });
+      let isPDFOrExternalClick = false;
+      const minSwipeDistance = 75; 
 
       document.addEventListener('touchstart', e => {
-        touchstartX = e.changedTouches[0].screenX;
-        touchstartY = e.changedTouches[0].screenY;
+        // Désactive le swipe si le toucher démarre sur un lien PDF ou externe
+        const targetLink = e.target.closest('a');
+        if (targetLink) {
+          const href = targetLink.getAttribute('href') || '';
+          if (href.endsWith('.pdf') || targetLink.target === '_blank' || href.startsWith('http')) {
+            isPDFOrExternalClick = true;
+            return;
+          }
+        }
+        isPDFOrExternalClick = false;
+        touchstartX = e.changedTouches[0].clientX;
+        touchstartY = e.changedTouches[0].clientY;
       }, { passive: true });
 
       document.addEventListener('touchend', e => {
-        touchendX = e.changedTouches[0].screenX;
-        touchendY = e.changedTouches[0].screenY;
+        if (isPDFOrExternalClick) return;
+        touchendX = e.changedTouches[0].clientX;
+        touchendY = e.changedTouches[0].clientY;
         handleSwipe();
       }, { passive: true });
 
@@ -220,7 +234,11 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        if (Math.abs(deltaX) > Math.abs(deltaY) * 2 && Math.abs(deltaX) > minSwipeDistance) {
+        // Protection Overscroll : si le doigt a bougé verticalement de plus de 25px, c'est un scroll, pas un swipe
+        if (Math.abs(deltaY) > 25) return;
+
+        // Exige un balayage très net à l'horizontale
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 3 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {
