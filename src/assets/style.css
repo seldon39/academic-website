@@ -23,7 +23,7 @@
   font-style: normal;
   font-weight: 400;
   font-display: swap;
-  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-regular-400.woff2') format('woff2');
+  src: url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/webfonts/fa-solid-400.woff2') format('woff2');
 }
 
 @font-face {
@@ -140,6 +140,7 @@ h2 {
   border-bottom: none !important;
   font-size: 1.5rem;
   font-weight: 600;
+  white-space: nowrap;
 }
 
 a.site-title,
@@ -150,6 +151,7 @@ a.site-title:visited {
   display: inline-flex;
   align-items: center;
   gap: 10px;
+  white-space: nowrap;
 }
 
 .site-logo {
@@ -433,7 +435,6 @@ footer {
   text-align: center;
   overflow: visible;
   border-top: 1px solid #eaeaea;
-  /* Suppression de contain / will-change parasites qui déclenchent le clignotement */
 }
 
 .social-links {
@@ -458,7 +459,6 @@ footer {
   text-decoration: none !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  /* Suppression de will-change/backface-visibility au repos pour stabiliser l'affichage mobile */
 }
 
 footer .container p {
@@ -531,7 +531,6 @@ footer .container p {
     color: var(--link-color) !important;
     transform: translateY(-4px);
     text-decoration: none !important;
-    /* Activer l'accélération matérielle UNIQUEMENT pendant l'interaction de survol */
     will-change: transform;
     backface-visibility: hidden;
     -webkit-backface-visibility: hidden;
