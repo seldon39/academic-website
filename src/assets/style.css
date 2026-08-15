@@ -120,8 +120,10 @@ a.site-title:visited {
 .site-mark {
   display: block;
   flex: 0 0 auto;
-  width: 28px;
-  height: 28px;
+  /* Taille en em : le logo suit automatiquement celle du titre.
+     Ajuster ici uniquement -> 0.95em plus discret, 1.15em plus affirme. */
+  height: 1.05em;
+  width: 1.09em; /* = hauteur x 1.0377, ratio du trace */
 }
 
 /* --- 4. EN-TETE ET NAVIGATION --------------------------------------------- */
