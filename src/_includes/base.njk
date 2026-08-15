@@ -55,9 +55,10 @@
   <meta name="apple-mobile-web-app-title" content="Razvan Apredoaei" />
   <link rel="manifest" href="/assets/site.webmanifest" />
 
-  <!-- Empêche le conflit avec les gestes horizontaux natifs du navigateur -->
+  <!-- Empêche le rebond élastique (overscroll) en haut et en bas de page -->
   <style>
     html, body {
+      overscroll-behavior-y: none;
       overscroll-behavior-x: none;
     }
   </style>
@@ -171,7 +172,7 @@
     });
   </script>
 
-  <!-- Script de navigation tactile par balayage (Swipe) filtré -->
+  <!-- Script de navigation tactile par balayage (Swipe) sécurisé anti-overscroll -->
   <script>
     (function() {
       const isFr = document.documentElement.lang === 'fr';
@@ -190,7 +191,7 @@
       const mainContent = document.querySelector('main') || document.body;
       const navLinks = document.querySelectorAll('nav ul a');
 
-      // Réinitialisation au retour arrière (Cache navigateur / bfcache)
+      // Réinitialisation au retour arrière (bfcache)
       window.addEventListener('pageshow', function() {
         if (mainContent) {
           mainContent.classList.remove('fade-out');
@@ -199,7 +200,7 @@
 
       if (currentIndex === -1) return;
 
-      // Prefetching des pages adjacentes
+      // Prefetching des pages
       function prefetchPage(url) {
         if (!document.querySelector(`link[href="${url}"]`)) {
           const link = document.createElement('link');
@@ -214,20 +215,21 @@
       let touchstartX = 0, touchstartY = 0, touchendX = 0, touchendY = 0;
       let isEdgeSwipe = false;
       let isPDFOrExternalClick = false;
+      let isBottomOrTopOverscroll = false;
       const minSwipeDistance = 80; 
 
       document.addEventListener('touchstart', e => {
         const x = e.changedTouches[0].clientX;
         const screenWidth = window.innerWidth;
 
-        // Ignores les balayages trop proches du bord (30px) pour éviter le conflit avec la navigation système (ex: iOS back gesture)
+        // Protection bords latéraux
         if (x < 30 || x > screenWidth - 30) {
           isEdgeSwipe = true;
           return;
         }
         isEdgeSwipe = false;
 
-        // Désactive le swipe si le toucher démarre sur un fichier PDF ou lien externe
+        // Protection liens / PDF
         const targetLink = e.target.closest('a');
         if (targetLink) {
           const href = targetLink.getAttribute('href') || '';
@@ -237,6 +239,18 @@
           }
         }
         isPDFOrExternalClick = false;
+
+        // Protection Overscroll Bas/Haut de page
+        const scrollTop = window.scrollY || document.documentElement.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+        
+        // Si la page est tout en bas ou tout en haut, le geste suivant risque d'être un overscroll élastique
+        if (scrollTop + clientHeight >= scrollHeight - 5 || scrollTop <= 5) {
+          isBottomOrTopOverscroll = true;
+        } else {
+          isBottomOrTopOverscroll = false;
+        }
 
         touchstartX = x;
         touchstartY = e.changedTouches[0].clientY;
@@ -253,11 +267,14 @@
         const deltaX = touchendX - touchstartX;
         const deltaY = touchendY - touchstartY;
 
-        // Ignore si le mouvement vertical dépasse 20px (défilement)
-        if (Math.abs(deltaY) > 20) return;
+        // Annulation immédiate si mouvement vertical > 15px
+        if (Math.abs(deltaY) > 15) return;
 
-        // Exige un balayage très horizontal et franc
-        if (Math.abs(deltaX) > Math.abs(deltaY) * 3.5 && Math.abs(deltaX) > minSwipeDistance) {
+        // Si le geste a débuté en position extrême (bas ou haut) et comporte une pente verticale, l'annuler
+        if (isBottomOrTopOverscroll && Math.abs(deltaY) > 5) return;
+
+        // Exige un swipe strictement horizontal (ratio 4:1)
+        if (Math.abs(deltaX) > Math.abs(deltaY) * 4 && Math.abs(deltaX) > minSwipeDistance) {
           let targetIndex = -1;
 
           if (deltaX < 0 && currentIndex < menuPages.length - 1) {
