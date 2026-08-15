@@ -163,36 +163,35 @@
     });
   </script>
 
-  <!-- Script anti-rebond en bas (permet pull-to-refresh en haut) -->
+  <!-- Script anti-rebond en bas uniquement (permet pull-to-refresh en haut) -->
   <script>
     (function() {
       const scrollEl = document.getElementById('scroll-container');
       if (!scrollEl) return;
 
+      let lastTouchY = 0;
+
+      scrollEl.addEventListener('touchstart', e => {
+        if (e.touches.length === 1) {
+          lastTouchY = e.touches[0].clientY;
+        }
+      }, { passive: true });
+
       scrollEl.addEventListener('touchmove', e => {
         if (e.touches.length !== 1) return;
+
+        const touchY = e.touches[0].clientY;
+        const touchYDelta = touchY - lastTouchY;
+        lastTouchY = touchY;
 
         const scrollTop = scrollEl.scrollTop;
         const maxScroll = scrollEl.scrollHeight - scrollEl.clientHeight;
 
-        // Bloquer le rebond uniquement en bas (pas au top pour permettre pull-to-refresh)
-        if (scrollTop >= maxScroll - 1) {
-          const touchY = e.touches[0].clientY;
-          const lastTouchY = scrollEl._lastTouchY || touchY;
-          const touchYDelta = touchY - lastTouchY;
-
-          if (touchYDelta < 0) {
-            e.preventDefault();
-          }
-          scrollEl._lastTouchY = touchY;
+        // Bloquer SEULEMENT le rebond en bas : quand on est à la limite du bas ET on swipe vers le bas
+        if (scrollTop >= maxScroll - 1 && touchYDelta > 0) {
+          e.preventDefault();
         }
       }, { passive: false });
-
-      scrollEl.addEventListener('touchstart', e => {
-        if (e.touches.length === 1) {
-          scrollEl._lastTouchY = e.touches[0].clientY;
-        }
-      }, { passive: true });
     })();
   </script>
 
