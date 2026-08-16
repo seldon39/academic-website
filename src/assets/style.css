@@ -42,6 +42,14 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  /* Pied de page colle en bas : sur un grand ecran, une page courte laissait
+     les deux tiers de la hauteur vides SOUS le pied de page. La colonne flex
+     fait grandir <main> pour occuper l'espace restant. dvh plutot que vh :
+     sur mobile, vh ignore la barre d'outils du navigateur. */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -56,6 +64,9 @@ main {
   width: 100%;
   opacity: 1;
   transition: opacity 0.25s ease-in-out;
+  /* absorbe la hauteur restante ; 'auto' en base pour que le contenu long
+     ne soit jamais comprime */
+  flex: 1 0 auto;
 }
 
 main.fade-out { opacity: 0; }
