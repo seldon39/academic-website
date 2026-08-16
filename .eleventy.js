@@ -4,8 +4,8 @@ const katex = require("@vscode/markdown-it-katex").default;
 module.exports = function(eleventyConfig) {
   // Passthrough copy des assets et configurations
   eleventyConfig.addPassthroughCopy("src/assets");
-  // Permet à Safari d'accéder directement à /apple-touch-icon.png à la racine
-  eleventyConfig.addPassthroughCopy({ "src/assets/apple-touch-icon.png": "apple-touch-icon.png" });
+  // Safari cherche ces deux fichiers a la racine, sans passer par les balises <link>
+  eleventyConfig.addPassthroughCopy({"src/assets/apple-touch-icon.png": "apple-touch-icon.png","src/assets/favicon.ico": "favicon.ico"});
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/_headers");
