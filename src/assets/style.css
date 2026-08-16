@@ -36,6 +36,12 @@ html {
   text-size-adjust: 100%;
   width: 100%;
   overflow-x: hidden;
+  /* Reserve en permanence la place de la barre de defilement verticale. Sans
+     elle, une page courte (Teaching) n'a pas de barre et une page longue
+     (Research) en a une : la fenetre change de largeur entre les deux, et tout
+     le contenu centre se decale lateralement de la moitie de cette largeur.
+     Sans effet sur les systemes a barres superposees, ou rien n'est reserve. */
+  scrollbar-gutter: stable;
   background-color: var(--bg-color);
   /* NOTE : pas de `overflow-anchor: none`. L'ancrage de defilement est le
      mecanisme natif qui absorbe les variations de hauteur pendant le scroll ;
