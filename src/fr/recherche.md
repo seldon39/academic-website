@@ -5,7 +5,7 @@ lang: fr
 permalink: /fr/recherche/
 ---
 
-Mes recherches se situent à l'intersection de la géométrie complexe, de la géométrie symplectique et de l'analyse fonctionnelle. Plus précisément, je m'intéresse à l'asymptotique du noyau de Bergman et à la quantification de Berezin-Toeplitz.
+Mes recherches se situent à l'intersection de la géométrie complexe, de la géométrie symplectique et de l'analyse fonctionnelle. Plus précisément, je m'intéresse à l'asymptotique du noyau de Bergman et à la quantification de Berezin—Toeplitz.
 
 ## Publications
 

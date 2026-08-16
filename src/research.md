@@ -5,7 +5,7 @@ lang: en
 permalink: /research/
 ---
 
-My research lies at the intersection of complex geometry, symplectic geometry and functional analysis. More specifically, I am interested in the topics of Bergman kernel asymptotics and Berezin–Toeplitz quantization. 
+My research lies at the intersection of complex geometry, symplectic geometry, and functional analysis. More specifically, I am interested in Bergman kernel asymptotics and Berezin—Toeplitz quantization. 
 
 ## Publications
 
