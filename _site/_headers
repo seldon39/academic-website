@@ -8,14 +8,10 @@
 /assets/*
   Cache-Control: public, max-age=86400
 
-# Cache long reserve aux fichiers dont le NOM change quand le contenu change.
-# `immutable` dit au navigateur de ne jamais revalider : sur un nom stable comme
-# photo.webp, il enferme les visiteurs sur l'ancienne version pendant un an, sans
-# qu'aucun rechargement force n'y puisse rien. La photo et le CV sont donc alignes
-# sur une semaine, et sans `immutable` : une mise a jour se propage d'elle-meme.
+# Les images et le PDF ne changent quasiment jamais : cache long.
 
 /assets/photo.webp
-  Cache-Control: public, max-age=604800
+  Cache-Control: public, max-age=31536000, immutable
 
 /assets/favicon.svg
   Cache-Control: public, max-age=31536000, immutable
