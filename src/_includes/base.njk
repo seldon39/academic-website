@@ -39,13 +39,30 @@
   {% endif %}
   <meta property="og:site_name" content="Razvan Apredoaei">
 
-  <meta name="twitter:card" content="summary">
+  {% if site.url %}
+    <meta property="og:image" content="{{ site.url }}/assets/og-image.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Razvan Apredoaei">
+    <meta name="twitter:image" content="{{ site.url }}/assets/og-image.png">
+  {% endif %}
+
+  <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="{% if title %}{{ title }} | {% endif %}Razvan Apredoaei">
   <meta name="twitter:description" content="{{ description or site.description or 'Page personnelle et travaux de recherche de Razvan Apredoaei.' }}">
 
   <!-- CSS principal (bloquant : evite le FOUC). Seule ressource externe
        de la page : plus aucun CDN tiers, plus aucune police a telecharger. -->
   <link rel="stylesheet" href="/assets/style.css">
+
+  {#- KaTeX : la feuille n'est chargee que sur les pages contenant reellement
+      une formule, donc les autres ne paient rien. Le "+ """ force la conversion
+      en chaine : selon la version d'Eleventy, content peut etre un objet
+      SafeString, sur lequel la recherche echouerait sans lever d'erreur.
+      Ajouter "math: true" au front-matter force le chargement si besoin. -#}
+  {% if math or "katex" in (content + "") %}
+  <link rel="stylesheet" href="/assets/katex/katex.min.css">
+  {% endif %}
 
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/apple-touch-icon.png" />
   <link rel="shortcut icon" href="/assets/favicon.ico" />
@@ -54,6 +71,26 @@
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <meta name="apple-mobile-web-app-title" content="Razvan Apredoaei" />
   <link rel="manifest" href="/assets/site.webmanifest" />
+
+  {%- set profils = [] -%}
+  {%- if site.orcid %}{% set profils = profils.concat(["https://orcid.org/" + site.orcid]) %}{% endif -%}
+  {%- if site.arxiv %}{% set profils = profils.concat([site.arxiv]) %}{% endif -%}
+  {%- if site.researchgate %}{% set profils = profils.concat([site.researchgate]) %}{% endif -%}
+  {%- if site.linkedin %}{% set profils = profils.concat([site.linkedin]) %}{% endif -%}
+  {% if site.url %}
+  <!-- Donnees structurees : indique aux moteurs que cette page et les profils
+       listes en sameAs designent une seule et meme personne. -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Razvan Apredoaei",
+    "url": {{ site.url | dump | safe }},
+    "image": {{ (site.url + "/assets/photo.webp") | dump | safe }},
+    "sameAs": {{ profils | dump | safe }}
+  }
+  </script>
+  {% endif %}
 </head>
 
 <body>
@@ -62,7 +99,9 @@
   <header>
     <div class="container header-content">
       <div class="header-top">
-        <h2 class="site-header-title">
+        <!-- h1 et non h2 : chaque page doit porter exactement un titre de
+             niveau 1. La mise en forme vient de la classe, donc rien ne bouge. -->
+        <h1 class="site-header-title">
           <a href="{% if lang == 'fr' %}/fr/{% else %}/{% endif %}" class="site-title">
             <!-- Logo vectoriel inline, une seule couche.
                  width/height/fill sont des attributs : le logo reste correct
@@ -79,7 +118,7 @@
                  produirait une espace typographique qui s ajouterait a la marge
             --><span>Razvan Apredoaei</span>
           </a>
-        </h2>
+        </h1>
 
         <nav class="lang-switch" aria-label="Language selection">
           <a href="{{ enUrl }}" hreflang="en" class="{% if not isFr %}active{% endif %}" title="English" lang="en">EN</a>

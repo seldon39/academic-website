@@ -1,4 +1,5 @@
-# A placer a la racine du dossier publie (a cote de _redirects).
+# A placer dans src/ — votre configuration le recopie a la racine du site
+# publie via addPassthroughCopy("src/_headers").
 #
 # Note : ceci n'influence pas la note de performance PageSpeed, qui ne mesure
 # que la premiere visite. Cela ameliore les visites suivantes et fait taire
@@ -8,6 +9,7 @@
   Cache-Control: public, max-age=86400
 
 # Les images et le PDF ne changent quasiment jamais : cache long.
+
 /assets/photo.webp
   Cache-Control: public, max-age=31536000, immutable
 
@@ -17,8 +19,15 @@
 /assets/cv_apredoaei.pdf
   Cache-Control: public, max-age=604800
 
+# KaTeX : feuille de style et polices issues du paquet npm, donc figees pour
+# une version donnee. Cache maximal.
+
+/assets/katex/*
+  Cache-Control: public, max-age=31536000, immutable
+
 # Securite : n'affecte pas la note de performance, mais compte dans
 # « Bonnes pratiques » de PageSpeed.
+
 /*
   X-Content-Type-Options: nosniff
   Referrer-Policy: strict-origin-when-cross-origin

@@ -1,4 +1,5 @@
 const htmlmin = require("html-minifier-terser");
+const katex = require("@vscode/markdown-it-katex").default;
 
 module.exports = function(eleventyConfig) {
   // Passthrough copy des assets et configurations
@@ -8,6 +9,27 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPassthroughCopy("src/admin");
   eleventyConfig.addPassthroughCopy("src/robots.txt");
   eleventyConfig.addPassthroughCopy("src/_headers");
+
+  // ── KaTeX ────────────────────────────────────────────────────────────────
+  // Les formules sont rendues a la construction : aucun JavaScript n'est
+  // envoye au visiteur.
+  //
+  // amendLibrary et NON setLibrary : on ajoute le greffon a la configuration
+  // Markdown existante d'Eleventy au lieu de la remplacer. setLibrary ferait
+  // perdre l'option html:true, dont dependent les blocs <div class="intro-...">
+  // de vos pages, qui cesseraient d'etre interpretes.
+  eleventyConfig.amendLibrary("md", (md) =>
+    md.use(katex, { throwOnError: false, errorColor: "#cc0000" })
+  );
+
+  // Feuille de style et polices KaTeX, auto-hebergees : aucun CDN tiers.
+  // Uniquement les .woff2 — les .woff et .ttf du paquet ne servent qu'a des
+  // navigateurs que vous n'aurez pas, et quadrupleraient le poids deploye
+  // (1,2 Mo contre 296 Ko).
+  eleventyConfig.addPassthroughCopy({
+    "node_modules/katex/dist/katex.min.css": "assets/katex/katex.min.css",
+    "node_modules/katex/dist/fonts/*.woff2": "assets/katex/fonts"
+  });
 
   // Transform pour minifier automatiquement le HTML, JS et CSS inline
   eleventyConfig.addTransform("htmlmin", async function(content, outputPath) {
