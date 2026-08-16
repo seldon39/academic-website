@@ -308,6 +308,35 @@ a.site-title::before {
 }
 
 /* --- 5. BLOCS DEROULANTS (DETAILS) ---------------------------------------- */
+
+/* Ouverture et fermeture animees, sans JavaScript.
+   Un <details> ne s'anime pas nativement : son contenu apparait d'un coup.
+   Deux briques recentes le permettent —
+     interpolate-size : autorise l'interpolation vers une hauteur `auto`,
+                        sinon il n'y a rien a animer ;
+     ::details-content : designe le contenu repliable, sans balise en plus,
+                        donc sans toucher a vos fichiers de contenu.
+   `allow-discrete` fait patienter content-visibility jusqu'a la fin du
+   mouvement, sinon le contenu disparaitrait des le premier millimetre.
+   Un navigateur qui ignore ces regles garde l'ouverture instantanee : la
+   degradation est propre, rien ne casse. */
+details { interpolate-size: allow-keywords; }
+
+details::details-content {
+  block-size: 0;
+  overflow: clip;
+  opacity: 0;
+  transition:
+    block-size 0.22s ease,
+    opacity 0.16s ease,
+    content-visibility 0.22s allow-discrete;
+}
+
+details[open]::details-content {
+  block-size: auto;
+  opacity: 1;
+}
+
 details {
   background-color: var(--panel-bg);
   border-left: 4px solid var(--link-color);
@@ -339,7 +368,9 @@ details.section-deroulante {
   margin-bottom: 1.2rem;
   padding: 0.5rem 1rem;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-  transition: border-color 0.2s ease;
+  /* le padding est aussi anime : sinon la boite sursaute a l'ouverture
+     pendant que le contenu, lui, glisse */
+  transition: border-color 0.2s ease, padding-bottom 0.22s ease;
 }
 
 details.section-deroulante[open] {
