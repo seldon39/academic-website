@@ -49,19 +49,19 @@ collections:
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
-      - file: "src/fr/research.md"
+      - file: "src/fr/recherche.md"
         label: "Recherche (FR)"
         name: "research_fr"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
-      - file: "src/fr/teaching.md"
+      - file: "src/fr/enseignement.md"
         label: "Enseignement (FR)"
         name: "teaching_fr"
         fields:
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
-      - file: "src/fr/activities.md"
+      - file: "src/fr/activites.md"
         label: "Activités (FR)"
         name: "activities_fr"
         fields:
