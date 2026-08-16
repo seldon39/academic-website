@@ -327,9 +327,9 @@ details::details-content {
   overflow: clip;
   opacity: 0;
   transition:
-    block-size 0.22s ease,
-    opacity 0.16s ease,
-    content-visibility 0.22s allow-discrete;
+    block-size 0.3s ease,
+    opacity 0.22s ease,
+    content-visibility 0.3s allow-discrete;
 }
 
 details[open]::details-content {
@@ -370,7 +370,7 @@ details.section-deroulante {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
   /* le padding est aussi anime : sinon la boite sursaute a l'ouverture
      pendant que le contenu, lui, glisse */
-  transition: border-color 0.2s ease, padding-bottom 0.22s ease;
+  transition: border-color 0.25s ease, padding-bottom 0.3s ease;
 }
 
 details.section-deroulante[open] {
@@ -401,7 +401,7 @@ details.section-deroulante summary::after {
   content: "\276F";
   font-size: 0.9rem;
   color: var(--link-color);
-  transition: transform 0.2s ease;
+  transition: transform 0.28s ease; /* atterrit avec le panneau */
 }
 
 details.section-deroulante[open] summary::after { transform: rotate(90deg); }
