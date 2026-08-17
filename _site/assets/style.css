@@ -4,6 +4,14 @@
 
 /* --- 1. VARIABLES --------------------------------------------------------- */
 :root {
+  /* Declare au navigateur que la page assiste les deux themes, pour qu'il
+     adapte SES propres composants : surface du canevas, barres de defilement,
+     controles de formulaire. C'est independant du bloc @media plus bas, qui
+     ne restyle que NOS elements. Effet le plus visible ici : plus d'eclair
+     blanc au chargement en mode sombre, le canevas etant peint avant que
+     notre background-color ne s'applique. */
+  color-scheme: light dark;
+
   --primary-color: #2c3e50;
   --text-color: #222222;
   --bg-color: #fcfcfc;
@@ -28,6 +36,12 @@ html {
   text-size-adjust: 100%;
   width: 100%;
   overflow-x: hidden;
+  /* Reserve en permanence la place de la barre de defilement verticale. Sans
+     elle, une page courte (Teaching) n'a pas de barre et une page longue
+     (Research) en a une : la fenetre change de largeur entre les deux, et tout
+     le contenu centre se decale lateralement de la moitie de cette largeur.
+     Sans effet sur les systemes a barres superposees, ou rien n'est reserve. */
+  scrollbar-gutter: stable;
   background-color: var(--bg-color);
   /* NOTE : pas de `overflow-anchor: none`. L'ancrage de defilement est le
      mecanisme natif qui absorbe les variations de hauteur pendant le scroll ;
@@ -42,6 +56,14 @@ body {
   margin: 0;
   padding: 0;
   width: 100%;
+  /* Pied de page colle en bas : sur un grand ecran, une page courte laissait
+     les deux tiers de la hauteur vides SOUS le pied de page. La colonne flex
+     fait grandir <main> pour occuper l'espace restant. dvh plutot que vh :
+     sur mobile, vh ignore la barre d'outils du navigateur. */
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
 }
 
 .container {
@@ -56,6 +78,9 @@ main {
   width: 100%;
   opacity: 1;
   transition: opacity 0.25s ease-in-out;
+  /* absorbe la hauteur restante ; 'auto' en base pour que le contenu long
+     ne soit jamais comprime */
+  flex: 1 0 auto;
 }
 
 main.fade-out { opacity: 0; }
@@ -140,7 +165,12 @@ h2 {
   margin: 0;
   padding: 0;
   border-bottom: none;
-  font-size: 1.5rem;
+  /* 1.375rem et non 1.5 : le nom pesait 1,58 fois la taille du menu, ce qui
+     l'ecrasait. A 1,45 la hierarchie tient sans dominer. Ne pas descendre
+     sous 1.35rem : la zone tactile du titre (44 px, voir plus bas) finirait
+     par recouvrir celle du menu sur mobile. Le logo suit tout seul, etant
+     dimensionne en em. */
+  font-size: 1.375rem;
   font-weight: 600;
   white-space: nowrap;
 }

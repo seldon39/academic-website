@@ -174,20 +174,24 @@
     'use strict';
 
     /* --- 1. E-mail obscurci --------------------------------------------- */
+    // Classe et non identifiant : la page Contact porte un second lien, or un
+    // id doit rester unique dans un document. Le selecteur garde #email-link
+    // pour que l'icone du pied de page continue de fonctionner sans changement.
     function initEmail() {
-      var link = document.getElementById('email-link');
-      if (!link) return;
-      var user = link.dataset.user, domain = link.dataset.domain;
-      if (!user || !domain) return;
+      var liens = document.querySelectorAll('#email-link, .email-link');
+      Array.prototype.forEach.call(liens, function (link) {
+        var user = link.dataset.user, domain = link.dataset.domain;
+        if (!user || !domain) return;
 
-      function reveal() {
-        if (link.dataset.ready) return;
-        link.href = 'mailto:' + user + '@' + domain;
-        link.dataset.ready = '1';
-      }
-      link.addEventListener('pointerenter', reveal);
-      link.addEventListener('touchstart', reveal, { passive: true });
-      link.addEventListener('click', reveal);
+        function reveal() {
+          if (link.dataset.ready) return;
+          link.href = 'mailto:' + user + '@' + domain;
+          link.dataset.ready = '1';
+        }
+        link.addEventListener('pointerenter', reveal);
+        link.addEventListener('touchstart', reveal, { passive: true });
+        link.addEventListener('click', reveal);
+      });
     }
 
     /* --- 2. Navigation entre pages (balayage + clavier) ------------------ */
