@@ -9,7 +9,7 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## Publications
 
-1. With Xiaonan Ma and Lei Wang, **Fubini–Study forms on punctured Riemann Surfaces**, *[CR Math. Acad. Sci. Paris](https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.5802/crmath.763/)* 363 (2025), 603–615.
+1. **Fubini–Study forms on punctured Riemann Surfaces**, with X. Ma and L. Wang, *[CR Math. Acad. Sci. Paris](https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.5802/crmath.763/)* 363 (2025), 603–615.
 <details> 
     <summary> <b> Abstract </b> </summary> 
     <i> In this paper we consider a punctured Riemann surface endowed with a Hermitian metric that equals the Poincaré metric near the punctures, and a holomorphic line bundle that polarizes the metric. We show that the quotient of the induced Fubini–Study forms by Kodaira maps of high tensor powers of the line bundle and the Poincaré form near the singularity grows polynomially uniformly on a neighborhood of the singularity as the tensor power tends to infinity, as an application of the method in [5]. </i> 
