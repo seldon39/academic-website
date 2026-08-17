@@ -165,7 +165,12 @@ h2 {
   margin: 0;
   padding: 0;
   border-bottom: none;
-  font-size: 1.5rem;
+  /* 1.375rem et non 1.5 : le nom pesait 1,58 fois la taille du menu, ce qui
+     l'ecrasait. A 1,45 la hierarchie tient sans dominer. Ne pas descendre
+     sous 1.35rem : la zone tactile du titre (44 px, voir plus bas) finirait
+     par recouvrir celle du menu sur mobile. Le logo suit tout seul, etant
+     dimensionne en em. */
+  font-size: 1.375rem;
   font-weight: 600;
   white-space: nowrap;
 }
