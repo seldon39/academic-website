@@ -26,4 +26,6 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## PhD Thesis
 
+My thesis was supervised by [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on Berezin&ndash;Toeplitz quantization and its applications.
+
 <a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">Download my thesis</a>
