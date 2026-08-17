@@ -28,4 +28,4 @@ Mes recherches se situent à l'intersection de la géométrie complexe, de la g�
 
 J'ai préparé ma thèse sous la direction de [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) et [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). Elle porte sur des propriétés et applications de la quantification de Berezin&ndash;Toeplitz.
 
-<a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">Télécharger ma thèse </a>
+<a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">Thèse de doctorat</a>
