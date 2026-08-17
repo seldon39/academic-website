@@ -23,3 +23,7 @@ Mes recherches se situent à l'intersection de la géométrie complexe, de la g�
     <summary> <b> Résumé </b> </summary> 
     <i> Nous prouvons un développement hors-diagonale du noyau de l'opérateur de Toeplitz dont le symbole est la fonction indicatrice d'un domaine compact à bord lisse dans une variété symplectique complète à géométrie bornée. En utilisant notre approche, nous étendons deux résultats au cadre non compact : le premier concerne l'asymptotique de la trace de polynômes en cet opérateur, et le second établit une loi de Weyl pour cet opérateur de Toeplitz. </i> 
 </details>
+
+## Thèse de doctorat
+
+[Télécharger ma thèse](/assets/these.pdf)
