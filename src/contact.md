@@ -6,6 +6,6 @@ permalink: /contact/
 ---
 ### Email
 
-<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}">Write to me</a>
+<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}"> Send me an email </a>
 
 ### Office
