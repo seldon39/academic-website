@@ -7,6 +7,6 @@ permalink: /fr/contact/
 
 ### Courriel
 
-razvan \[dot] apredoaei \[at] imj-prg \[dot] fr
+<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}">M'envoyer un courriel </a>
 
 ### Bureau 

@@ -6,6 +6,6 @@ permalink: /contact/
 ---
 ### Email
 
-razvan \[dot] apredoaei \[at] imj-prg \[dot] fr
+<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}">Write to me</a>
 
-### Office 
+### Office
