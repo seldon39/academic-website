@@ -1,9 +1,14 @@
 backend:
   name: git-gateway
-  branch: main # ou master
+  branch: main          # doit correspondre a la branche que Netlify deploie
 
 media_folder: "src/assets"
 public_folder: "/assets"
+
+# ATTENTION — Decap n'ecrit dans le fichier QUE les champs declares ici.
+# Toute cle de front matter absente de "fields" disparait a l'enregistrement.
+# C'est pourquoi layout, lang et permalink sont declares en widget "hidden" :
+# invisibles pour vous dans l'interface, mais preserves dans le fichier.
 
 collections:
   - name: "pages_en"
@@ -13,30 +18,45 @@ collections:
         label: "Accueil (EN)"
         name: "index_en"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "en" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/research.md"
         label: "Recherche (EN)"
         name: "research_en"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "en" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/research/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/teaching.md"
         label: "Enseignement (EN)"
         name: "teaching_en"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "en" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/teaching/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/activities.md"
         label: "Activités (EN)"
         name: "activities_en"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "en" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/activities/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/contact.md"
         label: "Contact (EN)"
         name: "contact_en"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "en" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/contact/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
@@ -47,30 +67,45 @@ collections:
         label: "Accueil (FR)"
         name: "index_fr"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "fr" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/fr/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/fr/recherche.md"
         label: "Recherche (FR)"
         name: "research_fr"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "fr" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/fr/recherche/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/fr/enseignement.md"
         label: "Enseignement (FR)"
         name: "teaching_fr"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "fr" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/fr/enseignement/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/fr/activites.md"
         label: "Activités (FR)"
         name: "activities_fr"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "fr" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/fr/activites/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
       - file: "src/fr/contact.md"
         label: "Contact (FR)"
         name: "contact_fr"
         fields:
+          - { label: "Gabarit", name: "layout", widget: "hidden", default: "base.njk" }
+          - { label: "Langue", name: "lang", widget: "hidden", default: "fr" }
+          - { label: "Permalien", name: "permalink", widget: "hidden", default: "/fr/contact/" }
           - { label: "Titre", name: "title", widget: "string" }
           - { label: "Contenu", name: "body", widget: "markdown" }
 
@@ -84,6 +119,11 @@ collections:
         label: "Réseaux sociaux & Liens"
         file: "src/_data/site.json"
         fields:
+          # url et description NE SONT PAS optionnels : sans eux, canonical,
+          # hreflang, og:image et les donnees structurees disparaissent, car
+          # base.njk les conditionne tous a {% if site.url %}.
+          - { label: "URL du site", name: "url", widget: "string" }
+          - { label: "Description", name: "description", widget: "text" }
           - { label: "Nom d'utilisateur Email", name: "email_user", widget: "string" }
           - { label: "Domaine Email", name: "email_domain", widget: "string" }
           - { label: "Identifiant ORCID", name: "orcid", widget: "string", required: false }

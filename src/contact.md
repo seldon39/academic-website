@@ -4,8 +4,10 @@ title: Contact
 lang: en
 permalink: /contact/
 ---
-### Email
+## Email
 
-<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}"> Send me an email </a>
+<a href="#" class="email-link" data-user="{{ site.email_user }}" data-domain="{{ site.email_domain }}">Send me an email</a>
 
-### Office
+## Office
+
+
