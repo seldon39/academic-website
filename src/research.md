@@ -26,4 +26,4 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## PhD Thesis
 
-[Download my thesis](/assets/these.pdf)
+<a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">Download my thesis</a>

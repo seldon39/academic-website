@@ -26,4 +26,4 @@ Mes recherches se situent à l'intersection de la géométrie complexe, de la g�
 
 ## Thèse de doctorat
 
-[Télécharger ma thèse](/assets/these.pdf)
+<a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">Télécharger ma thèse </a>
