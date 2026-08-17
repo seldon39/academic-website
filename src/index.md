@@ -10,11 +10,11 @@ permalink: /
 
 Welcome to my homepage. 
 
-Since September 2026, I have been a postdoctoral researcher at the [Mathematical Institute](https://math.uni-koeln.de) of the [University of Cologne](https://uni-koeln.de). Hosted by [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and [Prof. Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), I conduct research within the DFG-funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
+Since September 2026, I have been a postdoctoral researcher at the [Mathematical Institute](https://math.uni-koeln.de) of the [University of Cologne](https://uni-koeln.de). Hosted by Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and Professor [Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), I conduct research within the DFG-funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
 
 In May 2026, I obtained my PhD from [Université Paris Cité](https://u-paris.fr). 
 
-[My thesis](/assets/these.pdf) focused on Berezin&ndash;Toeplitz quantization and was prepared at [IMJ-PRG](https://www.imj-prg.fr), under the supervision of [Prof. Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [Prof. George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
+[My thesis](/assets/these.pdf) focused on Berezin&ndash;Toeplitz quantization and was prepared at [IMJ-PRG](https://www.imj-prg.fr), under the supervision of Professor [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
 
 <a href="/assets/cv_apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
 
