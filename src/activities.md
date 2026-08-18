@@ -13,7 +13,7 @@ permalink: /activities/
 </details>
 
 <details class="section-deroulante">
-   <summary><h2>Events (participant) </h2></summary>
+   <summary><h2>Events attended</h2></summary>
 
 ### Conferences
 

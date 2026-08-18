@@ -14,7 +14,7 @@ permalink: /fr/activites/
 </details>
 
 <details class="section-deroulante">
-   <summary><h2>Événements (participant) </h2></summary>
+   <summary><h2>Participation à des conférences </h2></summary>
 
 ### Conférences
 
