@@ -479,6 +479,14 @@ details.section-simple summary {
   align-items: baseline;
   gap: 0.6rem;
   user-select: none;
+  /* Le filet est porte ICI et non par le h2 : sur le h2 (qui est en flex: 1),
+     il s'arretait avant le chevron et le trait etait interrompu. Sur le
+     summary, il court sur toute la largeur de la colonne, exactement comme
+     sous un h2 de section classique. Les marges et le padding-bas de la regle
+     `h2` sont donc remontes ici, et le h2 interne est remis a zero. */
+  margin: 1.5rem 0 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border-color);
 }
 
 details.section-simple summary::-webkit-details-marker { display: none; }
@@ -489,9 +497,9 @@ details.section-simple summary h2 {
   flex: 1;
   font-size: 1.25rem;
   color: var(--link-color);
-  margin: 1.5rem 0 0.8rem;
-  padding: 0 0 0.3rem;
-  border-bottom: 1px solid var(--border-color);
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
 }
 
 details.section-simple summary::after {
