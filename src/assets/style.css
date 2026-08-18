@@ -30,7 +30,14 @@
   --accent-doux: #9db4d9;
   --panel-bg: #f4f7f9;
   --card-bg: #ffffff;
-  --max-width: 800px;
+  /* 720 et non 800 : a 800, la colonne faisait 760 px utiles, soit 97
+     caracteres par ligne — bien au-dela de la fourchette de confort 45-75,
+     ou l'oeil rate la ligne suivante au retour chariot. 720 ramene a 87.
+     Pas plus etroit : a 660 (79 caracteres), chaque reference
+     bibliographique passe sur trois lignes et la liste devient penible a
+     parcourir. Sur mobile la valeur n'a aucun effet, la colonne etant deja
+     contrainte par la fenetre (44 caracteres). */
+  --max-width: 720px;
   --icon-box: 44px;
 }
 
@@ -161,7 +168,10 @@ h2 {
   /* Ardoise et non bleu : le bleu reste reserve a ce qui est cliquable.
      Un titre de section bleu se lit comme un lien mort et dilue le signal. */
   color: var(--title-color);
-  font-size: 1.15rem;
+  /* 1.25rem et non 1.15 : a 1,15 fois le corps, le titre de section etait
+     sous la fourchette usuelle de 1,25-1,4. La marge etait tenable tant que
+     le bleu le detachait ; en ardoise, il lui faut la taille. */
+  font-size: 1.25rem;
   font-weight: bold;
   margin: 1.5rem 0 0.8rem;
   padding-bottom: 0.3rem;
