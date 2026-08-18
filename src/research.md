@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Research
 lang: en
 permalink: /research/
+title: Research
 ---
 
 My research lies at the intersection of complex geometry, symplectic geometry, and functional analysis. More specifically, I am interested in Bergman kernel asymptotics and Berezin&ndash;Toeplitz quantization. 
@@ -18,7 +18,7 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## Preprints
 
-1. **Asymptotics for Toeplitz operators with symbol an indicator function**, *[arXiv:2606.24503](https://arxiv.org/abs/2606.24503)* (2026). 
+1. **Asymptotics for Toeplitz operators with symbol an indicator function**, [arXiv:2606.24503](https://arxiv.org/abs/2606.24503) (2026). 
     <details> 
     <summary> <b> Abstract </b> </summary> 
     <i> We prove an off-diagonal expansion of the kernel of the Toeplitz operator whose symbol is the indicator function of a compact domain with smooth boundary in a complete symplectic manifold of bounded geometry. Using our approach, we extend two results to the non-compact setting: the first concerns the asymptotics of the trace of polynomials in this operator, and the second establishes a Weyl law for this Toeplitz operator. </i> 
