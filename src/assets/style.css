@@ -17,17 +17,21 @@
   --bg-color: #fcfcfc;
   --header-bg: #ffffff;
   --title-color: #1e293b;
-  --link-color: #0b57d0;
-  --link-hover-color: #0842a0;
+  /* Bleu universitaire de l'Universite de Cologne (#005176, manuel de
+     marque de juillet 2023). Une couleur en soi n'est pas protegeable ;
+     l'aligner sur son institution est un usage courant sur une page
+     personnelle d'universitaire. */
+  --link-color: #005176;
+  --link-hover-color: #003c57;
   --muted-color: #595959;
   --nav-color: #333333;
   --border-color: #e2e8f0;
   --rule-color: #eaeaea;
   /* Bleu ramene au rang de bordure : rattache le panneau a la famille
      « interactif » sans lui donner le poids d'un trait d'accent. Une valeur
-     par theme, sinon le rapport s'inverse (en sombre, #9db4d9 monterait a
+     par theme, sinon le rapport s'inverse (en sombre, #92b5c5 monterait a
      6,9:1 sur le panneau et redeviendrait aussi criard que le bleu plein). */
-  --accent-doux: #9db4d9;
+  --accent-doux: #92b5c5;
   --panel-bg: #f4f7f9;
   --card-bg: #ffffff;
   /* 720 et non 800 : a 800, la colonne faisait 760 px utiles, soit 97
@@ -707,7 +711,7 @@ footer .container p {
 a {
   /* Teinte discrete sous le doigt, en complement des effets ci-dessous.
      Remplace le rectangle gris par defaut d'iOS. */
-  -webkit-tap-highlight-color: rgba(11, 87, 208, 0.12);
+  -webkit-tap-highlight-color: rgba(0, 81, 118, 0.12);
 }
 
 main a:active,
@@ -876,7 +880,7 @@ details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
 
 /* --- 11. MODE SOMBRE ------------------------------------------------------ */
 @media (prefers-color-scheme: dark) {
-  a { -webkit-tap-highlight-color: rgba(56, 189, 248, 0.16); }
+  a { -webkit-tap-highlight-color: rgba(0, 157, 204, 0.16); }
 
   :root {
     --primary-color: #f1f5f9;
@@ -884,13 +888,16 @@ details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
     --bg-color: #0f172a;
     --header-bg: #1e293b;
     --title-color: #f8fafc;
-    --link-color: #38bdf8;
-    --link-hover-color: #7dd3fc;
+    /* Turquoise de la meme charte (#009dcc), prevu comme accent clair du
+       bleu universitaire : le pendant sombre vient donc de la charte
+       elle-meme, pas d'un eclaircissement invente. */
+    --link-color: #009dcc;
+    --link-hover-color: #0ac7ff;
     --muted-color: #94a3b8;
     --nav-color: #cbd5e1;
     --border-color: #334155;
     --rule-color: #334155;
-    --accent-doux: #3f5a80;
+    --accent-doux: #105d7c;
     --panel-bg: #1e293b;
     --card-bg: #1e293b;
   }
