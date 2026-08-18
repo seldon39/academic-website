@@ -19,7 +19,7 @@ In May 2026, I received my [PhD](/assets/these.pdf) from [Université Paris Cit�
 <!-- Bloc photo + crédit à droite -->
 
   <figure class="profile-container">
-    <img src="/assets/photo.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high" decoding = "async"/>
+    <img src="/assets/photo-2026.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high" decoding = "async"/>
     <figcaption class="photo-credit">
     &copy; Katrin Schmid,  Archives of the Mathematisches Forschungsinstitut Oberwolfach.
     </figcaption>

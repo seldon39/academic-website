@@ -18,7 +18,7 @@ En mai 2026, j'ai obtenu mon [doctorat](/assets/these.pdf) à l'[Université Par
 <!-- Bloc photo + crédit à droite -->
 
   <figure class="profile-container">
-    <img src="/assets/photo.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high">
+    <img src="/assets/photo-2026.webp" alt="Razvan Apredoaei" class="profile-photo" width="220" height="280" loading="eager" fetchpriority="high">
     <figcaption class="photo-credit">
     &copy; Katrin Schmid, Archives of the Mathematisches Forschungsinstitut Oberwolfach.
     </figcaption>
