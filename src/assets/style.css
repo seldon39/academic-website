@@ -453,6 +453,57 @@ details.section-deroulante summary::after {
 
 details.section-deroulante[open] summary::after { transform: rotate(90deg); }
 
+/* Variante SANS CARTE : le panneau se presente comme une section ordinaire.
+   Utilisee sur Teaching, ou « Past » doit s'aligner exactement sur les titres
+   de section classiques ; la variante a carte (.section-deroulante ci-dessus)
+   reste employee sur Activities, ou l'index de rubriques justifie l'encadre.
+   Motif : la carte aligne sa BORDURE sur la colonne, donc son texte est
+   forcement rentre de 17 px (1 px de bordure + 1 rem de padding), et les
+   listes qu'elle contient de 57 px au lieu de 40. Sans carte, plus de retrait
+   a compenser : l'alignement est exact a toutes les largeurs, sans media
+   query ni valeur magique. */
+details.section-simple {
+  /* annule la mise en panneau heritee de la regle `details` generique */
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+}
+
+details.section-simple summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  user-select: none;
+}
+
+details.section-simple summary::-webkit-details-marker { display: none; }
+
+/* Le titre reprend mot pour mot la regle `h2` : meme taille, meme filet, meme
+   marge. Seules la couleur et le chevron disent qu'il s'ouvre. */
+details.section-simple summary h2 {
+  flex: 1;
+  font-size: 1.25rem;
+  color: var(--link-color);
+  margin: 1.5rem 0 0.8rem;
+  padding: 0 0 0.3rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+details.section-simple summary::after {
+  content: "\276F";
+  font-size: 0.9rem;
+  color: var(--link-color);
+  align-self: center;
+  transition: transform 0.28s ease;
+}
+
+details.section-simple[open] summary::after { transform: rotate(90deg); }
+
 /* --- 6. INTRO & PHOTO DE PROFIL ------------------------------------------- */
 .intro-container {
   display: flex;
@@ -642,7 +693,8 @@ footer .container p {
     text-decoration: underline;
   }
 
-  details.section-deroulante summary:hover h2 { color: var(--link-hover-color); }
+  details.section-deroulante summary:hover h2,
+  details.section-simple summary:hover h2 { color: var(--link-hover-color); }
 
   .btn-cv:hover,
   .btn-cv:visited:hover {
@@ -702,7 +754,8 @@ details summary:active b {
   text-decoration: underline;
 }
 
-details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
+details.section-deroulante summary:active h2,
+details.section-simple summary:active h2 { color: var(--link-hover-color); }
 
 .btn-cv:active,
 .btn-cv:visited:active {

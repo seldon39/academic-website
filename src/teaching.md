@@ -9,7 +9,7 @@ permalink: /teaching/
 
 
 
-<details class="section-deroulante">
+<details class="section-simple">
    <summary><h2>Past </h2></summary>
 
 ### 2025-2026

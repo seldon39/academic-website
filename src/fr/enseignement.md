@@ -10,7 +10,7 @@ permalink: /fr/enseignement/
 
 
 
-<details class="section-deroulante">
+<details class="section-simple">
    <summary><h2>Passé </h2></summary>
 
 ### 2025-2026
