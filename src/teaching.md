@@ -6,6 +6,11 @@ permalink: /teaching/
 ---
 
 <details class="section-deroulante">
+   <summary><h2>Current </h2></summary>
+
+</details>
+
+<details class="section-deroulante">
    <summary><h2>Past </h2></summary>
 
 ### 2025-2026
