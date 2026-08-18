@@ -157,6 +157,31 @@ a:visited {
 main a,
 main a:visited { text-decoration: none; }
 
+/* Liens du TEXTE COURANT : couleur du texte, distingues par le seul trait.
+   Les deux tentatives precedentes cherchaient a faire passer le bleu par la
+   fenetre de la technique WCAG F73 — contraste >= 3:1 avec le texte voisin ET
+   >= 4,5:1 avec le fond — fenetre large de 7 % en mode sombre, et qui exigeait
+   un bleu PLUS vif en clair. Ici aucune information ne passe par la couleur :
+   le critere cesse de s'appliquer au lieu d'etre satisfait de justesse, et il
+   le restera si la palette change.
+   Effet de bord recherche : le bleu tombe de 33,7 % a 19,3 % de l'encre de la
+   page et ne designe plus qu'une chose, un controle.
+   Le selecteur ne vise que la prose : navigation, .btn-cv, bascules « Resume »
+   et anneau de focus gardent le bleu. */
+main p a, main li a, main dd a, main td a,
+main p a:visited, main li a:visited, main dd a:visited, main td a:visited {
+  color: var(--text-color);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
+  /* Trait a 45 % : allege les paragraphes denses de la page Recherche, ou
+     presque chaque ligne porte deux ou trois liens. Supprimer cette ligne
+     pour un trait plein — le reste de la regle est inchange. Si color-mix
+     n'est pas reconnu, la declaration tombe et le trait reprend currentColor,
+     ce qui donne precisement le trait plein : repli sans consequence. */
+  text-decoration-color: color-mix(in srgb, currentColor 45%, transparent);
+}
+
 main a:focus-visible {
   color: var(--link-hover-color);
   text-decoration: underline;
@@ -619,6 +644,19 @@ footer .container p {
     color: var(--link-hover-color);
     text-decoration: underline;
     text-underline-offset: 3px;
+  }
+
+  /* Le bleu revient au survol : un lien souligne noir se lit bien mais ne se
+     repere pas en vision peripherique, et sur une liste de publications les
+     liens SONT le contenu actionnable. Ceci en recupere une partie sur
+     ordinateur sans rien coûter au repos.
+     L'offset reste a 2px, comme au repos : la regle generique ci-dessus le
+     passe a 3px, ce qui ferait sauter le trait d'un pixel a l'entree du
+     pointeur. Specificite 0-0-1-2 contre 0-0-1-1, cette regle l'emporte. */
+  main p a:hover, main li a:hover, main dd a:hover, main td a:hover {
+    color: var(--link-color);
+    text-decoration-color: var(--link-color);
+    text-underline-offset: 2px;
   }
 
   a.site-title:hover { color: var(--link-color); }
