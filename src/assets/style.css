@@ -153,7 +153,9 @@ main a:focus-visible {
 
 /* --- 3. TITRES ------------------------------------------------------------ */
 h2 {
-  color: var(--link-color);
+  /* Ardoise et non bleu : le bleu reste reserve a ce qui est cliquable.
+     Un titre de section bleu se lit comme un lien mort et dilue le signal. */
+  color: var(--title-color);
   font-size: 1.15rem;
   font-weight: bold;
   margin: 1.5rem 0 0.8rem;
