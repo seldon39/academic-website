@@ -8,7 +8,7 @@ permalink: /
 <div class = "intro-container"> 
 <div class = "intro-text">
 
-Since September 2026, I have been a postdoctoral researcher at the Mathematical Institute of the University of Cologne. Hosted by Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and Professor [Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), I conduct research within the DFG-funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
+Since September 2026, I have been a postdoctoral researcher at the [Mathematical Institute](https://math.uni-koeln.de) of the University of Cologne. Hosted by Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) and Professor [Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), I conduct research within the DFG-funded project *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
 
 In May 2026, I received my PhD from Université Paris Cité under the supervision of Professor [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and Professor George Marinescu.
 

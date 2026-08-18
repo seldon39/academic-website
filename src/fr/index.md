@@ -7,9 +7,9 @@ permalink: /fr/
 <div class = "intro-container"> 
 <div class = "intro-text">
 
-Depuis septembre 2026, je suis postdoctorant à l'[Institut de Mathématiques](https://math.uni-koeln.de) de l'[Université de Cologne](https://uni-koeln.de). Au sein du groupe de recherche de [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) et d'[Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), je travaille dans le cadre du projet financé par la DFG *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
+Depuis septembre 2026, je suis postdoctorant à l'[Institut de Mathématiques](https://math.uni-koeln.de) de l'Université de Cologne. Au sein du groupe de recherche de [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/) et d'[Alexander Drewitz](https://www.mi.uni-koeln.de/~drewitz/), je travaille dans le cadre du projet financé par la DFG *[Random Polynomials and Random Kähler Geometry](https://spp2265.wias-berlin.de/project.php?projectID=29)*.
 
-En mai 2026, j'ai obtenu mon [doctorat](/assets/these.pdf) à l'[Université Paris Cité](https://u-paris.fr), sous la direction de [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) et [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
+En mai 2026, j'ai obtenu mon doctorat à l'Université Paris Cité, sous la direction de [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) et George Marinescu.
 
 <a href="/assets/cv_apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
 
