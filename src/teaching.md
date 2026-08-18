@@ -5,10 +5,9 @@ lang: en
 permalink: /teaching/
 ---
 
-<details class="section-deroulante" open>
-   <summary><h2>Current </h2></summary>
+<h2>2026-2027 </h2>
 
-</details>
+
 
 <details class="section-deroulante">
    <summary><h2>Past </h2></summary>

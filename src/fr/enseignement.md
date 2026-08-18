@@ -5,10 +5,9 @@ lang: fr
 permalink: /fr/enseignement/
 ---
 
-<details class="section-deroulante" open>
-   <summary><h2>En cours </h2></summary>
+<h2>2026-2027 </h2>
 
-</details>
+
 
 
 <details class="section-deroulante">
