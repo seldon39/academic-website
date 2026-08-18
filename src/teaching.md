@@ -5,7 +5,7 @@ lang: en
 permalink: /teaching/
 ---
 
-<details class="section-deroulante">
+<details class="section-deroulante" open>
    <summary><h2>Current </h2></summary>
 
 </details>

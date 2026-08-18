@@ -5,7 +5,7 @@ lang: fr
 permalink: /fr/enseignement/
 ---
 
-<details class="section-deroulante">
+<details class="section-deroulante" open>
    <summary><h2>En cours </h2></summary>
 
 </details>
