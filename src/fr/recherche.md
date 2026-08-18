@@ -9,7 +9,7 @@ Mes recherches se situent à l'intersection de la géométrie complexe, de la g�
 
 ## Publications
 
-1. **Fubini–Study forms on punctured Riemann Surfaces**, avec X. Ma et L. Wang, *[CR Math. Acad. Sci. Paris](https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.5802/crmath.763/)* 363 (2025), 603–615. [arxiv.org/abs/2506.05863](https://arxiv.org/abs/2506.05863).
+1. **Fubini–Study forms on punctured Riemann Surfaces**, avec X. Ma et L. Wang, *[CR Math. Acad. Sci. Paris](https://comptes-rendus.academie-sciences.fr/mathematique/articles/10.5802/crmath.763/)* 363 (2025), 603–615. [arXiv:2506.05863](https://arxiv.org/abs/2506.05863).
     <details> 
     <summary> <b> Résumé </b> </summary> 
     <i> Dans cet article, nous considérons une surface de Riemann épointée munie d’une métrique hermitienne qui coïncide avec la métrique de Poincaré près des points de ponction, ainsi qu’un fibré en droites holomorphe qui polarise la métrique. Nous montrons que le quotient des formes induites de Fubini–Study par les applications de Kodaira des puissances tensorielles élevées du fibré en droites et de la forme de Poincaré près de la singularité croît de manière polynomiale et uniforme dans un voisinage de la singularité lorsque la puissance tensorielle tend vers l’infini, en application de la méthode décrite dans [5]. </i> 
