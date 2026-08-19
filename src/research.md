@@ -26,6 +26,6 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## PhD Thesis
 
-I prepared my thesis at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on some properties and applications of Toeplitz operators.
+I prepared my thesis at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of Professors [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on some properties and applications of Toeplitz operators.
 
 <a href="/assets/these.pdf" class="btn-cv" target="_blank" rel="noopener">PhD thesis</a>
