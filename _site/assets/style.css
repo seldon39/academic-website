@@ -23,9 +23,21 @@
   --nav-color: #333333;
   --border-color: #e2e8f0;
   --rule-color: #eaeaea;
+  /* Bleu ramene au rang de bordure : rattache le panneau a la famille
+     « interactif » sans lui donner le poids d'un trait d'accent. Une valeur
+     par theme, sinon le rapport s'inverse (en sombre, #9db4d9 monterait a
+     6,9:1 sur le panneau et redeviendrait aussi criard que le bleu plein). */
+  --accent-doux: #9db4d9;
   --panel-bg: #f4f7f9;
   --card-bg: #ffffff;
-  --max-width: 800px;
+  /* 720 et non 800 : a 800, la colonne faisait 760 px utiles, soit 97
+     caracteres par ligne — bien au-dela de la fourchette de confort 45-75,
+     ou l'oeil rate la ligne suivante au retour chariot. 720 ramene a 87.
+     Pas plus etroit : a 660 (79 caracteres), chaque reference
+     bibliographique passe sur trois lignes et la liste devient penible a
+     parcourir. Sur mobile la valeur n'a aucun effet, la colonne etant deja
+     contrainte par la fenetre (44 caracteres). */
+  --max-width: 720px;
   --icon-box: 44px;
 }
 
@@ -153,8 +165,13 @@ main a:focus-visible {
 
 /* --- 3. TITRES ------------------------------------------------------------ */
 h2 {
-  color: var(--link-color);
-  font-size: 1.15rem;
+  /* Ardoise et non bleu : le bleu reste reserve a ce qui est cliquable.
+     Un titre de section bleu se lit comme un lien mort et dilue le signal. */
+  color: var(--title-color);
+  /* 1.25rem et non 1.15 : a 1,15 fois le corps, le titre de section etait
+     sous la fourchette usuelle de 1,25-1,4. La marge etait tenable tant que
+     le bleu le detachait ; en ardoise, il lui faut la taille. */
+  font-size: 1.25rem;
   font-weight: bold;
   margin: 1.5rem 0 0.8rem;
   padding-bottom: 0.3rem;
@@ -369,7 +386,7 @@ details[open]::details-content {
 
 details {
   background-color: var(--panel-bg);
-  border-left: 4px solid var(--link-color);
+  border-left: 4px solid var(--accent-doux);
   padding: 0.8rem 1.2rem;
   margin: 1rem 0 1.5rem;
   border-radius: 6px;
@@ -435,6 +452,65 @@ details.section-deroulante summary::after {
 }
 
 details.section-deroulante[open] summary::after { transform: rotate(90deg); }
+
+/* Variante SANS CARTE : le panneau se presente comme une section ordinaire.
+   Utilisee sur Teaching, ou « Past » doit s'aligner exactement sur les titres
+   de section classiques ; la variante a carte (.section-deroulante ci-dessus)
+   reste employee sur Activities, ou l'index de rubriques justifie l'encadre.
+   Motif : la carte aligne sa BORDURE sur la colonne, donc son texte est
+   forcement rentre de 17 px (1 px de bordure + 1 rem de padding), et les
+   listes qu'elle contient de 57 px au lieu de 40. Sans carte, plus de retrait
+   a compenser : l'alignement est exact a toutes les largeurs, sans media
+   query ni valeur magique. */
+details.section-simple {
+  /* annule la mise en panneau heritee de la regle `details` generique */
+  background: none;
+  border: none;
+  border-radius: 0;
+  box-shadow: none;
+  padding: 0;
+  margin: 0 0 1.2rem;
+}
+
+details.section-simple summary {
+  cursor: pointer;
+  list-style: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  user-select: none;
+  /* Le filet est porte ICI et non par le h2 : sur le h2 (qui est en flex: 1),
+     il s'arretait avant le chevron et le trait etait interrompu. Sur le
+     summary, il court sur toute la largeur de la colonne, exactement comme
+     sous un h2 de section classique. Les marges et le padding-bas de la regle
+     `h2` sont donc remontes ici, et le h2 interne est remis a zero. */
+  margin: 1.5rem 0 0.8rem;
+  padding-bottom: 0.3rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+details.section-simple summary::-webkit-details-marker { display: none; }
+
+/* Le titre reprend mot pour mot la regle `h2` : meme taille, meme filet, meme
+   marge. Seules la couleur et le chevron disent qu'il s'ouvre. */
+details.section-simple summary h2 {
+  flex: 1;
+  font-size: 1.25rem;
+  color: var(--link-color);
+  margin: 0;
+  padding: 0;
+  border-bottom: none;
+}
+
+details.section-simple summary::after {
+  content: "\276F";
+  font-size: 0.9rem;
+  color: var(--link-color);
+  align-self: center;
+  transition: transform 0.28s ease;
+}
+
+details.section-simple[open] summary::after { transform: rotate(90deg); }
 
 /* --- 6. INTRO & PHOTO DE PROFIL ------------------------------------------- */
 .intro-container {
@@ -625,7 +701,8 @@ footer .container p {
     text-decoration: underline;
   }
 
-  details.section-deroulante summary:hover h2 { color: var(--link-hover-color); }
+  details.section-deroulante summary:hover h2,
+  details.section-simple summary:hover h2 { color: var(--link-hover-color); }
 
   .btn-cv:hover,
   .btn-cv:visited:hover {
@@ -685,7 +762,8 @@ details summary:active b {
   text-decoration: underline;
 }
 
-details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
+details.section-deroulante summary:active h2,
+details.section-simple summary:active h2 { color: var(--link-hover-color); }
 
 .btn-cv:active,
 .btn-cv:visited:active {
@@ -835,6 +913,7 @@ details.section-deroulante summary:active h2 { color: var(--link-hover-color); }
     --nav-color: #cbd5e1;
     --border-color: #334155;
     --rule-color: #334155;
+    --accent-doux: #3f5a80;
     --panel-bg: #1e293b;
     --card-bg: #1e293b;
   }
