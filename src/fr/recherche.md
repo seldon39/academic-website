@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Recherche
 lang: fr
 permalink: /fr/recherche/
+title: Recherche
 ---
 
 Mes recherches se situent à l'intersection de la géométrie complexe, de la géométrie symplectique et de l'analyse fonctionnelle. Plus précisément, je m'intéresse à l'asymptotique du noyau de Bergman et à la quantification de Berezin&ndash;Toeplitz.
@@ -24,6 +24,3 @@ Mes recherches se situent à l'intersection de la géométrie complexe, de la g�
     <i> Nous prouvons un développement hors-diagonale du noyau de l'opérateur de Toeplitz dont le symbole est la fonction indicatrice d'un domaine compact à bord lisse dans une variété symplectique complète à géométrie bornée. En utilisant notre approche, nous étendons deux résultats au cadre non compact : le premier concerne l'asymptotique de la trace de polynômes en cet opérateur, et le second établit une loi de Weyl pour cet opérateur de Toeplitz. </i> 
     </details>
 
-## Thèse de doctorat
-
-J'ai préparé ma [thèse de doctorat](/assets/these.pdf) à l'[IMJ-PRG](https://www.imj-prg.fr) sous la direction de [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) et [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). Elle porte sur des propriétés et applications des opérateurs de Toeplitz.
