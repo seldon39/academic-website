@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Research
 lang: en
 permalink: /research/
+title: Research
 ---
 
 My research lies at the intersection of complex geometry, symplectic geometry, and functional analysis. More specifically, I am interested in Bergman kernel asymptotics and Berezin&ndash;Toeplitz quantization. 
@@ -26,5 +26,5 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
 
 ## PhD Thesis
 
-I prepared my [PhD thesis](/assets/these.pdf) at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on some properties and applications of Toeplitz operators.
+I prepared my [PhD thesis](/assets/these.pdf) at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of Professors [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on some properties and applications of Toeplitz operators.
 
