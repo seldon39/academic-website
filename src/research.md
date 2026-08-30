@@ -24,7 +24,4 @@ My research lies at the intersection of complex geometry, symplectic geometry, a
     <i> We prove an off-diagonal expansion of the kernel of the Toeplitz operator whose symbol is the indicator function of a compact domain with smooth boundary in a complete symplectic manifold of bounded geometry. Using our approach, we extend two results to the non-compact setting: the first concerns the asymptotics of the trace of polynomials in this operator, and the second establishes a Weyl law for this Toeplitz operator. </i> 
     </details>
 
-## PhD Thesis
-
-I prepared my [PhD thesis](/assets/these.pdf) at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of Professors [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/). It focused on some properties and applications of Toeplitz operators.
 
