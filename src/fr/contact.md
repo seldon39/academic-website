@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Contact
 lang: fr
 permalink: /fr/contact/
+title: Contact
 ---
 ## Courriel
 
@@ -10,3 +10,8 @@ permalink: /fr/contact/
 
 ## Bureau
 
+Office EG -105 <br>
+Department Mathematik/Informatik der Universität zu Köln <br>
+Abteilung Mathematik <br>
+Weyertal 86-90 <br>
+50931 Köln, Deutschland
