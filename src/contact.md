@@ -11,12 +11,8 @@ title: Contact
 ## Office
 
 Office EG -105
-
 Department Mathematik/Informatik der Universität zu Köln
-
 Abteilung Mathematik
-
 Weyertal 86-90
-
 50931 Köln
 
