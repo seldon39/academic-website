@@ -10,7 +10,7 @@ title: Contact
 
 ## Bureau
 
-Office EG -105 <br>
+Office UG -105 <br>
 Department Mathematik/Informatik der Universität zu Köln <br>
 Abteilung Mathematik <br>
 Weyertal 86-90 <br>
