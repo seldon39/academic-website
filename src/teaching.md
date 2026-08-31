@@ -1,8 +1,8 @@
 ---
 layout: base.njk
-title: Teaching
 lang: en
 permalink: /teaching/
+title: Teaching
 ---
 
 <h2>2026-2027 </h2>
@@ -14,7 +14,7 @@ permalink: /teaching/
 
 ### 2025-2026
 * **Algèbre linéaire appliquée** — CM/TD ING1 à CY Tech. [Lien vers le polycopié](/assets/Support_cours.pdf).
-* **Data Exploration** - CM/TP ING1 à CY Tech.
+* **Data Exploration** - Analyse exploratoire de données en R. CM/TP ING1 à CY Tech.
 * **Analyse** - TD Préing1 à CY Tech.
 
 
