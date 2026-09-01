@@ -15,7 +15,7 @@ title: Enseignement
 
 ### 2025-2026
 * **Algèbre linéaire appliquée** — CM/TD ING1 à CY Tech. [Lien vers le polycopié](/assets/Support_cours.pdf).
-* **Data Exploration** - Analyse exploratoire de données en langage R. CM/TP ING1 à CY Tech.
+* **Data Exploration** -CM/TP ING1 à CY Tech. Analyse exploratoire de données en langage R. 
 * **Analyse** - TD Préing1 à CY Tech.
 
 
