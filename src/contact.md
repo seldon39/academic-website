@@ -11,8 +11,7 @@ title: Contact
 ## Office
 
 Office UG -105 <br>
-Department Mathematik/Informatik der Universität zu Köln <br>
-Abteilung Mathematik <br>
+Department Mathematik/Informatik der Universität zu Köln, Abteilung Mathematik <br>
 Gebäude 162 <br>
 Weyertal 86-90 <br>
 50931 Köln <br>
