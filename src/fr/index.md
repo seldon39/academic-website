@@ -13,7 +13,7 @@ Depuis septembre 2026, je suis postdoctorant à l'[Institut de Mathématiques](h
 
 En mai 2026, j'ai obtenu mon [doctorat](/assets/these.pdf) de l'Université Paris Cité, préparé à l'[IMJ-PRG](https://www.imj-prg.fr) sous la direction de [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) et George Marinescu.
 
-<a href="/assets/cv_apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
+<a href="/assets/cv_apredoaei2.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
 
 </div>
 

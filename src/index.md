@@ -14,7 +14,7 @@ Since September 2026, I have been a postdoctoral researcher at the [Mathematical
 
 In May 2026, I received my [PhD](/assets/these.pdf) from Université Paris Cité, prepared at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of Professors [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and George Marinescu.
 
-<a href="/assets/cv_apredoaei.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
+<a href="/assets/cv_apredoaei2.pdf" class="btn-cv" target="_blank" rel="noopener">Curriculum Vitae</a>
 
 </div>
 
