@@ -182,7 +182,7 @@ h2 {
    niveau h2 pour la hierarchie et les lecteurs d'ecran, mais renonce au filet
    et a la taille pleine, qui la mettraient au rang de « Publications ». */
 main h2.mention-ia {
-  font-size: 0.9rem;
+  font-size: 1.1rem;
   border-bottom: none;
   padding-bottom: 0;
   margin: 2rem 0 0.7rem;
