@@ -178,15 +178,6 @@ h2 {
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Mention IA : seule section a ne pas etre un titre de contenu. Elle garde le
-   niveau h2 pour la hierarchie et les lecteurs d'ecran, mais renonce au filet
-   et a la taille pleine, qui la mettraient au rang de « Publications ». */
-main h2.mention-ia {
-  font-size: 1.1rem;
-  border-bottom: none;
-  padding-bottom: 0;
-  margin: 2rem 0 0.7rem;
-}
 
 .site-header-title {
   margin: 0;
