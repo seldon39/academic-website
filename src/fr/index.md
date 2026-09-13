@@ -27,7 +27,6 @@ En mai 2026, j'ai obtenu mon [doctorat](/assets/these.pdf) de l'Université Pari
   </figure>
 </div>
 
-#### Utilisation de l'IA
-
+### Utilisation de l'IA
 
 Je soutiens la déclaration [Math and AI](https://mathandai.org). Si j'utilise des outils d'IA générative dans des tâches non liées à la recherche (comme la construction de ce site web), je n'en ai pas encore fait usage dans mes travaux. Si cela venait à changer, toute démonstration obtenue à l'aide de l'IA sera clairement signalée. 
