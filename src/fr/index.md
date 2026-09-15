@@ -29,4 +29,4 @@ En mai 2026, j'ai obtenu mon [doctorat](/assets/these.pdf) de l'Université Pari
 
 ## Utilisation de l'IA 
 
-Je soutiens la déclaration [Math and AI](https://mathandai.org). Si j'utilise l'assistance des outils d'IA générative dans des diverses (comme la construction de ce site web), je n'en ai pas encore fait usage dans mes travaux. Si cela venait à changer, toute démonstration obtenue à l'aide de ces outils sera clairement signalée. 
+Je soutiens la déclaration [Math and AI](https://mathandai.org). J'utilise actuellement l'assistance des outils d'IA générative pour des tâches diverses, comme la construction de ce site web. Je ne les ai pas encore utilisés pour produire des articles de recherche. Si cela venait à changer, tout résultat obtenu à l'aide de ces outils sera clairement signalé. 
