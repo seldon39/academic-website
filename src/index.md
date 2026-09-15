@@ -10,7 +10,7 @@ title: Home
 
 Welcome to my homepage. 
 
-Since September 2026, I have been a postdoctoral researcher at the [Mathematical Institute](https://math.uni-koeln.de) of the University of Cologne, in the group of Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
+Since September 2026, I have been a postdoctoral researcher at the [Mathematical Institute](https://math.uni-koeln.de) of the University of Cologne in the group of Professor [George Marinescu](https://www.mi.uni-koeln.de/~gmarines/).
 
 In May 2026, I received my [PhD](/assets/these.pdf) from Université Paris Cité, prepared at [IMJ-PRG](https://www.imj-prg.fr) under the supervision of Professors [Xiaonan Ma](http://www.cim.nankai.edu.cn/2025/0516/c6720a570789/page.htm) and George Marinescu.
 
