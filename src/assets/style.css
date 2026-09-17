@@ -36,9 +36,18 @@
      Pas plus etroit : a 660 (79 caracteres), chaque reference
      bibliographique passe sur trois lignes et la liste devient penible a
      parcourir. Sur mobile la valeur n'a aucun effet, la colonne etant deja
-     contrainte par la fenetre (44 caracteres). */
-  --max-width: 720px;
-  --icon-box: 44px;
+     contrainte par la fenetre (44 caracteres).
+     En rem et non en px : 45rem vaut exactement 720 px tant que la taille de
+     base reste a 16 px, donc rien ne bouge la ou elle ne bouge pas. Sur les
+     grands ecrans 1x (voir la regle `html` plus bas), la taille de base
+     grandit et la colonne suit ; le nombre de caracteres par ligne, lui, ne
+     bouge jamais. C'est le dessin qui grandit, pas la mesure. */
+  --max-width: 45rem;
+  /* max() : 2.75rem vaut 44 px a la taille de base normale, la boite tactile
+     ne peut donc jamais descendre sous le minimum de 44 px, mais elle suit
+     l'agrandissement sur grand ecran 1x — ou le glyphe, lui, grandit (2.1rem)
+     et deborderait d'une boite figee. */
+  --icon-box: max(44px, 2.75rem);
 }
 
 *, *::before, *::after { box-sizing: border-box; }
@@ -58,6 +67,30 @@ html {
   /* NOTE : pas de `overflow-anchor: none`. L'ancrage de defilement est le
      mecanisme natif qui absorbe les variations de hauteur pendant le scroll ;
      le desactiver transforme la moindre variation en oscillation visible. */
+}
+
+/* Agrandissement sur les grands ecrans a densite 1x — en pratique Windows a
+   100 % de mise a l'echelle sur un 27 pouces. Ces machines livrent 2000 a
+   2600 px CSS de large : la colonne de 720 px n'occupe plus qu'un quart de la
+   fenetre, et le texte a 16 px, sur une dalle a 109 ppi ou davantage, tombe
+   sous sa taille physique de reference. On ne rallonge pas la ligne — la
+   mesure de 87 caracteres reste la bonne — on grossit tout le dessin : la
+   colonne etant en rem, elle suit la taille de base et le rapport ne change
+   pas.
+
+   La condition porte sur la DENSITE et non sur la largeur seule, car c'est
+   elle qui separe les deux cas. macOS pilote l'ecran en HiDPI (2 dppx et
+   plus) et n'entre donc jamais ici, quelle que soit la largeur de la
+   fenetre : le rendu Mac reste strictement identique. Un navigateur qui ne
+   comprendrait pas `max-resolution` ignore le bloc — la degradation va dans
+   le bon sens.
+
+   Reglage : 1440 est la largeur de demarrage, 20px le plafond, atteint a
+   2560. Changer l'un des deux impose de recalculer la droite —
+   pente = (plafond - 16) / (2560 - demarrage), puis
+   ordonnee = 16 - pente x demarrage. */
+@media (max-resolution: 1.5dppx) {
+  html { font-size: clamp(16px, 10.857px + 0.357vw, 20px); }
 }
 
 body {
@@ -534,7 +567,12 @@ details.section-simple[open] summary::after { transform: rotate(90deg); }
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 220px;
+  /* 13.75rem = 220 px a la taille de base normale, soit le reglage precedent
+     partout ou cette taille ne bouge pas. Sur grand ecran 1x, la photo
+     grandit avec le texte plutot que de retrecir visuellement a cote de lui ;
+     comme 1 px CSS y vaut 1 pixel physique, les 440 px de large du fichier
+     couvrent encore largement les 275 px demandes au plafond. */
+  width: 13.75rem;
   max-width: 100%;
   flex-shrink: 0;
 }
@@ -589,8 +627,11 @@ details.section-simple[open] summary::after { transform: rotate(90deg); }
 .btn-cv::before {
   content: "";
   display: inline-block;
-  width: 15px;
-  height: 15px;
+  /* 0.9375em = 15 px a la taille de base normale. En em plutot qu'en px :
+     sur grand ecran 1x le libelle du bouton grandit, et une icone figee a
+     15 px paraitrait rabougrie a cote. */
+  width: 0.9375em;
+  height: 0.9375em;
   flex: 0 0 auto;
   background-color: currentColor;
   -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='black' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4'/%3E%3Cpolyline points='7 10 12 15 17 10'/%3E%3Cline x1='12' y1='15' x2='12' y2='3'/%3E%3C/svg%3E") no-repeat center / contain;
