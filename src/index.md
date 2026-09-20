@@ -30,4 +30,4 @@ In May 2026, I received my [PhD](/assets/these.pdf) from Université Paris Cité
 
 ## AI disclosure
 
-I endorse the declaration on [Math and AI](https://mathandai.org). I currently use generative AI tools for assistance in tasks such as building this website, but not for producing research papers. Should this change, any results obtained with their use will be clearly highlighted. 
+I endorse the declaration on [Math and AI](https://mathandai.org). I currently use generative AI tools for assistance in tasks such as building this website, but not yet for producing research papers. Should this change, any results obtained with their use will be clearly highlighted. 
