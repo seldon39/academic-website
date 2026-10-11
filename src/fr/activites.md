@@ -37,3 +37,9 @@ permalink: /fr/activites/
 * École d'été **Advances in Special Kähler metrics**, Le Croisic, 12-16 juin 2023.
 
 </details>
+<details class="section-deroulante">
+   <summary><h2>Autres</h2></summary>
+
+* **arXivReader**, lecteur d'articles arXiv pour Mac, pensé pour les mathématiques : énoncés et preuves navigables, dépendances entre résultats, notes, et feed quotidien des nouveautés. Codé avec Claude Opus 5.5. [Télécharger](https://github.com/seldon39/arxivreader/releases/latest) (macOS 13 ou plus, Apple Silicon) · [Code source](https://github.com/seldon39/arxivreader).
+
+</details>

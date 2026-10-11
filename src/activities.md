@@ -36,3 +36,10 @@ permalink: /activities/
 * Summer School **Advances in Special Kähler metrics**, Le Croisic, June 12-16, 2023.
 
 </details>
+
+<details class="section-deroulante">
+   <summary><h2>Other</h2></summary>
+
+* **arXivReader**, a reader for arXiv papers on Mac, designed for mathematics: navigable statements and proofs, dependencies between results, notes, and a daily feed of new papers. Coded with Claude Opus 5.5. [Download](https://github.com/seldon39/arxivreader/releases/latest) (macOS 13 or later, Apple Silicon) · [Source code](https://github.com/seldon39/arxivreader).
+
+</details>
