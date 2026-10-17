@@ -40,6 +40,6 @@ title: Activities
 <details class="section-deroulante">
    <summary><h2>Other</h2></summary>
 
-* **arXivReader**, a concept of a reader for arXiv papers on Mac, designed for mathematics: navigable statements and proofs, dependencies between results, notes, and a daily feed of new papers. "Vibe" coded with Claude Opus 5.5. Partly inspired by Mingchen Xia's [arXivpecker](https://github.com/MingchenXia/arXivpecker). [Download](https://github.com/seldon39/arxivreader/releases/latest) (macOS 13 or later, Apple Silicon) · [Source code](https://github.com/seldon39/arxivreader). 
+* **arXivReader**, a concept of a reader for arXiv papers on Mac (and Windows, in preview), designed for mathematics: navigable statements and proofs, dependencies between results, notes, and a daily feed of new papers. "Vibe" coded with Claude Opus 5.5. Partly inspired by Mingchen Xia's [arXivpecker](https://github.com/MingchenXia/arXivpecker). [Download for Mac](https://github.com/seldon39/arxivreader/releases/latest) (macOS 13 or later, Apple Silicon) · [for Windows](https://github.com/seldon39/arxivreader/releases?q=windows&expanded=true) (preview, Windows 10 or 11) · [Source code](https://github.com/seldon39/arxivreader). 
 
 </details>
