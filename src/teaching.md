@@ -6,7 +6,7 @@ title: Teaching
 ---
 <h2>2026-2027 </h2>
 
-* **Wintersemester 26-27:** Assistent für die Vorlesung *[Analysis 3](https://www.ilias.uni-koeln.de/ilias/ilias.php?baseClass=ilrepositorygui&ref_id=6998774)*. Dozent: Prof. George Marinescu.
+* **Wintersemester 26-27:** Assistent für die Vorlesung *[Analysis 3](https://www.ilias.uni-koeln.de/ilias/ilias.php?baseClass=ilrepositorygui&ref_id=6998774)*. Dozent: Prof. Dr. George Marinescu.
 
 <details class="section-simple">
    <summary><h2>Past </h2></summary>
