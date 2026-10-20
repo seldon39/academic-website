@@ -6,7 +6,7 @@ title: Teaching
 ---
 <h2>2026-2027 </h2>
 
-*  **Wintersemester 26-27:** Assistent für der Vorlesung Analysis 3 (Dozent: Prof. George Marinescu).
+* **Wintersemester 26-27:** Assistent für die Vorlesung Analysis 3 (Dozent: Prof. George Marinescu).
 
 <details class="section-simple">
    <summary><h2>Past </h2></summary>
